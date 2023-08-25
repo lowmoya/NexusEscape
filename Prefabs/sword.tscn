@@ -12,6 +12,7 @@ script = ExtResource("1_sk4ed")
 
 [node name="HitArea" type="CharacterBody2D" parent="."]
 position = Vector2(20, 0)
+rotation = -1.5708
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(40, 0)

@@ -1,18 +1,32 @@
 extends CharacterBody2D
 
-@export var Sword = preload("res://Prefabs/sword.tscn")
-var sword = null
+enum {SWORD_WE, GUN_WE}
+var held = null
+var weapons = [ null , null]
+@export var weapon = SWORD_WE
 
-@export var speed = 360
+@export var speed = 340
 @export var acceleration = 90
 var movement = Vector2.ZERO
 
-func updateSword():
-	sword.position = position
+
+
+func updateHeld():
 	var offset = get_viewport().get_mouse_position() - global_position
-	sword.rotation = tanh(offset.y / offset.x) if offset.x > 0 else tanh(offset.y / offset.x) - PI
-	get_tree().current_scene.add_child(sword)
-	
+	held.rotation = atan(offset.y / offset.x)
+	if offset.x < 0:
+		held.rotation += PI
+		held.scale.y = -1
+	else:
+		held.scale.y = 1
+
+
+func _ready():
+	held = get_node("Held")
+	updateHeld()
+
+	weapons[SWORD_WE] = get_node("Held/Sword")
+
 
 func _process(_delta):
 	movement = Vector2(
@@ -22,13 +36,11 @@ func _process(_delta):
 	if movement.x != 0 and movement.y != 0:
 		movement *= .71
 	
-	if Input.is_action_just_pressed("left_click") and sword == null:
-		sword = Sword.instantiate()
-		updateSword()
+	if Input.is_action_just_pressed("attack_main") and weapons[weapon].idle:
+		weapons[weapon].attack()
+
 
 func _physics_process(delta):
 	velocity = lerp(velocity, movement, acceleration * delta)
 	move_and_slide()
-	
-	if sword != null:
-		updateSword()
+	updateHeld()

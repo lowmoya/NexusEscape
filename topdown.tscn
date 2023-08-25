@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr5kg4jfnuwbm"]
+[gd_scene load_steps=8 format=3 uid="uid://dr5kg4jfnuwbm"]
 
 [ext_resource type="Texture2D" uid="uid://bhcnox8yqsn6m" path="res://stdfloor.png" id="1_pdw3i"]
 [ext_resource type="Script" path="res://Entities/Player.gd" id="2_v5mm1"]
 [ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Entities/player.png" id="3_eng6k"]
+[ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Prefabs/sword.tscn" id="4_vyli8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnfsx"]
 resource_name = "standard floor"
@@ -39,10 +40,15 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0
 [node name="Player" type="CharacterBody2D" parent="Scene"]
 script = ExtResource("2_v5mm1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Scene/Player"]
+[node name="Sprite" type="Sprite2D" parent="Scene/Player"]
 scale = Vector2(4, 4)
 texture = ExtResource("3_eng6k")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Player"]
+[node name="HitBox" type="CollisionShape2D" parent="Scene/Player"]
 shape = SubResource("CapsuleShape2D_22ls6")
+
+[node name="Held" type="Node2D" parent="Scene/Player"]
+
+[node name="Sword" parent="Scene/Player/Held" instance=ExtResource("4_vyli8")]
+position = Vector2(10, 0)
