@@ -11,7 +11,7 @@ size = Vector2(80, 16)
 script = ExtResource("1_sk4ed")
 
 [node name="HitArea" type="CharacterBody2D" parent="."]
-position = Vector2(20, 0)
+position = Vector2(8, 0)
 rotation = -1.5708
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
@@ -27,6 +27,7 @@ texture = ExtResource("2_qlyxa")
 metadata/_edit_lock_ = true
 
 [node name="Swordslash" type="Sprite2D" parent="."]
-position = Vector2(50, 0)
+visible = false
+position = Vector2(40, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("3_7qfhr")

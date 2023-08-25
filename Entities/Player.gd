@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum {SWORD_WE, GUN_WE}
+enum {SWORD_WE, GUN_WE, COUNT_WE}
 var held = null
 var weapons = [ null , null]
 @export var weapon = SWORD_WE
@@ -21,11 +21,19 @@ func updateHeld():
 		held.scale.y = 1
 
 
+func switchHeld(index):
+	weapons[weapon].visible = false
+	weapon = index
+	weapons[weapon].visible = true
+	
+
+
 func _ready():
 	held = get_node("Held")
 	updateHeld()
 
 	weapons[SWORD_WE] = get_node("Held/Sword")
+	weapons[GUN_WE] = get_node("Held/Gun")
 
 
 func _process(_delta):
@@ -36,8 +44,17 @@ func _process(_delta):
 	if movement.x != 0 and movement.y != 0:
 		movement *= .71
 	
-	if Input.is_action_just_pressed("attack_main") and weapons[weapon].idle:
-		weapons[weapon].attack()
+	if weapons[weapon].idle:
+		if Input.is_action_just_pressed("attack_main"):
+			weapons[weapon].attack()
+		elif Input.is_action_just_pressed("select_one"):
+			switchHeld(SWORD_WE)
+		elif Input.is_action_just_pressed("select_two"):
+			switchHeld(GUN_WE)
+		elif Input.is_action_just_pressed("select_right"):
+			switchHeld(0 if weapon == COUNT_WE - 1 else weapon + 1)
+		elif Input.is_action_just_pressed("select_left"):
+			switchHeld(COUNT_WE - 1 if weapon == 0 else weapon - 1)
 
 
 func _physics_process(delta):

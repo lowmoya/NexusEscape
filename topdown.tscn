@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr5kg4jfnuwbm"]
+[gd_scene load_steps=9 format=3 uid="uid://dr5kg4jfnuwbm"]
 
 [ext_resource type="Texture2D" uid="uid://bhcnox8yqsn6m" path="res://stdfloor.png" id="1_pdw3i"]
 [ext_resource type="Script" path="res://Entities/Player.gd" id="2_v5mm1"]
 [ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Entities/player.png" id="3_eng6k"]
 [ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Prefabs/sword.tscn" id="4_vyli8"]
+[ext_resource type="PackedScene" uid="uid://bwb3q2u1hv0j3" path="res://Prefabs/gun.tscn" id="5_liabq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnfsx"]
 resource_name = "standard floor"
@@ -51,4 +52,8 @@ shape = SubResource("CapsuleShape2D_22ls6")
 [node name="Held" type="Node2D" parent="Scene/Player"]
 
 [node name="Sword" parent="Scene/Player/Held" instance=ExtResource("4_vyli8")]
-position = Vector2(10, 0)
+position = Vector2(20, 0)
+
+[node name="Gun" parent="Scene/Player/Held" instance=ExtResource("5_liabq")]
+visible = false
+position = Vector2(46, 0)

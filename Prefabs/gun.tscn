@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwb3q2u1hv0j3"]
+[gd_scene load_steps=3 format=3 uid="uid://bwb3q2u1hv0j3"]
 
 [ext_resource type="Script" path="res://Prefabs/gun.gd" id="1_sl4md"]
+[ext_resource type="Texture2D" uid="uid://j2gdl6r3jwee" path="res://Prefabs/gun.png" id="2_a3wt6"]
 
 [node name="gun" type="Node2D"]
+position = Vector2(40, 0)
 script = ExtResource("1_sl4md")
+
+[node name="Gun" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_a3wt6")
