@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpisn7glxa323"]
+
+[ext_resource type="Script" path="res://Prefabs/sword.gd" id="1_sk4ed"]
+[ext_resource type="Texture2D" uid="uid://blt4c7ji3qupu" path="res://Prefabs/sword.png" id="2_qlyxa"]
+[ext_resource type="Texture2D" uid="uid://dtrxbqsymwp5a" path="res://Prefabs/swordslash.png" id="3_7qfhr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fhk2"]
+size = Vector2(80, 16)
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_sk4ed")
+
+[node name="HitArea" type="CharacterBody2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="HitBox" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_0fhk2")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Sword" type="Sprite2D" parent="HitArea"]
+position = Vector2(40, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("2_qlyxa")
+metadata/_edit_lock_ = true
+
+[node name="Swordslash" type="Sprite2D" parent="."]
+position = Vector2(50, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("3_7qfhr")
