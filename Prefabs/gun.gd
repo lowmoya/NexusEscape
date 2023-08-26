@@ -2,7 +2,7 @@ extends Weapon
 
 @export var GunLength = 36
 @export var Bullet = preload("res://Prefabs/bullet.tscn")
-@export var BulletSpeed = 10
+@export var BulletSpeed = 1000
 
 var outer_scene = null
 

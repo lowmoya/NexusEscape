@@ -3,17 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://wdaky1t0tymr" path="res://Prefabs/bullet.png" id="1_3u4xm"]
 [ext_resource type="Script" path="res://Prefabs/bullet.gd" id="1_75lng"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jj8g2"]
-radius = 9.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1jk4"]
+radius = 8.0
 
-[node name="bullet" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+[node name="bullet" type="Area2D"]
 script = ExtResource("1_75lng")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_jj8g2")
 
 [node name="Bullet" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("1_3u4xm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p1jk4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

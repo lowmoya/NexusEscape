@@ -31,3 +31,5 @@ visible = false
 position = Vector2(40, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("3_7qfhr")
+
+[connection signal="child_entered_tree" from="HitArea/HitBox" to="." method="_on_hit_box_child_entered_tree"]

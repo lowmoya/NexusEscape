@@ -32,8 +32,8 @@ func _ready():
 	held = get_node("Held")
 	updateHeld()
 
-	weapons[SWORD_WE] = get_node("Held/Sword")
-	weapons[GUN_WE] = get_node("Held/Gun")
+	weapons[SWORD_WE] = held.get_node("Sword")
+	weapons[GUN_WE] = held.get_node("Gun")
 
 
 func _process(_delta):
