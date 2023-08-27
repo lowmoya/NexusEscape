@@ -9,7 +9,15 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+	if not (body is Entity):
+		return
+	elif is_in_group("Good"):
+		if body.is_in_group("Good"):
+			return
+	elif is_in_group("Bad"):
+		if body.is_in_group("Bad"):
+			return
 	queue_free()
-	if body.is_in_group("Good"):
-		body.velocity -= velocity
-	pass
+	
+	body.velocity += velocity
+	body.damage(1)

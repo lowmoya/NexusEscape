@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 enum {SWORD_WE, GUN_WE, COUNT_WE}
 var held = null
@@ -37,6 +37,9 @@ func _ready():
 
 
 func _process(_delta):
+	if delete:
+		get_tree().change_scene_to_file("mainmenu.tscn")
+	
 	movement = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")

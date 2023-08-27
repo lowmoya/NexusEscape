@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 @export var acceleration = 10
 @export var speed = 100
