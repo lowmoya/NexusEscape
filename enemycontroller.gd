@@ -17,7 +17,7 @@ func _process(delta):
 	var enemy_count = len(enemies)
 	var enemy = 0
 	while enemy < enemy_count:
-		if not enemies[enemy].delete:
+		if not enemies[enemy].defeated:
 			print(enemy)
 			enemy += 1
 			continue

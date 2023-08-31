@@ -37,7 +37,7 @@ func _ready():
 
 
 func _process(_delta):
-	if delete:
+	if defeated:
 		get_tree().change_scene_to_file("mainmenu.tscn")
 	
 	movement = Vector2(
