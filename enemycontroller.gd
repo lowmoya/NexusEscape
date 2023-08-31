@@ -1,3 +1,5 @@
+# Swarm behaviors / collisions
+
 extends Node
 
 @export var seperation_threshold = 200
@@ -5,12 +7,12 @@ extends Node
 
 var enemies = []
 
+
 func _ready():
 	for i in range (get_child_count()):
 		enemies.append(get_child(i))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var enemy_count = len(enemies)
 	var enemy = 0

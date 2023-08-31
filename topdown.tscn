@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://dr5kg4jfnuwbm"]
 
 [ext_resource type="Texture2D" uid="uid://bhcnox8yqsn6m" path="res://stdfloor.png" id="1_pdw3i"]
-[ext_resource type="Script" path="res://Entities/Player.gd" id="2_v5mm1"]
+[ext_resource type="Script" path="res://Entities/player.gd" id="2_v5mm1"]
 [ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Entities/player.png" id="3_eng6k"]
 [ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Prefabs/sword.tscn" id="4_vyli8"]
 [ext_resource type="PackedScene" uid="uid://bwb3q2u1hv0j3" path="res://Prefabs/gun.tscn" id="5_liabq"]
-[ext_resource type="Script" path="res://EnemyController.gd" id="6_3pd7k"]
-[ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/Enemy.tscn" id="6_ctyvh"]
+[ext_resource type="Script" path="res://enemycontroller.gd" id="6_3pd7k"]
+[ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/enemy.tscn" id="6_ctyvh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnfsx"]
 resource_name = "standard floor"
