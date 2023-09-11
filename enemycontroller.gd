@@ -18,10 +18,8 @@ func _process(delta):
 	var enemy = 0
 	while enemy < enemy_count:
 		if not enemies[enemy].defeated:
-			print(enemy)
 			enemy += 1
 			continue
-		print(enemy)
 		enemies[enemy].queue_free()
 		enemy_count -= 1
 		enemies[enemy] = enemies[enemy_count]

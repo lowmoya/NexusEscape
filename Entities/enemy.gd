@@ -12,13 +12,13 @@ var delay = .5
 func _ready():
 	held = get_node("Held")
 	weapon = held.get_node("Gun")
-	player = get_tree().current_scene.get_node("Scene/Player")
+	player = get_tree().current_scene.get_node("Player")
 
 
 
 func _physics_process(delta):
-	var move = Vector2(player.velocity + player.global_position - global_position)
-	velocity = lerp(velocity, move / sqrt(move.x * move.x + move.y * move.y) * speed, acceleration * delta)
+	var move = Vector2(player.velocity + player.global_position - global_position).normalized()
+	velocity = lerp(velocity, move * speed, acceleration * delta)
 	move_and_slide()
 	var aim_offset = player.global_position - global_position
 	held.rotation = atan(aim_offset.y / aim_offset.x)

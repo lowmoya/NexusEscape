@@ -6,13 +6,12 @@ var weapons = [ null , null]
 @export var weapon = SWORD_WE
 
 @export var speed = 340
-@export var acceleration = 90
+@export var acceleration = 10
 var movement = Vector2.ZERO
 
 
-
 func updateHeld():
-	var offset = get_viewport().get_mouse_position() - global_position
+	var offset = get_local_mouse_position()
 	held.rotation = atan(offset.y / offset.x)
 	if offset.x < 0:
 		held.rotation += PI
@@ -25,7 +24,6 @@ func switchHeld(index):
 	weapons[weapon].visible = false
 	weapon = index
 	weapons[weapon].visible = true
-	
 
 
 func _ready():
@@ -46,7 +44,7 @@ func _process(_delta):
 		) * speed;
 	if movement.x != 0 and movement.y != 0:
 		movement *= .71
-	
+
 	if weapons[weapon].idle:
 		if Input.is_action_just_pressed("attack_main"):
 			weapons[weapon].attack()
