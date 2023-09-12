@@ -32,7 +32,7 @@ theme_override_constants/separation = 8
 
 [node name="TopdownButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-text = "Top Down Prototype"
+text = "Start"
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]

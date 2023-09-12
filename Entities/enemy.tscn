@@ -24,7 +24,5 @@ shape = SubResource("CapsuleShape2D_dvhsh")
 [node name="Sword" parent="Held" instance=ExtResource("2_ima77")]
 visible = false
 position = Vector2(20, 0)
-speed = 12.5664
-knockback = 2000
 
 [node name="Gun" parent="Held" instance=ExtResource("4_baw1i")]
