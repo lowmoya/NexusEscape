@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cydcnpnmpphg2"
+path="res://.godot/imported/sword_slice_2.wav-28f4dd6972bc6fa72aae7e8d6ecc9bfa.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/player weapons/sword_slice_2.wav"
+dest_files=["res://.godot/imported/sword_slice_2.wav-28f4dd6972bc6fa72aae7e8d6ecc9bfa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

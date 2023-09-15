@@ -13,7 +13,7 @@ func _ready():
 	held = get_node("Held")
 	weapon = held.get_node("Gun")
 	player = get_tree().current_scene.get_node("Player")
-
+	health = max_health
 
 
 func _physics_process(delta):
@@ -31,3 +31,7 @@ func _physics_process(delta):
 	if delay <= 0:
 		weapon.attack()
 		delay = 1
+
+
+func despawn():
+	print("okk")

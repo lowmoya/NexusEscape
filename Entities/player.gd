@@ -3,7 +3,8 @@ extends Entity
 enum {SWORD_WE, GUN_WE, COUNT_WE}
 var held = null
 var weapons = [ null , null]
-@export var energy = 10.
+@export var max_energy = 10.
+var energy = max_energy
 @export var weapon = SWORD_WE
 
 @export var speed = 340
@@ -11,6 +12,7 @@ var weapons = [ null , null]
 var movement = Vector2.ZERO
 
 var time_last = Time.get_ticks_msec()
+
 
 func updateHeld():
 	var offset = get_local_mouse_position()
@@ -40,6 +42,8 @@ func switchHeld(index):
 
 func _ready():
 	held = get_node("Held")
+	health = max_health
+	energy = max_energy
 
 	weapons[SWORD_WE] = held.get_node("Sword")
 	weapons[GUN_WE] = held.get_node("Gun")

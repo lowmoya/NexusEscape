@@ -34,5 +34,4 @@ theme_override_constants/separation = 8
 layout_mode = 2
 text = "Start"
 
-[connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]

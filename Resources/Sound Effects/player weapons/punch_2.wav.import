@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3vaqq1hyde0e"
+path="res://.godot/imported/punch_2.wav-83388d3532173468dc28ebb1f231368f.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/player weapons/punch_2.wav"
+dest_files=["res://.godot/imported/punch_2.wav-83388d3532173468dc28ebb1f231368f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

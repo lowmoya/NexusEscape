@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://k1us1bujfdh2" path="res://Resources/Tilemaps/tilemap lvl 1 and 2.png" id="1_n7jrk"]
 [ext_resource type="Script" path="res://Entities/player.gd" id="2_hb0kh"]
-[ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Entities/player.png" id="3_juk85"]
+[ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Resources/player.png" id="3_n2rb2"]
 [ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Prefabs/sword.tscn" id="4_dkbqr"]
 [ext_resource type="PackedScene" path="res://Prefabs/gun.tscn" id="5_us36x"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="6_ydln0"]
@@ -478,11 +478,11 @@ layer_1/tile_data = PackedInt32Array(-65536, 589824, 1, -65535, 589824, 1, -6553
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Good"]]
 script = ExtResource("2_hb0kh")
-health = 10
+max_health = 10
 
 [node name="Sprite" type="Sprite2D" parent="Player"]
 scale = Vector2(4, 4)
-texture = ExtResource("3_juk85")
+texture = ExtResource("3_n2rb2")
 metadata/_edit_lock_ = true
 
 [node name="HitBox" type="CollisionShape2D" parent="Player"]

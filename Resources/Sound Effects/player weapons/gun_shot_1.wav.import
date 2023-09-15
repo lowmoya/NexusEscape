@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqy8qpjhm1cug"
+path="res://.godot/imported/gun_shot_1.wav-b92311d07037fbc6d4f6037d0dcba779.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/player weapons/gun_shot_1.wav"
+dest_files=["res://.godot/imported/gun_shot_1.wav-b92311d07037fbc6d4f6037d0dcba779.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
