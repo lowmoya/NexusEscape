@@ -3,16 +3,28 @@ extends Entity
 enum {SWORD_WE, GUN_WE, COUNT_WE}
 var held = null
 var weapons = [ null , null]
+@export var energy = 10.
 @export var weapon = SWORD_WE
 
 @export var speed = 340
 @export var acceleration = 10
 var movement = Vector2.ZERO
 
+var time_last = Time.get_ticks_msec()
 
 func updateHeld():
 	var offset = get_local_mouse_position()
 	held.rotation = atan(offset.y / offset.x)
+	
+	var time_now = Time.get_ticks_msec()
+	weapons[weapon].tick(float(time_now - time_last) / 1000.)
+	time_last = time_now	
+	
+	if not weapons[weapon].idle:
+		if offset.x < 0:
+			held.rotation += PI
+		return
+	
 	if offset.x < 0:
 		held.rotation += PI
 		held.scale.y = -1
@@ -28,10 +40,11 @@ func switchHeld(index):
 
 func _ready():
 	held = get_node("Held")
-	updateHeld()
 
 	weapons[SWORD_WE] = held.get_node("Sword")
 	weapons[GUN_WE] = held.get_node("Gun")
+	
+	updateHeld()
 
 
 func _process(_delta):
@@ -47,7 +60,9 @@ func _process(_delta):
 
 	if weapons[weapon].idle:
 		if Input.is_action_just_pressed("attack_main"):
-			weapons[weapon].attack()
+			if energy >= weapons[weapon].energy_cost:
+				weapons[weapon].attack()
+				energy -= weapons[weapon].energy_cost
 		elif Input.is_action_just_pressed("select_one"):
 			switchHeld(SWORD_WE)
 		elif Input.is_action_just_pressed("select_two"):

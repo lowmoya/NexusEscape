@@ -31,7 +31,7 @@ func _on_hit_box_body_entered(body):
 	body.velocity += (body.get_global_position() - get_global_position()).normalized() * knockback
 
 
-func _physics_process(delta):
+func tick(delta):
 	if idle:
 		return
 	
@@ -41,6 +41,3 @@ func _physics_process(delta):
 		idle = true
 		slash.visible = false
 	blade.rotation = angle
-
-
-

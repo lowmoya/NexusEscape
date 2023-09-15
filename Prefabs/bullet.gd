@@ -24,5 +24,5 @@ func _on_body_entered(body):
 	queue_free()
 	
 	body.velocity += velocity.normalized() * knockback
-	body.damage(1)
+	body.damage(1.2)
 

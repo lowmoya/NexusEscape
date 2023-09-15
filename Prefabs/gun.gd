@@ -14,7 +14,6 @@ func _ready():
 func attack():
 	if blocked:
 		return
-	
 	var bullet = Bullet.instantiate()
 	bullet.visible = false
 	outer_scene.add_child(bullet)
