@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrxbqsymwp5a"
-path="res://.godot/imported/swordslash.png-84e24f166b665f6000733c8cefbe695a.ctex"
+uid="uid://dfitiovwrods7"
+path="res://.godot/imported/battery.png-2a786285c776f733747787d844457246.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/swordslash.png"
-dest_files=["res://.godot/imported/swordslash.png-84e24f166b665f6000733c8cefbe695a.ctex"]
+source_file="res://Resources/Entities/battery.png"
+dest_files=["res://.godot/imported/battery.png-2a786285c776f733747787d844457246.ctex"]
 
 [params]
 

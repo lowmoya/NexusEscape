@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpsrckqmt2nor"]
 
-[ext_resource type="Texture2D" uid="uid://dfitiovwrods7" path="res://Resources/battery.png" id="1_kd7sm"]
-[ext_resource type="Texture2D" uid="uid://dxdaafc6ct17d" path="res://Resources/cog.png" id="2_7rtb2"]
+[ext_resource type="Texture2D" uid="uid://dfitiovwrods7" path="res://Resources/Entities/battery.png" id="1_ge3aw"]
+[ext_resource type="Texture2D" uid="uid://dxdaafc6ct17d" path="res://Resources/Entities/cog.png" id="2_y713r"]
 
 [sub_resource type="GDScript" id="GDScript_6v7ot"]
 script/source = "extends Node2D
@@ -20,16 +20,16 @@ func _ready():
 		get_node(\"Battery\").visible = true
 "
 
-[node name="Drop" type="Node2D"]
+[node name="Pickup" type="Node2D"]
 script = SubResource("GDScript_6v7ot")
 value = 4
 
 [node name="Battery" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(4, 4)
-texture = ExtResource("1_kd7sm")
+texture = ExtResource("1_ge3aw")
 
 [node name="Cog" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(4, 4)
-texture = ExtResource("2_7rtb2")
+texture = ExtResource("2_y713r")

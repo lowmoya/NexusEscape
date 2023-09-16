@@ -1,13 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmc6u0x3tasos"]
+[gd_scene load_steps=12 format=3 uid="uid://bmc6u0x3tasos"]
 
 [ext_resource type="Texture2D" uid="uid://k1us1bujfdh2" path="res://Resources/Tilemaps/tilemap lvl 1 and 2.png" id="1_n7jrk"]
-[ext_resource type="Script" path="res://Entities/player.gd" id="2_hb0kh"]
-[ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Resources/player.png" id="3_n2rb2"]
-[ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Prefabs/sword.tscn" id="4_dkbqr"]
-[ext_resource type="PackedScene" path="res://Prefabs/gun.tscn" id="5_us36x"]
+[ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="2_71mvp"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="6_ydln0"]
 [ext_resource type="PackedScene" path="res://Entities/enemy.tscn" id="7_2clcv"]
-[ext_resource type="Script" path="res://UI.gd" id="8_g8la4"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="8_g8la4"]
 [ext_resource type="Texture2D" uid="uid://b8ru4qf6utqot" path="res://Resources/healthbar_background.png" id="9_vohw5"]
 [ext_resource type="Texture2D" uid="uid://cjni4w8v1mylq" path="res://Resources/healthbar_foreground.png" id="10_eiuif"]
 [ext_resource type="Texture2D" uid="uid://3t11gd3ngoaa" path="res://Resources/energybar_background.png" id="11_7x5df"]
@@ -455,10 +452,6 @@ texture = ExtResource("1_n7jrk")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dnfsx")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22ls6"]
-radius = 16.0
-height = 64.0
-
 [node name="Root" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -476,36 +469,7 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-65536, 589824, 1, -65535, 589824, 1, -65534, 589824, 1, -65533, 589824, 1, -65532, 720896, 1, -65531, 786432, 1, -65530, 589824, 1, -65529, 589824, 1, -65528, 589824, 1, -65527, 851968, 1, -65526, 851968, 1, -65525, 851968, 1, -65524, 851968, 1, -65523, 589824, 1, -65522, 589824, 1, -65521, 589824, 1, -65520, 589824, 1, -65519, 589824, 1, 589824, 589824, 0, -131072, 589824, 0, -131071, 589824, 0, -131070, 589824, 0, -131069, 589824, 0, -131068, 589824, 0, -131067, 589824, 0, -131066, 589824, 0, -131065, 589824, 0, -131064, 589824, 0, -131063, 589824, 0, -131062, 589824, 0, -131061, 589824, 0, -131060, 589824, 0, -131059, 589824, 0, -131058, 589824, 0, -131057, 589824, 0, -131056, 589824, 0, -131055, 589824, 0, 589825, 589824, 0, 589826, 589824, 0, 589827, 589824, 0, 589828, 589824, 0, 589829, 589824, 0, 589830, 589824, 0, 589831, 589824, 0, 589832, 589824, 0, 589833, 589824, 0, 589834, 589824, 0, 589835, 589824, 0, 589836, 589824, 0, 589837, 589824, 0, 589838, 589824, 0, 589839, 589824, 0, 589840, 589824, 0, 589841, 589824, 0, -65537, 458752, 0, -1, 458752, 1, 65535, 458752, 1, 131071, 458752, 1, 196607, 458752, 1, 262143, 458752, 1, 327679, 458752, 1, 393215, 458752, 1, 458751, 458752, 1, 524287, 458752, 1, 589823, 458752, 1, 655359, 458752, 3, 589842, 524288, 3, 18, 524288, 1, 65554, 524288, 1, 131090, 458752, 5, 393234, 458752, 7, 458770, 524288, 2, 524306, 524288, 1, -131054, 524288, 0, -65518, 524288, 1, 720895, 458752, 4, 655377, 655360, 4, 655376, 655360, 4, 655375, 458752, 6, 655374, 458752, 6, 655373, 458752, 6, 655372, 524288, 6, 655371, 524288, 6, 655370, 524288, 6, 655369, 524288, 6, 655368, 458752, 6, 655367, 458752, 6, 655360, 655360, 4, 655361, 655360, 4, 655362, 655360, 4, 655363, 458752, 6, 655364, 458752, 6, 655365, 458752, 6, 655366, 458752, 6, 655378, 524288, 4, 131091, 786432, 0, 131092, 524288, 5, 196626, 589824, 1, 196627, 589824, 1, 196628, 589824, 1, 393235, 589824, 0, 393236, 589824, 0, 393237, 589824, 0, 393238, 589824, 0, 393239, 589824, 0, 393240, 589824, 0, 393241, 589824, 0, 393242, 524288, 3, -65516, 458752, 0, -65510, 524288, 0, 20, 458752, 1, 65556, 458752, 1, 26, 524288, 1, 65562, 524288, 1, 131098, 524288, 1, 196634, 524288, 1, 262170, 524288, 1, 327706, 524288, 1, 458778, 524288, 4, 458777, 524288, 6, 458776, 524288, 6, 458775, 655360, 4, 458774, 655360, 4, 458773, 524288, 6, 458772, 458752, 6, 458771, 655360, 4, -65515, 524288, 5, -65511, 458752, 5, -131047, 524288, 0, -131051, 458752, 0, -131050, 524288, 7, -131049, 524288, 7, -131048, 524288, 7, 15, 589824, 8, 16, 589824, 8, 17, 589824, 8)
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["Good"]]
-script = ExtResource("2_hb0kh")
-max_health = 10
-
-[node name="Sprite" type="Sprite2D" parent="Player"]
-scale = Vector2(4, 4)
-texture = ExtResource("3_n2rb2")
-metadata/_edit_lock_ = true
-
-[node name="HitBox" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_22ls6")
-
-[node name="Held" type="Node2D" parent="Player"]
-
-[node name="Sword" parent="Player/Held" groups=["Good"] instance=ExtResource("4_dkbqr")]
-position = Vector2(20, 0)
-energy_cost = 0
-
-[node name="Gun" parent="Player/Held" instance=ExtResource("5_us36x")]
-visible = false
-position = Vector2(46, 0)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -608
-limit_top = -417
-limit_right = 1119
-limit_bottom = 383
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+[node name="Player" parent="." instance=ExtResource("2_71mvp")]
 
 [node name="EnemyController" type="Node" parent="."]
 script = ExtResource("6_ydln0")

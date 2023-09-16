@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcpav2807vdex"]
+
+[ext_resource type="Script" path="res://Entities/player.gd" id="1_db5lo"]
+[ext_resource type="Texture2D" uid="uid://i81owtip0pv6" path="res://Resources/Entities/player.png" id="2_ky0n6"]
+[ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Weapons/sword.tscn" id="2_y0ch0"]
+[ext_resource type="PackedScene" uid="uid://bwb3q2u1hv0j3" path="res://Weapons/gun.tscn" id="3_vokvh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddbao"]
+radius = 16.0
+height = 64.0
+
+[node name="Player" type="CharacterBody2D" groups=["Good"]]
+script = ExtResource("1_db5lo")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_ky0n6")
+metadata/_edit_lock_ = true
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ddbao")
+
+[node name="Held" type="Node2D" parent="."]
+
+[node name="Sword" parent="Held" groups=["Good"] instance=ExtResource("2_y0ch0")]
+position = Vector2(20, 0)
+energy_cost = 0
+
+[node name="Gun" parent="Held" groups=["Good"] instance=ExtResource("3_vokvh")]
+visible = false
+position = Vector2(46, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -608
+limit_top = -417
+limit_right = 1119
+limit_bottom = 383
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

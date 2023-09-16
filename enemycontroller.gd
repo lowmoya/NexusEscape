@@ -3,7 +3,7 @@
 extends Node
 
 enum { HEALTH_DROP = 0, ENERGY_DROP }
-@export var Drop = preload("res://Prefabs/drop.tscn")
+@export var Drop = preload("res://Entities/pickup.tscn")
 @export var drop_chance = .5
 @export var pickup_range = 20 ** 2
 @export var drag_range = 150 ** 2

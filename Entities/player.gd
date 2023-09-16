@@ -53,7 +53,7 @@ func _ready():
 
 func _process(_delta):
 	if defeated:
-		get_tree().change_scene_to_file("mainmenu.tscn")
+		get_tree().change_scene_to_file("res://Levels/mainmenu.tscn")
 	
 	movement = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
