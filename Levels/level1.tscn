@@ -1,14 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmc6u0x3tasos"]
+[gd_scene load_steps=8 format=3 uid="uid://bmc6u0x3tasos"]
 
 [ext_resource type="Texture2D" uid="uid://k1us1bujfdh2" path="res://Resources/Tilemaps/tilemap lvl 1 and 2.png" id="1_n7jrk"]
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="2_71mvp"]
+[ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="5_5ie6x"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="6_ydln0"]
 [ext_resource type="PackedScene" path="res://Entities/enemy.tscn" id="7_2clcv"]
-[ext_resource type="Script" path="res://UI/UI.gd" id="8_g8la4"]
-[ext_resource type="Texture2D" uid="uid://b8ru4qf6utqot" path="res://Resources/healthbar_background.png" id="9_vohw5"]
-[ext_resource type="Texture2D" uid="uid://cjni4w8v1mylq" path="res://Resources/healthbar_foreground.png" id="10_eiuif"]
-[ext_resource type="Texture2D" uid="uid://3t11gd3ngoaa" path="res://Resources/energybar_background.png" id="11_7x5df"]
-[ext_resource type="Texture2D" uid="uid://ey12wktvn4lq" path="res://Resources/energybar_foreground.png" id="12_2inhc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnfsx"]
 resource_name = "standard floor"
@@ -483,40 +479,4 @@ position = Vector2(882, -181)
 [node name="Enemy3" parent="EnemyController" instance=ExtResource("7_2clcv")]
 position = Vector2(811, -94)
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("8_g8la4")
-
-[node name="HealthBar" type="TextureProgressBar" parent="UI"]
-offset_left = 4.0
-offset_top = 612.0
-offset_right = 104.0
-offset_bottom = 620.0
-scale = Vector2(4, 4)
-max_value = 10.0
-step = 0.1
-value = 10.0
-nine_patch_stretch = true
-stretch_margin_left = 2
-stretch_margin_top = 3
-stretch_margin_right = 2
-stretch_margin_bottom = 2
-texture_under = ExtResource("9_vohw5")
-texture_progress = ExtResource("10_eiuif")
-tint_progress = Color(1, 1, 0.227451, 1)
-
-[node name="EnergyBar" type="TextureProgressBar" parent="UI"]
-offset_left = 39.0
-offset_top = 608.0
-offset_right = 120.0
-offset_bottom = 612.0
-scale = Vector2(4, 4)
-max_value = 10.0
-step = 0.1
-value = 10.0
-nine_patch_stretch = true
-stretch_margin_left = 2
-stretch_margin_top = 2
-stretch_margin_right = 2
-texture_under = ExtResource("11_7x5df")
-texture_progress = ExtResource("12_2inhc")
-tint_progress = Color(0.8, 0.780392, 1, 1)
+[node name="PlayingUI" parent="." instance=ExtResource("5_5ie6x")]

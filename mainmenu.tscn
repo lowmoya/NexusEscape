@@ -3,7 +3,14 @@
 [sub_resource type="GDScript" id="GDScript_d07pc"]
 script/source = "extends Control
 
-func _topdown_button():
+
+
+# ################################################## #
+# Linked Functions                                   #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+func _on_start_button_pressed():
+	# Load the proper scene
 	get_tree().change_scene_to_file(\"res://Levels/level1.tscn\")
 "
 
@@ -35,8 +42,8 @@ grow_vertical = 2
 theme = SubResource("Theme_41gwq")
 theme_override_constants/separation = 8
 
-[node name="TopdownButton" type="Button" parent="ButtonContainer"]
+[node name="StartButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 text = "Start"
 
-[connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]
+[connection signal="pressed" from="ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]

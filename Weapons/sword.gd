@@ -1,43 +1,67 @@
 extends Weapon
 
-var blade = null
-var slash = null
 
-var angle = -PI / 2
+
+# ################################################## #
+# Variables                                          #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+@export var damage = 2
 @export var speed = 4 * PI
 @export var knockback = 2000
 
+var n_blade = null
+var n_slash = null
+
+var angle = -PI / 2
+
+
+
+# ################################################## #
+# Ready / Process Functions                          #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
 func _ready():
-	blade = get_node("HitArea")
-	slash = get_node("Swordslash")
+	# Load referenced nodes
+	n_blade = get_node("HitArea")
+	n_slash = get_node("Swordslash")
 
 
-func attack():
-	idle = false
-	slash.visible = true
 
+# ################################################## #
+# Linked Functions                                   #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _on_hit_box_body_entered(body):
-	if not (body is Entity) or idle:
+	# Handle cases where the collision event should be discarded
+	if not (body is Entity) or idle or (is_in_group("Good") and body.is_in_group("Good")) \
+			or (is_in_group("Bad") and body.is_in_group("Bad")):
 		return
-	elif is_in_group("Good"):
-		if body.is_in_group("Good"):
-			return
-	elif is_in_group("Bad"):
-		if body.is_in_group("Bad"):
-			return
 	
-	body.damage(2)
+	# Damage and apply knockback
+	body.damage(damage)
 	body.velocity += (body.get_global_position() - get_global_position()).normalized() * knockback
 
 
+
+# ################################################## #
+# Class Functions                                    #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+func attack():
+	# Toggle slash effect and idle state
+	idle = false
+	n_slash.visible = true
+
 func tick(delta):
+	# Can skip if not currently attacking
 	if idle:
 		return
 	
+	# Adjust blades angle, resetting back to an idle state if it passes the threshold
 	angle += speed * delta
 	if angle >= PI / 2:
-		angle = -PI /2
+		n_slash.visible = false
+		angle = -PI / 2
 		idle = true
-		slash.visible = false
-	blade.rotation = angle
+	n_blade.rotation = angle

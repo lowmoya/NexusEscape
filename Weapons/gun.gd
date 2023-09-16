@@ -1,25 +1,32 @@
 extends Weapon
 
-@export var GunLength = 36
-@export var Bullet = preload("res://Weapons/Projectiles/bullet.tscn")
-@export var BulletSpeed = 1000
 
-var outer_scene = null
+
+# ################################################## #
+# Variables                                          #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+@export var p_Bullet = preload("res://Weapons/Projectiles/bullet.tscn")
+@export var bullet_speed = 1000
+@export var gun_emmiter_xoffset = 36
+
+var n_scene = null
 var blocked = false
 
 
-func _ready():
-	outer_scene = get_tree().current_scene
 
-func attack():
-	if blocked:
-		return
-	var bullet = Bullet.instantiate()
-	bullet.visible = false
-	outer_scene.add_child(bullet)
-	bullet.global_position = global_position + Vector2(cos(global_rotation), sin(global_rotation)) * GunLength
-	bullet.velocity = Vector2(cos(global_rotation), sin(global_rotation)) * BulletSpeed
-	bullet.visible = true
+# ################################################## #
+# Ready / Process Functions                          #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+func _ready():
+	n_scene = get_tree().current_scene
+
+
+
+# ################################################## #
+# Linked Functions                                   #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _on_body_entered(body):
 	if body is TileMap:
@@ -29,3 +36,21 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body is TileMap:
 		blocked = false
+
+
+# ################################################## #
+# Class Functions                                    #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+func attack():
+	# Gun is inside a wall
+	if blocked:
+		return
+	
+	# Create bullet and set its location and velocity
+	var n_bullet = p_Bullet.instantiate()
+	n_bullet.global_position = global_position + Vector2(cos(global_rotation), \
+			sin(global_rotation)) * gun_emmiter_xoffset
+	n_bullet.velocity = Vector2(cos(global_rotation), sin(global_rotation)) \
+			* bullet_speed
+	n_scene.add_child(n_bullet)
