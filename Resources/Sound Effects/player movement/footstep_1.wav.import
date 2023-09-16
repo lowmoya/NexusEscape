@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://de7sfiho40poi"
+path="res://.godot/imported/footstep_1.wav-769b99058c4308d0781001a14dcdc706.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/player movement/footstep_1.wav"
+dest_files=["res://.godot/imported/footstep_1.wav-769b99058c4308d0781001a14dcdc706.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
