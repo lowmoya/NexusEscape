@@ -26,7 +26,10 @@ var energy = 0
 # movement
 @export var speed = 340
 @export var acceleration = 10
+@export var dash_delay = 600
+@export var dash_strength = 6
 var movement = Vector2.ZERO
+var dash_frame = 0
 
 
 
@@ -62,13 +65,22 @@ func _physics_process(delta):
 	if movement.x != 0 and movement.y != 0:
 		movement *= .71
 	
+	# Process non-weapon related inputs
+	var current_time = Time.get_ticks_msec()
+	if Input.is_action_just_pressed("dash"):
+		if current_time <= dash_frame:
+			pass # Play audio here
+		else:
+			dash_frame = current_time + dash_delay
+			velocity += movement * dash_strength
+		
 	# Process weapon related inputs
 	if n_weapons[weapon].idle:
 		if Input.is_action_just_pressed("attack_main"):
 			if energy >= n_weapons[weapon].energy_cost:
 				n_weapons[weapon].attack()
 				energy -= n_weapons[weapon].energy_cost
-		elif Input.is_action_just_pressed("select_one"):
+		if Input.is_action_just_pressed("select_one"):
 			switchHeld(0)
 		elif Input.is_action_just_pressed("select_two"):
 			switchHeld(1)
@@ -76,7 +88,10 @@ func _physics_process(delta):
 			switchHeld(0 if weapon == WeaponType.COUNT - 1 else weapon + 1)
 		elif Input.is_action_just_pressed("select_left"):
 			switchHeld(WeaponType.COUNT - 1 if weapon == 0 else weapon - 1)
+	
+
 		
+	
 	# Move velocity "towards" the players desired direction and move
 	velocity = lerp(velocity, movement, acceleration * delta)
 	move_and_slide()

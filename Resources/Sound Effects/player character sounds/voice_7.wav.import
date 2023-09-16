@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsyu11vogw2dl"
+path="res://.godot/imported/voice_7.wav-fc5a992a927afe4a6cf4bcf7bbedeee1.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/player character sounds/voice_7.wav"
+dest_files=["res://.godot/imported/voice_7.wav-fc5a992a927afe4a6cf4bcf7bbedeee1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
