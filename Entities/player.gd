@@ -3,19 +3,11 @@ extends Entity
 
 
 # ################################################## #
-# Enums                                              #
-# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
-
-enum WeaponType {SWORD = 0, GUN, COUNT}
-
-
-
-# ################################################## #
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 # weapons
-@export var weapon = WeaponType.SWORD
+@export var weapon = Weapon.WeaponType.Sword
 var n_held = null
 var n_weapons = [ ]
 
@@ -26,8 +18,8 @@ var energy = 0
 # movement
 @export var speed = 340
 @export var acceleration = 10
-@export var dash_delay = 600
-@export var dash_strength = 6
+@export var dash_delay = 8e2
+@export var dash_strength = 4
 var movement = Vector2.ZERO
 var dash_frame = 0
 
@@ -40,9 +32,9 @@ var dash_frame = 0
 func _ready():
 	# Obtain references to weapon / hand related nodes
 	n_held = get_node("Held")
-	n_weapons.resize(WeaponType.COUNT)
-	n_weapons[WeaponType.SWORD] = n_held.get_node("Sword")
-	n_weapons[WeaponType.GUN] = n_held.get_node("Gun")
+	n_weapons.resize(Weapon.WeaponType.Count)
+	n_weapons[Weapon.WeaponType.Sword] = n_held.get_node("Sword")
+	n_weapons[Weapon.WeaponType.Gun] = n_held.get_node("Gun")
 	
 	# Set default variables
 	health = max_health
@@ -85,9 +77,9 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("select_two"):
 			switchHeld(1)
 		elif Input.is_action_just_pressed("select_right"):
-			switchHeld(0 if weapon == WeaponType.COUNT - 1 else weapon + 1)
+			switchHeld(0 if weapon == Weapon.WeaponType.Count - 1 else weapon + 1)
 		elif Input.is_action_just_pressed("select_left"):
-			switchHeld(WeaponType.COUNT - 1 if weapon == 0 else weapon - 1)
+			switchHeld(Weapon.WeaponType.Count - 1 if weapon == 0 else weapon - 1)
 	
 
 		

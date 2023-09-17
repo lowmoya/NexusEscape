@@ -4,6 +4,14 @@ class_name Weapon
 
 
 # ################################################## #
+# Enums                                              #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+enum WeaponType {Sword = 0, Gun, Count}
+
+
+
+# ################################################## #
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
