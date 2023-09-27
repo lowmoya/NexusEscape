@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dq2gaa215l8cp"
+path="res://.godot/imported/enemy_defeated.wav-25f4596eb75d3c687233e5c1f2a14812.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/enemy sounds/enemy_defeated.wav"
+dest_files=["res://.godot/imported/enemy_defeated.wav-25f4596eb75d3c687233e5c1f2a14812.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
