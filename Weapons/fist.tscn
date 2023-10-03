@@ -13,7 +13,7 @@ energy_cost = 0
 
 [node name="Fist" type="Sprite2D" parent="."]
 position = Vector2(20, 0)
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("1_mtjxv")
 
 [node name="Area2D" type="Area2D" parent="."]

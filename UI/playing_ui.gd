@@ -26,6 +26,8 @@ func _ready():
 	n_energy_bar = get_node("EnergyBar")
 	n_dash_fill = get_node("Itembar/DashBackground")
 	n_weapon_fills.resize(Weapon.WeaponType.Count)
+	n_weapon_fills[Weapon.WeaponType.Fist] = [ get_node("Itembar/Fist/SelectedFill"), \
+			get_node("Itembar/Fist/UnselectedFill") ]
 	n_weapon_fills[Weapon.WeaponType.Sword] = [ get_node("Itembar/Sword/SelectedFill"), \
 			get_node("Itembar/Sword/UnselectedFill") ]
 	n_weapon_fills[Weapon.WeaponType.Gun] = [ get_node("Itembar/Gun/SelectedFill"), \
