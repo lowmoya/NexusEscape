@@ -13,6 +13,9 @@ extends Weapon
 var n_scene = null
 var blocked = false
 
+var n_audioplayer = null
+var random_generator = RandomNumberGenerator.new()
+var samples = []
 
 
 # ################################################## #
@@ -21,6 +24,13 @@ var blocked = false
 
 func _ready():
 	n_scene = get_tree().current_scene
+	
+	# Prepare audio player
+	n_audioplayer = get_node("AudioPlayer")
+	random_generator.seed = Time.get_ticks_msec()
+	samples.resize(2)
+	samples[0] = load("res://Resources/Sound Effects/player weapons/gun_shot_1.wav")
+	samples[1] = load("res://Resources/Sound Effects/player weapons/gun_shot_2.wav")
 
 
 
@@ -55,3 +65,7 @@ func attack():
 	n_bullet.velocity = Vector2(cos(global_rotation), sin(global_rotation)) \
 			* bullet_speed
 	n_scene.add_child(n_bullet)
+	
+	# Play sound
+	n_audioplayer.stream = samples[random_generator.randi_range(0,1)]
+	n_audioplayer.play()

@@ -6,6 +6,13 @@ extends Weapon
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
+# Audio
+var n_audioplayer = null
+var audiosamples = []
+const audiosample_count = 3
+var random_generator = RandomNumberGenerator.new()
+
+# State
 @export var reach = 60
 @export var speed = 500
 @export var knockback = 800
@@ -20,8 +27,16 @@ var direction = 1
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _ready():
+	# Initialize state
 	start_offset = position.x
 	end_offset = position.x + reach
+	
+	# Prepare audio player
+	n_audioplayer = get_node("AudioPlayer")
+	audiosamples.resize(3)
+	audiosamples[0] = load("res://Resources/Sound Effects/player weapons/punch_1.wav")
+	audiosamples[1] = load("res://Resources/Sound Effects/player weapons/punch_2.wav")
+	audiosamples[2] = load("res://Resources/Sound Effects/player weapons/punch_3.wav")
 
 
 
@@ -44,7 +59,11 @@ func _on_body_entered(body):
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func attack():
+	if not idle:
+		return
 	idle = false
+	n_audioplayer.stream = audiosamples[random_generator.randi_range(0, 2)]
+	n_audioplayer.play()
 
 func tick(delta):
 	if idle:

@@ -18,5 +18,8 @@ texture = ExtResource("2_a3wt6")
 position = Vector2(3, 4)
 shape = SubResource("RectangleShape2D_r0idw")
 
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.021
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

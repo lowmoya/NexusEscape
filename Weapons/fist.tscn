@@ -22,4 +22,6 @@ texture = ExtResource("1_mtjxv")
 position = Vector2(26, 0)
 shape = SubResource("CapsuleShape2D_po1o1")
 
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -30,4 +30,6 @@ position = Vector2(40, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("3_3nffs")
 
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_box_body_entered"]

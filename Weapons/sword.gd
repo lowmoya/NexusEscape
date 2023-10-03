@@ -12,6 +12,10 @@ extends Weapon
 
 var n_blade = null
 var n_slash = null
+var n_audioplayer = null
+
+var random_generator = RandomNumberGenerator.new()
+var samples = []
 
 var angle = -PI / 2
 
@@ -25,6 +29,12 @@ func _ready():
 	# Load referenced nodes
 	n_blade = get_node("HitArea")
 	n_slash = get_node("Swordslash")
+	
+	# Prepare audio player
+	n_audioplayer = get_node("AudioPlayer")
+	samples.resize(2)
+	samples[0] = load("res://Resources/Sound Effects/player weapons/sword_slice_1.wav")
+	samples[1] = load("res://Resources/Sound Effects/player weapons/sword_slice_2.wav")
 
 
 
@@ -50,8 +60,14 @@ func _on_hit_box_body_entered(body):
 
 func attack():
 	# Toggle slash effect and idle state
+	if !idle:
+		return
 	idle = false
 	n_slash.visible = true
+	
+	# Play sound
+	n_audioplayer.stream = samples[random_generator.randi_range(0,1)]
+	n_audioplayer.play()
 
 func tick(delta):
 	# Can skip if not currently attacking

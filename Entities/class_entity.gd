@@ -32,7 +32,6 @@ func despawn():
 	# on defeat effects
 	pass
 
-
 func damage(amount):
 	# Invincibility frame implementation
 	var current_time = Time.get_ticks_msec()

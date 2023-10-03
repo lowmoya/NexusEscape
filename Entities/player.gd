@@ -58,6 +58,7 @@ func _ready():
 	# Obtain references to audio player and streams
 	n_audioplayer = get_node("AudioPlayer")
 	audiosamples.resize(AudioLabel.Count)
+	audiosamples[AudioLabel.Damaged] = load("res://Resources/Sound Effects/player movement/damage_taken.wav")
 	audiosamples[AudioLabel.GameOver] = load("res://Resources/Sound Effects/player movement/game_over.wav")
 	audiosamples[AudioLabel.SwitchHeld] = load("res://Resources/Sound Effects/player weapons/switch_weapon.wav")
 	
@@ -156,6 +157,17 @@ func _physics_process(delta):
 	# Update the hand angle and call the current weapons phys tick
 	updateHeld(delta)
 
+
+
+# ################################################## #
+# Class Functions                                    #
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
+
+func damage(amount):
+	super(amount)
+	n_audioplayer.stream = audiosamples[AudioLabel.Damaged]
+	n_audioplayer.play()
+	
 
 
 # ################################################## #
