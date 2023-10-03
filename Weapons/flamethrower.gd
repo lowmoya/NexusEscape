@@ -8,7 +8,7 @@ extends Weapon
 
 @export var p_Flame = preload("res://Weapons/Projectiles/flame.tscn")
 @export var emitter_xoffset = 50
-@export var flame_speed = 4
+@export var flame_speed = 200
 
 var n_scene = null
 var blocked = false

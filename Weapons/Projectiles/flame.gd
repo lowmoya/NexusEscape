@@ -6,14 +6,14 @@ extends Area2D
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var damage = .4
+@export var damage = .2
 @export var duration = 2000
 @export var knockback = 40
 
 var random_generator = RandomNumberGenerator.new()
 
 var velocity = Vector2.ZERO
-var displacement_magnitude = 4
+var displacement_magnitude = 200
 var displacement_direction = Vector2(1, 1)
 var perpendicular_direction = null
 
@@ -54,9 +54,9 @@ func _physics_process(delta):
 	if current_time > frame:
 		queue_free()
 		return
-	position += velocity * delta + displacement_magnitude * Vector2( \
-			displacement_direction.x * cos((current_time - start) / 100.) + PI / 2., \
-			displacement_direction.y * sin((current_time - start) / 100.))
+	position += (velocity + displacement_magnitude * Vector2( \
+			displacement_direction.x * cos((current_time - start) / 100.), \
+			displacement_direction.y * sin((current_time - start) / 100.))) * delta
 
 
 
