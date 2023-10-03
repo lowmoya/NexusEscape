@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmc6u0x3tasos"]
+[gd_scene load_steps=11 format=3 uid="uid://bmc6u0x3tasos"]
 
 [ext_resource type="Texture2D" uid="uid://k1us1bujfdh2" path="res://Resources/Tilemaps/tilemap lvl 1 and 2.png" id="1_n7jrk"]
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="2_71mvp"]
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="5_5ie6x"]
+[ext_resource type="Texture2D" uid="uid://dyg22jnayv0be" path="res://Resources/Entities/mc spritesheet.png" id="6_cmxni"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="6_ydln0"]
 [ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/enemy.tscn" id="7_2clcv"]
+[ext_resource type="AnimationLibrary" uid="uid://dqumgq2eub2nm" path="res://Resources/Entities/mc animations.res" id="7_hsgvp"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nq5lf"]
 tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 1, 131072, 131072, 1, 1, 0, 4, 65537, 0, 4, 131073, 0, 4, 2, 65536, 8, 65538, 65536, 8, 131074, 65536, 4, 3, 65536, 8, 65539, 65536, 8, 131075, 65536, 9)
@@ -485,3 +487,16 @@ position = Vector2(882, -181)
 position = Vector2(811, -94)
 
 [node name="PlayingUI" parent="." instance=ExtResource("5_5ie6x")]
+
+[node name="PlayerCharacter" type="Sprite2D" parent="."]
+position = Vector2(-756, -387)
+scale = Vector2(2.39063, 2.39063)
+texture = ExtResource("6_cmxni")
+offset = Vector2(32, 0)
+hframes = 20
+vframes = 6
+
+[node name="playerAnimations" type="AnimationPlayer" parent="PlayerCharacter"]
+libraries = {
+"": ExtResource("7_hsgvp")
+}
