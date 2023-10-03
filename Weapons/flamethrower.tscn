@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5c0qdxu4arwg"]
+
+[ext_resource type="Texture2D" uid="uid://dlu7o5sy8q4u5" path="res://Resources/Weapons/flame.png" id="1_lnrbj"]
+[ext_resource type="Script" path="res://Weapons/flamethrower.gd" id="1_wemdq"]
+[ext_resource type="AudioStream" uid="uid://bsiiuc1ebfosy" path="res://Resources/Sound Effects/player weapons/flamethrower.wav" id="3_f0iy2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y380w"]
+size = Vector2(56, 40)
+
+[node name="FlameThrower" type="Area2D"]
+script = ExtResource("1_wemdq")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(29, 4)
+scale = Vector2(4, 4)
+texture = ExtResource("1_lnrbj")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(29, 4)
+shape = SubResource("RectangleShape2D_y380w")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f0iy2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

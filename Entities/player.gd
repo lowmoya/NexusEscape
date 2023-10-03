@@ -54,6 +54,7 @@ func _ready():
 	n_weapons[Weapon.WeaponType.Fist] = n_held.get_node("Fist")
 	n_weapons[Weapon.WeaponType.Sword] = n_held.get_node("Sword")
 	n_weapons[Weapon.WeaponType.Gun] = n_held.get_node("Gun")
+	n_weapons[Weapon.WeaponType.Flame] = n_held.get_node("FlameThrower")
 
 	# Obtain references to audio player and streams
 	n_audioplayer = get_node("AudioPlayer")
@@ -108,12 +109,18 @@ func _physics_process(delta):
 			if energy >= n_weapons[weapon].energy_cost:
 				n_weapons[weapon].attack()
 				energy -= n_weapons[weapon].energy_cost
+		elif Input.is_action_pressed("attack_main") and weapon == Weapon.WeaponType.Flame:
+			if energy >= n_weapons[weapon].energy_cost:
+				n_weapons[weapon].attack()
+				energy -= n_weapons[weapon].energy_cost
 		if Input.is_action_just_pressed("select_one"):
 			switchHeld(0)
 		elif Input.is_action_just_pressed("select_two"):
 			switchHeld(1)
 		elif Input.is_action_just_pressed("select_three"):
 			switchHeld(2)
+		elif Input.is_action_just_pressed("select_four"):
+			switchHeld(3)
 		elif Input.is_action_just_pressed("select_right"):
 			switchHeld(0 if weapon == Weapon.WeaponType.Count - 1 else weapon + 1)
 		elif Input.is_action_just_pressed("select_left"):

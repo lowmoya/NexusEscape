@@ -32,6 +32,8 @@ func _ready():
 			get_node("Itembar/Sword/UnselectedFill") ]
 	n_weapon_fills[Weapon.WeaponType.Gun] = [ get_node("Itembar/Gun/SelectedFill"), \
 			get_node("Itembar/Gun/UnselectedFill") ]
+	n_weapon_fills[Weapon.WeaponType.Flame] = [ get_node("Itembar/Flame/SelectedFill"), \
+			get_node("Itembar/Flame/UnselectedFill") ]
 	n_player = get_tree().current_scene.get_node("Player")
 	last_weapon = n_player.weapon
 	

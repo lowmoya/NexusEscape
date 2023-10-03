@@ -7,7 +7,7 @@ class_name Weapon
 # Enums                                              #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-enum WeaponType {Fist = 0, Sword, Gun, Count}
+enum WeaponType {Fist = 0, Sword, Gun, Flame, Count}
 
 
 
@@ -15,7 +15,7 @@ enum WeaponType {Fist = 0, Sword, Gun, Count}
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var energy_cost = 1
+@export var energy_cost = 1.0
 
 var idle = true
 
