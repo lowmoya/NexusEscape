@@ -7,7 +7,7 @@ class_name Weapon
 # Enums                                              #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-enum WeaponType {Sword = 0, Gun, Count}
+enum WeaponType {Fist = 0, Sword, Gun, Count}
 
 
 

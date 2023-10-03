@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://buw3yh7u0iwka"]
+[gd_scene load_steps=15 format=3 uid="uid://buw3yh7u0iwka"]
 
 [ext_resource type="Texture2D" uid="uid://b8ru4qf6utqot" path="res://Resources/healthbar_background.png" id="1_0b8e4"]
 [ext_resource type="Script" path="res://UI/playing_ui.gd" id="1_orb0g"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://sx8qda08ibfb" path="res://Resources/itembar_dashfill.png" id="7_qwryj"]
 [ext_resource type="Texture2D" uid="uid://dw6tgofmf40c7" path="res://Resources/itembar_dash.png" id="8_upbxh"]
 [ext_resource type="Texture2D" uid="uid://c0iq0gfn4seg6" path="res://Resources/itembar_sword.png" id="9_o4kda"]
+[ext_resource type="Texture2D" uid="uid://dwo76skwtpnjd" path="res://Resources/itembar_fist.png" id="9_y0l6s"]
 [ext_resource type="Texture2D" uid="uid://co4fjnyof3jg" path="res://Resources/itembar_selectedfill.png" id="10_ne6lo"]
 [ext_resource type="Texture2D" uid="uid://chey3lqbsdws5" path="res://Resources/itembar_unselectedfill.png" id="11_okfbk"]
 [ext_resource type="Texture2D" uid="uid://cy5wch1inkpnw" path="res://Resources/itembar_gun.png" id="12_4uuwy"]
+[ext_resource type="Texture2D" uid="uid://dl3ll55v2kvmu" path="res://Resources/itembar_flame.png" id="14_a2b4m"]
 
 [node name="PlayingUI" type="CanvasLayer"]
 script = ExtResource("1_orb0g")
@@ -66,24 +68,40 @@ position = Vector2(-24.5, -0.5)
 texture = ExtResource("8_upbxh")
 metadata/_edit_lock_ = true
 
-[node name="Sword" type="Sprite2D" parent="Itembar"]
+[node name="Fist" type="Sprite2D" parent="Itembar"]
 position = Vector2(-11, -0.5)
-texture = ExtResource("9_o4kda")
+texture = ExtResource("9_y0l6s")
 metadata/_edit_lock_ = true
 
-[node name="SelectedFill" type="Sprite2D" parent="Itembar/Sword"]
+[node name="SelectedFill" type="Sprite2D" parent="Itembar/Fist"]
 show_behind_parent = true
 texture = ExtResource("10_ne6lo")
 metadata/_edit_lock_ = true
 
-[node name="UnselectedFill" type="Sprite2D" parent="Itembar/Sword"]
+[node name="UnselectedFill" type="Sprite2D" parent="Itembar/Fist"]
 visible = false
 show_behind_parent = true
 texture = ExtResource("11_okfbk")
 metadata/_edit_lock_ = true
 
-[node name="Gun" type="Sprite2D" parent="Itembar"]
+[node name="Sword" type="Sprite2D" parent="Itembar"]
 position = Vector2(1, -0.5)
+texture = ExtResource("9_o4kda")
+metadata/_edit_lock_ = true
+
+[node name="SelectedFill" type="Sprite2D" parent="Itembar/Sword"]
+visible = false
+show_behind_parent = true
+texture = ExtResource("10_ne6lo")
+metadata/_edit_lock_ = true
+
+[node name="UnselectedFill" type="Sprite2D" parent="Itembar/Sword"]
+show_behind_parent = true
+texture = ExtResource("11_okfbk")
+metadata/_edit_lock_ = true
+
+[node name="Gun" type="Sprite2D" parent="Itembar"]
+position = Vector2(13, -0.5)
 texture = ExtResource("12_4uuwy")
 metadata/_edit_lock_ = true
 
@@ -94,6 +112,22 @@ texture = ExtResource("10_ne6lo")
 metadata/_edit_lock_ = true
 
 [node name="UnselectedFill" type="Sprite2D" parent="Itembar/Gun"]
+show_behind_parent = true
+texture = ExtResource("11_okfbk")
+metadata/_edit_lock_ = true
+
+[node name="Flame" type="Sprite2D" parent="Itembar"]
+position = Vector2(25, -0.5)
+texture = ExtResource("14_a2b4m")
+metadata/_edit_lock_ = true
+
+[node name="SelectedFill" type="Sprite2D" parent="Itembar/Flame"]
+visible = false
+show_behind_parent = true
+texture = ExtResource("10_ne6lo")
+metadata/_edit_lock_ = true
+
+[node name="UnselectedFill" type="Sprite2D" parent="Itembar/Flame"]
 show_behind_parent = true
 texture = ExtResource("11_okfbk")
 metadata/_edit_lock_ = true

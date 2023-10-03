@@ -7,9 +7,14 @@ extends Entity
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 # weapons
-@export var weapon = Weapon.WeaponType.Sword
+@export var weapon = Weapon.WeaponType.Fist
 var n_held = null
 var n_weapons = [ ]
+
+# audio
+enum AudioLabel { Damaged = 0, Dash, Dodge, Footstep0, Footstep1, Footstep2, GameOver, SwitchHeld, Count }
+var n_audioplayer = null
+var audiosamples = []
 
 # resources
 @export var max_energy = 10.
@@ -33,8 +38,16 @@ func _ready():
 	# Obtain references to weapon / hand related nodes
 	n_held = get_node("Held")
 	n_weapons.resize(Weapon.WeaponType.Count)
+	n_weapons[Weapon.WeaponType.Fist] = n_held.get_node("Fist")
 	n_weapons[Weapon.WeaponType.Sword] = n_held.get_node("Sword")
 	n_weapons[Weapon.WeaponType.Gun] = n_held.get_node("Gun")
+
+	# Obtain references to audio player and streams
+	n_audioplayer = get_node("AudioPlayer")
+	audiosamples.resize(AudioLabel.Count)
+	audiosamples[AudioLabel.GameOver] = load("res://Resources/Sound Effects/player movement/game_over.wav")
+	audiosamples[AudioLabel.SwitchHeld] = load("res://Resources/Sound Effects/player weapons/switch_weapon.wav")
+	
 	
 	# Set default variables
 	health = max_health
@@ -47,6 +60,8 @@ func _ready():
 func _physics_process(delta):
 	# Ensure the player is still alive or handle otherwise
 	if defeated:
+		n_audioplayer.stream = audiosamples[AudioLabel.GameOver]
+		n_audioplayer.play()
 		get_tree().change_scene_to_file("res://Levels/mainmenu.tscn")
 	
 	# Obtain the players desired direction 
@@ -81,9 +96,6 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("select_left"):
 			switchHeld(Weapon.WeaponType.Count - 1 if weapon == 0 else weapon - 1)
 	
-
-		
-	
 	# Move velocity "towards" the players desired direction and move
 	velocity = lerp(velocity, movement, acceleration * delta)
 	move_and_slide()
@@ -111,10 +123,14 @@ func updateHeld(delta):
 
 
 func switchHeld(index):
+	if index == weapon:
+		return
+	
 	# Toggle last and new weapons visibility and update the weapon index
 	n_weapons[weapon].visible = false
 	weapon = index
 	n_weapons[weapon].visible = true
-
-
-
+	
+	# Play sound
+	n_audioplayer.stream = audiosamples[AudioLabel.SwitchHeld]
+	n_audioplayer.play()

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cyp3w0fl8tdd"
+path="res://.godot/imported/enemy_damage_taken_2.wav-21bdf7c5dfc4ae9022009939b0c84ee3.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/enemy sounds/enemy_damage_taken_2.wav"
+dest_files=["res://.godot/imported/enemy_damage_taken_2.wav-21bdf7c5dfc4ae9022009939b0c84ee3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
