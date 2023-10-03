@@ -9,7 +9,7 @@ class_name Entity
 @export var max_health = 5
 var health = null
 @export var invincibility_millis = 20
-var invincible_frame = 0
+var invincibility_frame = 0
 var defeated = false
 
 
@@ -36,9 +36,9 @@ func despawn():
 func damage(amount):
 	# Invincibility frame implementation
 	var current_time = Time.get_ticks_msec()
-	if current_time < invincible_frame:
+	if current_time < invincibility_frame:
 		return
-	invincible_frame = current_time + invincibility_millis
+	invincibility_frame = current_time + invincibility_millis
 	
 	# Update health and check if defeated
 	health -= amount

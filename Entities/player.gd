@@ -19,6 +19,7 @@ var audiosamples = []
 # sprite
 enum SpriteLabel { Damaged = 0, Attack, DashHold, Dash, WalkRight, WalkLeft, Idle }
 @export var dash_sprites = 8.
+@export var hurt_sprite_extra_delay = 150.
 @export var walk_sprites = 15
 @export var walk_sprites_per_second = 30
 var n_sprite = null
@@ -122,7 +123,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Set animation
-	if current_time <= dash_frame - dash_end:
+	if current_time <= invincibility_frame + hurt_sprite_extra_delay:
+		n_sprite.scale.x = -3 if velocity.x < 0 else 3
+		n_sprite.frame_coords = Vector2(0, SpriteLabel.Damaged)
+	elif current_time <= dash_frame - dash_end:
 		# Dash animation
 		n_sprite.scale.x = -3 if velocity.x < 0 else 3
 		if n_sprite.frame_coords.y != SpriteLabel.Dash:
@@ -133,7 +137,7 @@ func _physics_process(delta):
 			n_sprite.frame_coords.x = dash_sprites
 	elif velocity.x * velocity.x + velocity.y * velocity.y > 600:
 		# Walk animation
-		if n_sprite.frame_coords.y == SpriteLabel.Idle or n_sprite.frame_coords.y == SpriteLabel.Dash:
+		if n_sprite.frame_coords.y != SpriteLabel.WalkLeft and n_sprite.frame_coords.y != SpriteLabel.WalkRight:
 			n_sprite.frame_coords = Vector2(0, SpriteLabel.WalkLeft if velocity.x < 0 else \
 					SpriteLabel.WalkRight)
 			n_sprite.scale.x = 3
