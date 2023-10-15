@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d303nk8q1pm8a"
+path="res://.godot/imported/gun_enemy_attack_fixed_2.wav-fe430ba292e24db4d9cf2f57993d50de.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/enemy sounds/gun_enemy_attack_fixed_2.wav"
+dest_files=["res://.godot/imported/gun_enemy_attack_fixed_2.wav-fe430ba292e24db4d9cf2f57993d50de.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

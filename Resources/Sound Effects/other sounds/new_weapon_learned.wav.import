@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c548u28udgdqi"
+path="res://.godot/imported/new_weapon_learned.wav-a27878b71641c68e75bee9c95f38f80d.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/other sounds/new_weapon_learned.wav"
+dest_files=["res://.godot/imported/new_weapon_learned.wav-a27878b71641c68e75bee9c95f38f80d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

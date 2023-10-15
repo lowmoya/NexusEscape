@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2alt5xpeglse"
+path="res://.godot/imported/hover_over_selection.wav-88141dd0aa94e0782af3184e6086c607.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/other sounds/hover_over_selection.wav"
+dest_files=["res://.godot/imported/hover_over_selection.wav-88141dd0aa94e0782af3184e6086c607.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

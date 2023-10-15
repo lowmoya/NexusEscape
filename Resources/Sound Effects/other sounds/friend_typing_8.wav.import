@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvw0sjis4lrkq"
+path="res://.godot/imported/friend_typing_8.wav-678332f8f8bbdb072513af69d65304af.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/other sounds/friend_typing_8.wav"
+dest_files=["res://.godot/imported/friend_typing_8.wav-678332f8f8bbdb072513af69d65304af.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
