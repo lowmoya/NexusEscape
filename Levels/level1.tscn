@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="5_5ie6x"]
 [ext_resource type="Texture2D" uid="uid://dyg22jnayv0be" path="res://Resources/Entities/mc spritesheet.png" id="6_cmxni"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="6_ydln0"]
-[ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/enemy.tscn" id="7_2clcv"]
 [ext_resource type="AnimationLibrary" uid="uid://dqumgq2eub2nm" path="res://Resources/Entities/mc animations.res" id="7_hsgvp"]
+[ext_resource type="PackedScene" uid="uid://f5ctu31jc4d5" path="res://Entities/swordenemy.tscn" id="7_vs78x"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nq5lf"]
 tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 1, 131072, 131072, 1, 1, 0, 4, 65537, 0, 4, 131073, 0, 4, 2, 65536, 8, 65538, 65536, 8, 131074, 65536, 4, 3, 65536, 8, 65539, 65536, 8, 131075, 65536, 9)
@@ -477,15 +477,6 @@ layer_1/tile_data = PackedInt32Array(-65536, 589824, 1, -65535, 589824, 1, -6553
 [node name="EnemyController" type="Node" parent="."]
 script = ExtResource("6_ydln0")
 
-[node name="Enemy" parent="EnemyController" instance=ExtResource("7_2clcv")]
-position = Vector2(1002, -161)
-
-[node name="Enemy2" parent="EnemyController" instance=ExtResource("7_2clcv")]
-position = Vector2(882, -181)
-
-[node name="Enemy3" parent="EnemyController" instance=ExtResource("7_2clcv")]
-position = Vector2(811, -94)
-
 [node name="PlayingUI" parent="." instance=ExtResource("5_5ie6x")]
 
 [node name="PlayerCharacter" type="Sprite2D" parent="."]
@@ -500,3 +491,12 @@ vframes = 6
 libraries = {
 "": ExtResource("7_hsgvp")
 }
+
+[node name="SwordEnemy" parent="." instance=ExtResource("7_vs78x")]
+position = Vector2(577, -17)
+
+[node name="SwordEnemy2" parent="." instance=ExtResource("7_vs78x")]
+position = Vector2(417, -143)
+
+[node name="SwordEnemy3" parent="." instance=ExtResource("7_vs78x")]
+position = Vector2(356, 176)

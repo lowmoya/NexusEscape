@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://f5ctu31jc4d5"]
+
+[ext_resource type="Texture2D" uid="uid://o5h2ntq3xays" path="res://Resources/Entities/enemy swordbot spritesheet.png" id="1_4f4su"]
+[ext_resource type="Script" path="res://Entities/swordenemy.gd" id="1_23vd6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dyfhr"]
+radius = 27.0
+height = 82.0
+
+[node name="SwordEnemy" type="CharacterBody2D"]
+script = ExtResource("1_23vd6")
+
+[node name="Spritesheet" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_4f4su")
+hframes = 29
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, -1)
+shape = SubResource("CapsuleShape2D_dyfhr")
