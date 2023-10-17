@@ -24,4 +24,4 @@ shape = SubResource("CapsuleShape2D_dvhsh")
 [node name="Held" type="Node2D" parent="."]
 
 [node name="Gun" parent="Held" instance=ExtResource("3_rakir")]
-position = Vector2(49, 0)
+position = Vector2(8, -6)
