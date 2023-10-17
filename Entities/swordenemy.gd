@@ -72,7 +72,6 @@ func _physics_process(delta):
 			dash_frame = current_time + dash_durations[DashStates.MOVING]
 		else:
 			var winding = 1 - (dash_frame - current_time) / dash_durations[DashStates.BUILDING]
-			print(winding)
 			scale.x = normal_scaling.x + winding * dash_scale
 			scale.y = normal_scaling.y - winding * dash_scale
 	

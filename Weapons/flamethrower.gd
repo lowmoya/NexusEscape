@@ -21,7 +21,7 @@ var blocked = false
 func _ready():
 	n_scene = get_tree().current_scene
 	
-	energy_cost = .1
+	energy_cost = .05
 
 
 
@@ -49,7 +49,7 @@ func attack():
 	if blocked:
 		return
 	
-	for i in range(15):
+	for i in range(10):
 		var flame = p_Flame.instantiate()
 		var aim_offset = Vector2(cos(global_rotation), sin(global_rotation))
 		flame.global_position = global_position + aim_offset * emitter_xoffset

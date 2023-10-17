@@ -17,7 +17,7 @@ var n_audioplayer = null
 var audiosamples = []
 
 # sprite
-enum SpriteLabel { Damaged = 0, Attack, DashHold, Dash, WalkRight, WalkLeft, Idle }
+enum SpriteLabel { Damaged = 0, Attack, DashHold, Dash, WalkRight, WalkLeft, IdleRight, IdleLeft }
 @export var dash_sprites = 8.
 @export var hurt_sprite_extra_delay = 150.
 @export var walk_sprites = 15
@@ -156,10 +156,11 @@ func _physics_process(delta):
 			walk_sprite += delta * walk_sprites_per_second
 			if walk_sprite >= walk_sprites:
 				walk_sprite -= walk_sprites
-	elif n_sprite.frame_coords.y != SpriteLabel.Idle:
+	elif n_sprite.frame_coords.y != SpriteLabel.IdleRight and\
+			n_sprite.frame_coords.y != SpriteLabel.IdleLeft:
 		# Idle animation
-		n_sprite.frame_coords = Vector2(0, SpriteLabel.Idle)
-		n_sprite.scale.x = -3 if velocity.x < 0 else 3
+		n_sprite.frame_coords.x = 0
+		n_sprite.frame_coords.y = SpriteLabel.IdleLeft if velocity.x < 0 else SpriteLabel.IdleRight
 	
 	# Update the hand angle and call the current weapons phys tick
 	updateHeld(delta)

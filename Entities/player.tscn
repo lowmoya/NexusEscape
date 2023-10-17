@@ -17,9 +17,8 @@ script = ExtResource("1_db5lo")
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_b3cpy")
-hframes = 20
-vframes = 7
-frame = 100
+hframes = 15
+vframes = 8
 metadata/_edit_lock_ = true
 
 [node name="HitBox" type="CollisionShape2D" parent="."]

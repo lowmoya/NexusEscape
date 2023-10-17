@@ -6,11 +6,14 @@ extends Area2D
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var damage = .2
+@export var damage = .1
 @export var duration = 2000
 @export var knockback = 40
 
 var random_generator = RandomNumberGenerator.new()
+
+var n_colorrect = null
+var color_falloff = 0
 
 var velocity = Vector2.ZERO
 var displacement_magnitude = 200
@@ -48,6 +51,11 @@ func _ready():
 	if random_generator.randi_range(0,1) == 1:
 		displacement_direction.y = -1
 	
+	# Pick a color and get its fall off
+	n_colorrect = get_node('ColorRect')
+	n_colorrect.color.g = randf_range(0., .7)
+	color_falloff = n_colorrect.color.g / float(frame - Time.get_ticks_msec()) * 1000
+	
 
 func _physics_process(delta):
 	var current_time = Time.get_ticks_msec()
@@ -57,7 +65,9 @@ func _physics_process(delta):
 	position += (velocity + displacement_magnitude * Vector2( \
 			displacement_direction.x * cos((current_time - start) / 100.), \
 			displacement_direction.y * sin((current_time - start) / 100.))) * delta
-
+	displacement_magnitude += delta * 200
+	n_colorrect.color.g -= delta * color_falloff
+	print(color_falloff)
 
 
 # ################################################## #
@@ -74,9 +84,9 @@ func _on_body_entered(body):
 	elif is_in_group("Good"):
 		if body.is_in_group("Good"):
 			return
-	elif is_in_group("Bad"):
-		if body.is_in_group("Bad"):
-			return
+#	elif is_in_group("Bad"):
+#		if body.is_in_group("Bad"):
+#			return
 	
 	# Damage and apply knockback
 	body.velocity += velocity.normalized() * knockback
