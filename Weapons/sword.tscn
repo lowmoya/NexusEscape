@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpisn7glxa323"]
 
 [ext_resource type="Script" path="res://Weapons/sword.gd" id="1_sk4ed"]
-[ext_resource type="Texture2D" uid="uid://blt4c7ji3qupu" path="res://Resources/Weapons/sword.png" id="2_0xsrm"]
-[ext_resource type="Texture2D" uid="uid://dtrxbqsymwp5a" path="res://Resources/Weapons/swordslash.png" id="3_3nffs"]
+[ext_resource type="Texture2D" uid="uid://blt4c7ji3qupu" path="res://Resources/Sprites/Weapons/sword.png" id="2_0xsrm"]
+[ext_resource type="Texture2D" uid="uid://dtrxbqsymwp5a" path="res://Resources/Sprites/Weapons/swordslash.png" id="3_3nffs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1shhj"]
 size = Vector2(80, 16)

@@ -16,10 +16,11 @@ var blocked = false
 var n_audioplayer = null
 var random_generator = RandomNumberGenerator.new()
 var samples = [
-	load("res://Resources/Sound Effects/player weapons/gun_shot_1.wav"),
-	load("res://Resources/Sound Effects/player weapons/gun_shot_2.wav")
+	load("res://Resources/Sound Effects/enemy sounds/gun_enemy_attack_fixed_1.wav"),
+	load("res://Resources/Sound Effects/enemy sounds/gun_enemy_attack_fixed_2.wav"),
+	load("res://Resources/Sound Effects/enemy sounds/gun_enemy_attack_fixed_3.wav")
 ]
-var sample_count = 1
+var sample_count = 2
 
 
 # ################################################## #

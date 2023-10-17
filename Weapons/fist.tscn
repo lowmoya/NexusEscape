@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dj3kijv6ex1o5"]
 
-[ext_resource type="Texture2D" uid="uid://coydu8lyufg3h" path="res://Resources/Weapons/fist.png" id="1_mtjxv"]
+[ext_resource type="Texture2D" uid="uid://coydu8lyufg3h" path="res://Resources/Sprites/Weapons/fist.png" id="1_mtjxv"]
 [ext_resource type="Script" path="res://Weapons/fist.gd" id="1_obotb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_po1o1"]

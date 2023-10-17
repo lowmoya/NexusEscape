@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtw8rx3wobgvw"]
+
+[ext_resource type="Script" path="res://Entities/enemies/gunenemy.gd" id="1_nhp72"]
+[ext_resource type="Texture2D" uid="uid://byaonx761rtm0" path="res://Resources/Sprites/Entities/enemy gunner spritesheet.png" id="2_rihks"]
+[ext_resource type="PackedScene" uid="uid://kmrtr5tgshgq" path="res://Weapons/enemygun.tscn" id="3_rakir"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvhsh"]
+radius = 19.0
+height = 64.0
+
+[node name="GunEnemy" type="CharacterBody2D" groups=["Bad"]]
+script = ExtResource("1_nhp72")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("2_rihks")
+hframes = 20
+vframes = 4
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dvhsh")
+
+[node name="Held" type="Node2D" parent="."]
+
+[node name="Gun" parent="Held" instance=ExtResource("3_rakir")]
+position = Vector2(49, 0)
