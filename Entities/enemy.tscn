@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtw8rx3wobgvw"]
 
-[ext_resource type="Texture2D" uid="uid://82tsi1p5xip8" path="res://Resources/Entities/enemy.png" id="1_awesk"]
 [ext_resource type="Script" path="res://Entities/enemy.gd" id="1_m74j4"]
+[ext_resource type="Texture2D" uid="uid://byaonx761rtm0" path="res://Resources/Entities/enemy gunner spritesheet.png" id="2_2jolu"]
 [ext_resource type="PackedScene" uid="uid://bpisn7glxa323" path="res://Weapons/sword.tscn" id="2_ima77"]
 [ext_resource type="PackedScene" uid="uid://bwb3q2u1hv0j3" path="res://Weapons/gun.tscn" id="4_baw1i"]
 
@@ -14,7 +14,9 @@ script = ExtResource("1_m74j4")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("1_awesk")
+texture = ExtResource("2_2jolu")
+hframes = 20
+vframes = 4
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dvhsh")
