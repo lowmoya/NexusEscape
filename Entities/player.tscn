@@ -19,6 +19,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_0ukda")
 hframes = 15
 vframes = 8
+frame = 90
 metadata/_edit_lock_ = true
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
@@ -41,15 +42,6 @@ position = Vector2(46, 0)
 [node name="FlameThrower" parent="Held" instance=ExtResource("6_von5b")]
 visible = false
 position = Vector2(30, 0)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -608
-limit_top = -417
-limit_right = 1119
-limit_bottom = 383
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
 [node name="AudioListener" type="AudioListener2D" parent="."]
 

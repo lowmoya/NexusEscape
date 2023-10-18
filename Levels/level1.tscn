@@ -610,6 +610,15 @@ shadow_enabled = true
 texture = ExtResource("3_40dbu")
 texture_scale = 0.5
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -608
+limit_top = -417
+limit_right = 1119
+limit_bottom = 383
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [node name="EnemyController" type="Node" parent="."]
 script = ExtResource("6_ydln0")
 
