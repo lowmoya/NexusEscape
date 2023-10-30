@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://2vmvny1f2u1m"]
+[gd_scene load_steps=5 format=3 uid="uid://2vmvny1f2u1m"]
+
+[ext_resource type="Texture2D" uid="uid://cagw0vrw5eh4b" path="res://Resources/Sprites/UI/Title-01.png" id="1_rp318"]
 
 [sub_resource type="GDScript" id="GDScript_d07pc"]
 script/source = "extends Control
@@ -9,6 +11,8 @@ func _topdown_button():
 
 [sub_resource type="Theme" id="Theme_41gwq"]
 default_font_size = 20
+
+[sub_resource type="Theme" id="Theme_urean"]
 
 [node name="main menu" type="Control"]
 layout_mode = 3
@@ -27,9 +31,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -166.0
-offset_top = -18.5
+offset_top = 17.0
 offset_right = 166.0
-offset_bottom = 18.5
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_41gwq")
@@ -37,7 +41,9 @@ theme_override_constants/separation = 8
 
 [node name="TopdownButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
+theme = SubResource("Theme_urean")
 text = "Start"
+flat = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -50,5 +56,10 @@ scale = Vector2(1.03094, 1.02286)
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 icon_alignment = 1
+
+[node name="Title-01" type="Sprite2D" parent="."]
+position = Vector2(577, 246)
+scale = Vector2(0.0504208, 0.0504208)
+texture = ExtResource("1_rp318")
 
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]

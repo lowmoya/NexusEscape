@@ -603,18 +603,18 @@ layer_1/tile_data = PackedInt32Array(-65536, 589824, 1, -65535, 589824, 1, -6553
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 show_behind_parent = true
-position = Vector2(285, -58)
+position = Vector2(-1, -1)
 color = Color(0.215686, 0.666667, 0.615686, 1)
-energy = 0.06
+energy = 0.21
 shadow_enabled = true
 texture = ExtResource("3_40dbu")
 texture_scale = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -608
-limit_top = -417
-limit_right = 1119
-limit_bottom = 383
+limit_top = -1052
+limit_right = 6000
+limit_bottom = 1413
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -623,7 +623,7 @@ position_smoothing_speed = 10.0
 script = ExtResource("6_ydln0")
 
 [node name="GunEnemy" parent="EnemyController" instance=ExtResource("4_lr543")]
-position = Vector2(3305, -128)
+position = Vector2(3459, 394)
 
 [node name="GunEnemy2" parent="EnemyController" instance=ExtResource("4_lr543")]
 position = Vector2(5883, 201)
@@ -632,7 +632,7 @@ position = Vector2(5883, 201)
 position = Vector2(2795, 39)
 
 [node name="SwordEnemy2" parent="EnemyController" instance=ExtResource("7_vs78x")]
-position = Vector2(242, 32)
+position = Vector2(1733, -70)
 
 [node name="SwordEnemy4" parent="EnemyController" instance=ExtResource("7_vs78x")]
 position = Vector2(899, -245)
