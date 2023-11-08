@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpisn7glxa323"]
+[gd_scene load_steps=6 format=3 uid="uid://bpisn7glxa323"]
 
 [ext_resource type="Script" path="res://Weapons/sword.gd" id="1_sk4ed"]
 [ext_resource type="Texture2D" uid="uid://blt4c7ji3qupu" path="res://Resources/Sprites/Weapons/sword.png" id="2_0xsrm"]
 [ext_resource type="Texture2D" uid="uid://dtrxbqsymwp5a" path="res://Resources/Sprites/Weapons/swordslash.png" id="3_3nffs"]
+[ext_resource type="Texture2D" uid="uid://byy1hv3myi840" path="res://Resources/Sprites/Effects/swordslashglow.png" id="4_wfsa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1shhj"]
 size = Vector2(80, 16)
@@ -29,6 +30,12 @@ visible = false
 position = Vector2(40, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("3_3nffs")
+
+[node name="PointLight2D" type="PointLight2D" parent="Swordslash"]
+color = Color(0, 0, 1, 1)
+energy = 2.08
+texture = ExtResource("4_wfsa7")
+texture_scale = 0.1
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 
