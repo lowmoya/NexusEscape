@@ -83,7 +83,6 @@ texture = ExtResource("1_n7jrk")
 9:1/0 = 0
 9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:1/0/physics_layer_0/angular_velocity = 0.0
-9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.875, -8, -2.875)
 10:1/0 = 0
 10:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:1/0/physics_layer_0/angular_velocity = 0.0
@@ -91,15 +90,12 @@ texture = ExtResource("1_n7jrk")
 11:1/0 = 0
 11:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:1/0/physics_layer_0/angular_velocity = 0.0
-11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.875, -8, -2.875)
 12:1/0 = 0
 12:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:1/0/physics_layer_0/angular_velocity = 0.0
-12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.875, -8, -2.875)
 13:1/0 = 0
 13:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 13:1/0/physics_layer_0/angular_velocity = 0.0
-13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.875, -8, -2.875)
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
@@ -692,6 +688,7 @@ sources/0 = SubResource("TileSetAtlasSource_rcu4r")
 [node name="Root" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -2
 position = Vector2(-617, -311)
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_760sy")

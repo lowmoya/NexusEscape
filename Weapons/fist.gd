@@ -58,7 +58,7 @@ func _on_body_entered(body):
 # Class Functions                                    #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack():
+func attack(bonus_velocity = Vector2.ZERO):
 	if not idle:
 		return
 	idle = false

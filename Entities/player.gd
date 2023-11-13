@@ -107,11 +107,11 @@ func _physics_process(delta):
 	if n_weapons[weapon].idle:
 		if Input.is_action_just_pressed("attack_main"):
 			if energy >= n_weapons[weapon].energy_cost:
-				n_weapons[weapon].attack()
+				n_weapons[weapon].attack(velocity)
 				energy -= n_weapons[weapon].energy_cost
 		elif Input.is_action_pressed("attack_main") and weapon == Weapon.WeaponType.Flame:
 			if energy >= n_weapons[weapon].energy_cost:
-				n_weapons[weapon].attack()
+				n_weapons[weapon].attack(velocity)
 				energy -= n_weapons[weapon].energy_cost
 		if Input.is_action_just_pressed("select_one"):
 			switchHeld(0)

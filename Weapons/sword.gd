@@ -58,7 +58,7 @@ func _on_hit_box_body_entered(body):
 # Class Functions                                    #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack():
+func attack(bonus_velocity = Vector2.ZERO):
 	# Toggle slash effect and idle state
 	if !idle:
 		return

@@ -29,15 +29,15 @@ shape = SubResource("CapsuleShape2D_ddbao")
 
 [node name="Fist" parent="Held" instance=ExtResource("3_3rl1x")]
 position = Vector2(20, 0)
+energy_cost = 0.0
 
 [node name="Sword" parent="Held" groups=["Good"] instance=ExtResource("2_y0ch0")]
 visible = false
-position = Vector2(20, 0)
-energy_cost = 0
+position = Vector2(25, 0)
 
 [node name="Gun" parent="Held" groups=["Good"] instance=ExtResource("3_vokvh")]
 visible = false
-position = Vector2(46, 0)
+position = Vector2(60, 0)
 
 [node name="FlameThrower" parent="Held" instance=ExtResource("6_von5b")]
 visible = false

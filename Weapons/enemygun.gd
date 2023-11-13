@@ -55,7 +55,7 @@ func _on_body_exited(body):
 # Class Functions                                    #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack():
+func attack(bonus_velocity=Vector2.ZERO):
 	# Gun is inside a wall
 	if blocked:
 		return

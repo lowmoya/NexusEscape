@@ -54,7 +54,7 @@ func _on_body_exited(body):
 # Class Functions                                    #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack():
+func attack(bonus_velocity = Vector2.ZERO):
 	# Gun is inside a wall
 	if blocked:
 		return
@@ -64,7 +64,7 @@ func attack():
 	n_bullet.global_position = global_position + Vector2(cos(global_rotation), \
 			sin(global_rotation)) * gun_emmiter_xoffset
 	n_bullet.velocity = Vector2(cos(global_rotation), sin(global_rotation)) \
-			* bullet_speed
+			* bullet_speed + bonus_velocity
 	n_scene.add_child(n_bullet)
 	
 	# Play sound

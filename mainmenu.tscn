@@ -23,6 +23,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_d07pc")
 
+[node name="Title-01" type="Sprite2D" parent="."]
+position = Vector2(577, 246)
+scale = Vector2(0.0504208, 0.0504208)
+texture = ExtResource("1_rp318")
+
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -56,10 +61,5 @@ scale = Vector2(1.03094, 1.02286)
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 icon_alignment = 1
-
-[node name="Title-01" type="Sprite2D" parent="."]
-position = Vector2(577, 246)
-scale = Vector2(0.0504208, 0.0504208)
-texture = ExtResource("1_rp318")
 
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]
