@@ -19,8 +19,8 @@ class FlameParticle:
 	func _init(parent, frame, max_radius):
 		n_rect = ColorRect.new()
 		n_rect.size = Vector2(6, 6)
-		n_rect.color.r = .6
-		n_rect.color.g = randf_range(0, .7)
+		n_rect.color.r = .7
+		n_rect.color.g = randf_range(.4, .7)
 		n_rect.color.b = 0
 		parent.add_child(n_rect)
 
