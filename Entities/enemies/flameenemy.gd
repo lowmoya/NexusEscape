@@ -12,7 +12,7 @@ extends Entity
 var n_scene = null
 var n_sprite = null
 var n_player = null
-var p_Fireball = preload("res://Weapons/Projectiles/fireball.tscn")
+var p_Fireball = preload("res://Weapons/Projectiles/e_fireball.tscn")
 var fireball_speed = 300
 
 enum STATE {

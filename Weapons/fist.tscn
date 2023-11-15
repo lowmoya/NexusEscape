@@ -9,7 +9,6 @@ height = 24.0
 
 [node name="Fist" type="Node2D"]
 script = ExtResource("1_obotb")
-energy_cost = 0
 
 [node name="Fist" type="Sprite2D" parent="."]
 position = Vector2(20, 0)
@@ -17,6 +16,8 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_mtjxv")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(26, 0)

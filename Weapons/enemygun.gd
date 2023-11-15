@@ -6,7 +6,7 @@ extends Weapon
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var p_Bullet = preload("res://Weapons/Projectiles/bullet.tscn")
+@export var p_Bullet = preload("res://Weapons/Projectiles/e_bullet.tscn")
 @export var bullet_speed = 1000
 @export var gun_emmiter_xoffset = 36
 
@@ -41,13 +41,11 @@ func _ready():
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _on_body_entered(body):
-	if body is TileMap:
-		blocked = true
+	blocked = true
 
 
 func _on_body_exited(body):
-	if body is TileMap:
-		blocked = false
+	blocked = false
 
 
 

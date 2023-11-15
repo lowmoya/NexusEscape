@@ -43,9 +43,7 @@ func _ready():
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _on_hit_box_body_entered(body):
-	# Handle cases where the collision event should be discarded
-	if not (body is Entity) or idle or (is_in_group("Good") and body.is_in_group("Good")) \
-			or (is_in_group("Bad") and body.is_in_group("Bad")):
+	if idle:
 		return
 	
 	# Damage and apply knockback
@@ -60,7 +58,7 @@ func _on_hit_box_body_entered(body):
 
 func attack(bonus_velocity = Vector2.ZERO):
 	# Toggle slash effect and idle state
-	if !idle:
+	if not idle:
 		return
 	idle = false
 	n_slash.visible = true

@@ -8,7 +8,9 @@
 radius = 19.0
 height = 64.0
 
-[node name="GunEnemy" type="CharacterBody2D" groups=["Bad"]]
+[node name="GunEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_nhp72")
 
 [node name="Sprite" type="Sprite2D" parent="."]

@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvpbom0cilasq"]
 
-[ext_resource type="Script" path="res://Weapons/Projectiles/flame.gd" id="1_ohtcm"]
+[ext_resource type="Script" path="res://Weapons/Projectiles/p_firefield.gd" id="1_m8vr3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sap0k"]
 radius = 0.01
 
-[node name="Flame" type="Area2D"]
-script = ExtResource("1_ohtcm")
+[node name="FireField" type="Area2D"]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_m8vr3")
 
 [node name="Field" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sap0k")

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 
 
@@ -8,6 +8,10 @@ extends CharacterBody2D
 
 @export var damage = 1.2
 @export var knockback = 400
+
+var velocity = Vector2.ZERO
+
+
 
 # ################################################## #
 # Ready / Process Functions                          #
@@ -23,21 +27,8 @@ func _physics_process(delta):
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _on_body_entered(body):
-	# Handle cases where the bullet or this collision event will be discarded
-	if body is TileMap:
-		queue_free()
-		return
-	elif not (body is Entity):
-		return
-	elif is_in_group("Good"):
-		if body.is_in_group("Good"):
-			return
-	elif is_in_group("Bad"):
-		if body.is_in_group("Bad"):
-			return
-	
-	# Damage and apply knockback
-	body.velocity += velocity.normalized() * knockback
-	body.damage(damage)
+	if body is Entity:
+		# Damage and apply knockback
+		body.velocity += velocity.normalized() * knockback
+		body.damage(damage)
 	queue_free()
-

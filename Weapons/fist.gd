@@ -45,11 +45,11 @@ func _ready():
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _on_body_entered(body):
-	if direction == 0 or not (body is Entity) or (is_in_group("Good") and body.is_in_group("Good")) \
-			or (is_in_group("Bad") and body.is_in_group("Bad")) :
+	if direction == 0:
 		return
-	body.damage(1)
-	body.velocity += (body.global_position - global_position).normalized() * knockback
+	elif not body is TileMap:
+		body.damage(1)
+		body.velocity += (body.global_position - global_position).normalized() * knockback
 	direction = 0
 
 
