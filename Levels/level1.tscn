@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmc6u0x3tasos"]
+[gd_scene load_steps=12 format=3 uid="uid://bmc6u0x3tasos"]
 
 [ext_resource type="Texture2D" uid="uid://k1us1bujfdh2" path="res://Resources/Tilemaps/tilemap lvl 1 and 2.png" id="1_n7jrk"]
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="2_71mvp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/enemies/gunenemy.tscn" id="4_lr543"]
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="5_5ie6x"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="6_ydln0"]
+[ext_resource type="PackedScene" uid="uid://csyn0uf3p42v1" path="res://Entities/enemies/flameenemy.tscn" id="7_savu7"]
 [ext_resource type="PackedScene" uid="uid://f5ctu31jc4d5" path="res://Entities/enemies/swordenemy.tscn" id="7_vs78x"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nq5lf"]
@@ -650,5 +651,8 @@ position = Vector2(2941, -174)
 
 [node name="SwordEnemy2" parent="EnemyController" instance=ExtResource("7_vs78x")]
 position = Vector2(2937, 193)
+
+[node name="FlameEnemy" parent="EnemyController" instance=ExtResource("7_savu7")]
+position = Vector2(396, -94)
 
 [node name="PlayingUI" parent="." instance=ExtResource("5_5ie6x")]

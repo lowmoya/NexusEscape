@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://csyn0uf3p42v1"]
+
+[ext_resource type="Script" path="res://Entities/enemies/flameenemy.gd" id="1_87fua"]
+[ext_resource type="Texture2D" uid="uid://cc86gqwehduv0" path="res://Resources/Sprites/Entities/enemy fire spritesheet.png" id="2_fi8wd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvhsh"]
+radius = 23.0
+height = 64.0
+
+[node name="FlameEnemy" type="CharacterBody2D" groups=["Bad"]]
+script = ExtResource("1_87fua")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(3, 3)
+texture = ExtResource("2_fi8wd")
+hframes = 4
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CapsuleShape2D_dvhsh")

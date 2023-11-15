@@ -50,16 +50,4 @@ theme = SubResource("Theme_urean")
 text = "Start"
 flat = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 14.0
-offset_right = 59.0
-offset_bottom = 54.0
-scale = Vector2(1.03094, 1.02286)
-
-[node name="Button" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-icon_alignment = 1
-
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]
