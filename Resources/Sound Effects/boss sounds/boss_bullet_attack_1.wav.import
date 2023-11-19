@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bqmqmlhl4yja1"
+path="res://.godot/imported/boss_bullet_attack_1.wav-8b919bfeb4077ae3187eb3856a9ab161.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/boss sounds/boss_bullet_attack_1.wav"
+dest_files=["res://.godot/imported/boss_bullet_attack_1.wav-8b919bfeb4077ae3187eb3856a9ab161.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

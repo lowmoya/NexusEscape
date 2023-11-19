@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bngel7eoa5jr5"
+path="res://.godot/imported/boss_sword_attack_2.wav-f65b32a6494e8f1912ac4addfd42ba5b.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/boss sounds/boss_sword_attack_2.wav"
+dest_files=["res://.godot/imported/boss_sword_attack_2.wav-f65b32a6494e8f1912ac4addfd42ba5b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bhguax5nn2hm8"
+path="res://.godot/imported/boss_shockwave_attack.wav-14c0fbc1e2cf15e3ba0c54deea848fa1.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/boss sounds/boss_shockwave_attack.wav"
+dest_files=["res://.godot/imported/boss_shockwave_attack.wav-14c0fbc1e2cf15e3ba0c54deea848fa1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

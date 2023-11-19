@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m084u4vypcdd"
+path="res://.godot/imported/boss_damage_taken.wav-b1bf8594275a67cf94fbfd4baf7aa00c.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/boss sounds/boss_damage_taken.wav"
+dest_files=["res://.godot/imported/boss_damage_taken.wav-b1bf8594275a67cf94fbfd4baf7aa00c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
