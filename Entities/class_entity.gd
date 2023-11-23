@@ -7,11 +7,13 @@ class_name Entity
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 @export var max_health = 5
-var health = null
-@export var invincibility_millis = 20
+@export var health: int
+@export var invincibility_millis = 100
 var invincibility_frame = 0
 var defeated = false
 
+var n_player: CharacterBody2D
+var n_shader
 
 
 # ################################################## #
@@ -20,6 +22,9 @@ var defeated = false
 
 func _ready():
 	health = max_health
+	n_shader = ShaderMaterial.new()
+	n_shader.shader = (material as ShaderMaterial).shader.duplicate()
+	material = n_shader
 
 
 

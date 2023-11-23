@@ -1,18 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://csyn0uf3p42v1"]
+[gd_scene load_steps=6 format=3 uid="uid://csyn0uf3p42v1"]
 
 [ext_resource type="Script" path="res://Entities/enemies/flameenemy.gd" id="1_87fua"]
+[ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_mk3tv"]
 [ext_resource type="Texture2D" uid="uid://cc86gqwehduv0" path="res://Resources/Sprites/Entities/enemy fire spritesheet.png" id="2_fi8wd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iejoq"]
+shader = ExtResource("1_mk3tv")
+shader_parameter/frame = 0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvhsh"]
 radius = 23.0
 height = 64.0
 
-[node name="FlameEnemy" type="CharacterBody2D"]
+[node name="FlameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent")]
+material = SubResource("ShaderMaterial_iejoq")
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_87fua")
+n_navagent = NodePath("NavigationAgent2D")
+
+[node name="TopRays" type="Node2D" parent="."]
+
+[node name="0" type="RayCast2D" parent="TopRays"]
+position = Vector2(0, -64)
+target_position = Vector2(-82, -100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="1" type="RayCast2D" parent="TopRays"]
+position = Vector2(0, -64)
+target_position = Vector2(-40, -100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="2" type="RayCast2D" parent="TopRays"]
+position = Vector2(0, -64)
+target_position = Vector2(0, -100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="3" type="RayCast2D" parent="TopRays"]
+position = Vector2(0, -64)
+target_position = Vector2(42, -100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="4" type="RayCast2D" parent="TopRays"]
+position = Vector2(0, -64)
+target_position = Vector2(82, -100)
+collision_mask = 4
+collide_with_areas = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -36)
 scale = Vector2(3, 3)
 texture = ExtResource("2_fi8wd")
@@ -21,3 +61,33 @@ hframes = 4
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
 shape = SubResource("CapsuleShape2D_dvhsh")
+
+[node name="BottomRays" type="Node2D" parent="."]
+
+[node name="0" type="RayCast2D" parent="BottomRays"]
+target_position = Vector2(-82, 100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="1" type="RayCast2D" parent="BottomRays"]
+target_position = Vector2(-40, 100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="2" type="RayCast2D" parent="BottomRays"]
+target_position = Vector2(0, 100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="3" type="RayCast2D" parent="BottomRays"]
+target_position = Vector2(42, 100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="4" type="RayCast2D" parent="BottomRays"]
+target_position = Vector2(82, 100)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 80.0

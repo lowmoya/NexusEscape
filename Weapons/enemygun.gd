@@ -29,7 +29,6 @@ var sample_count = 2
 
 func _ready():
 	n_scene = get_tree().current_scene
-	
 	# Prepare audio player
 	n_audioplayer = get_node("AudioPlayer")
 	random_generator.seed = Time.get_ticks_msec()

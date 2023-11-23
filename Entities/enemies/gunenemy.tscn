@@ -1,29 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtw8rx3wobgvw"]
+[gd_scene load_steps=7 format=3 uid="uid://dtw8rx3wobgvw"]
 
 [ext_resource type="Script" path="res://Entities/enemies/gunenemy.gd" id="1_nhp72"]
+[ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_ryqc4"]
 [ext_resource type="Texture2D" uid="uid://byaonx761rtm0" path="res://Resources/Sprites/Entities/enemy gunner spritesheet.png" id="2_rihks"]
 [ext_resource type="PackedScene" uid="uid://kmrtr5tgshgq" path="res://Weapons/enemygun.tscn" id="3_rakir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx780"]
+shader = ExtResource("1_ryqc4")
+shader_parameter/frame = 0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvhsh"]
 radius = 19.0
 height = 64.0
 
-[node name="GunEnemy" type="CharacterBody2D"]
+[node name="GunEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_held", "n_gun", "n_navagent")]
+material = SubResource("ShaderMaterial_nx780")
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_nhp72")
+n_held = NodePath("Held")
+n_gun = NodePath("Held/Gun")
+n_navagent = NodePath("NavAgent")
+
+[node name="WeaponCanvas" type="ColorRect" parent="."]
+visible = false
+clip_children = 1
+use_parent_material = true
+offset_left = -4.0
+offset_top = -74.0
+offset_right = 65.0
+offset_bottom = 64.0
+
+[node name="Held" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2(-1, -6)
+
+[node name="Gun" parent="Held" instance=ExtResource("3_rakir")]
+use_parent_material = true
+position = Vector2(25, 0)
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(10, 0)
+use_parent_material = true
+position = Vector2(16, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("2_rihks")
 hframes = 20
 vframes = 4
 
 [node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_dvhsh")
 
-[node name="Held" type="Node2D" parent="."]
-
-[node name="Gun" parent="Held" instance=ExtResource("3_rakir")]
-position = Vector2(8, -6)
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 80.0

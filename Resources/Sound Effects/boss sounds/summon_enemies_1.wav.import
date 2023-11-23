@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://babs70wybflye"
+path="res://.godot/imported/summon_enemies_1.wav-f4d51f46f1cca710aeda57337c9b300b.sample"
+
+[deps]
+
+source_file="res://Resources/Sound Effects/boss sounds/summon_enemies_1.wav"
+dest_files=["res://.godot/imported/summon_enemies_1.wav-f4d51f46f1cca710aeda57337c9b300b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

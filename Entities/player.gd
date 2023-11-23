@@ -48,6 +48,7 @@ var dash_end = dash_start - dash_length
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func _ready():
+	super()
 	# Obtain references to weapon / hand related nodes
 	n_held = get_node("Held")
 	n_weapons.resize(Weapon.WeaponType.Count)

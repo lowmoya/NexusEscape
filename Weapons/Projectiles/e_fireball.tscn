@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://c5t4lkimkfi5x" path="res://Resources/Sprites/Weapons/fireball.png" id="2_eahhx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ak42d"]
-radius = 19.0
+radius = 16.0
 
 [node name="Fireball" type="Area2D"]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("1_ocq2j")
 
-[node name="Fire" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-scale = Vector2(3, 3)
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
 texture = ExtResource("2_eahhx")
+hframes = 3
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ak42d")

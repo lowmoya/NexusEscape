@@ -1,18 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://f5ctu31jc4d5"]
+[gd_scene load_steps=7 format=3 uid="uid://f5ctu31jc4d5"]
 
 [ext_resource type="Script" path="res://Entities/enemies/swordenemy.gd" id="1_4o2w2"]
+[ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="2_840pb"]
 [ext_resource type="Texture2D" uid="uid://o5h2ntq3xays" path="res://Resources/Sprites/Entities/enemy swordbot spritesheet.png" id="2_go73x"]
+[ext_resource type="Texture2D" uid="uid://q1nyjmtyx1yt" path="res://Resources/Sprites/Weapons/sword sprite sheet.png" id="3_2q0p1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiufc"]
+shader = ExtResource("2_840pb")
+shader_parameter/frame = 0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dyfhr"]
 radius = 27.0
 height = 82.0
 
-[node name="SwordEnemy" type="CharacterBody2D"]
+[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_sprite", "n_sword")]
+material = SubResource("ShaderMaterial_iiufc")
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_4o2w2")
+n_navagent = NodePath("NavAgent")
+n_sprite = NodePath("Sprite")
+n_sword = NodePath("Sword")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(4, 4)
 texture = ExtResource("2_go73x")
 hframes = 26
@@ -21,3 +32,17 @@ vframes = 6
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2(4, -2)
 shape = SubResource("CapsuleShape2D_dyfhr")
+
+[node name="Sword" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2(72, 2)
+
+[node name="Sprite" type="Sprite2D" parent="Sword"]
+use_parent_material = true
+scale = Vector2(4.01892, 3.97439)
+texture = ExtResource("3_2q0p1")
+hframes = 9
+vframes = 2
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+target_desired_distance = 80.0

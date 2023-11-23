@@ -9,15 +9,18 @@
 size = Vector2(80, 16)
 
 [node name="Sword" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_sk4ed")
 
 [node name="HitArea" type="Area2D" parent="."]
+use_parent_material = true
 position = Vector2(8, 0)
 rotation = -1.5708
 collision_layer = 0
 collision_mask = 2
 
 [node name="Sword" type="Sprite2D" parent="HitArea"]
+use_parent_material = true
 position = Vector2(40, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("2_0xsrm")
@@ -29,6 +32,7 @@ shape = SubResource("RectangleShape2D_1shhj")
 
 [node name="Swordslash" type="Sprite2D" parent="."]
 visible = false
+use_parent_material = true
 position = Vector2(40, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("3_3nffs")
