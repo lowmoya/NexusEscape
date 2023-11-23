@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
 uid="uid://bmetvkyhx4hki"
+=======
+uid="uid://bjifg2lxoikep"
+>>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
 path="res://.godot/imported/boss_defeated.wav-159ffea8f64f330b0dad2b08cf7a523e.sample"
 
 [deps]

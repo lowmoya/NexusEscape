@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
 uid="uid://dtq7itt5784jt"
+=======
+uid="uid://bhguax5nn2hm8"
+>>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
 path="res://.godot/imported/boss_shockwave_attack.wav-14c0fbc1e2cf15e3ba0c54deea848fa1.sample"
 
 [deps]

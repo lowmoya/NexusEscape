@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
 uid="uid://b4d3u7fehybem"
+=======
+uid="uid://cpewth1g3mb1d"
+>>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
 path="res://.godot/imported/fire_loop.wav-73954abbb2b234d81c0a6eec3299f3fe.sample"
 
 [deps]
