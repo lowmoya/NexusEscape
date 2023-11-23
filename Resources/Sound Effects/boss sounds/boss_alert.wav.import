@@ -2,11 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-<<<<<<< HEAD
-uid="uid://cyn1u617o46si"
-=======
-uid="uid://cvy21jwbglrqn"
->>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
+uid="uid://beq6fb1cx4ii2"
 path="res://.godot/imported/boss_alert.wav-dbcccf440efc41807920abd9420eedb8.sample"
 
 [deps]

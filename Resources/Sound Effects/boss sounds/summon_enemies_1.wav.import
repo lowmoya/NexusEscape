@@ -2,11 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-<<<<<<< HEAD
-uid="uid://babs70wybflye"
-=======
-uid="uid://b7xlgmrkkskv0"
->>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
+uid="uid://davovfweix7pa"
 path="res://.godot/imported/summon_enemies_1.wav-f4d51f46f1cca710aeda57337c9b300b.sample"
 
 [deps]

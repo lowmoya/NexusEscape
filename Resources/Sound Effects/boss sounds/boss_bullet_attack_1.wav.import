@@ -2,11 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-<<<<<<< HEAD
-uid="uid://5fkhpf54adqc"
-=======
-uid="uid://bqmqmlhl4yja1"
->>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
+uid="uid://c36epn4e1gpy2"
 path="res://.godot/imported/boss_bullet_attack_1.wav-8b919bfeb4077ae3187eb3856a9ab161.sample"
 
 [deps]

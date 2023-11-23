@@ -2,11 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-<<<<<<< HEAD
-uid="uid://dr6xwpsva320s"
-=======
-uid="uid://bngel7eoa5jr5"
->>>>>>> 2f63d333b1617159c32d1af721568300f717b0b1
+uid="uid://b1murcorqbjm3"
 path="res://.godot/imported/boss_sword_attack_2.wav-f65b32a6494e8f1912ac4addfd42ba5b.sample"
 
 [deps]
