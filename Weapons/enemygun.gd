@@ -8,7 +8,7 @@ extends Weapon
 
 @export var p_Bullet = preload("res://Weapons/Projectiles/e_bullet.tscn")
 @export var bullet_speed = 1000
-@export var gun_emmiter_xoffset = 36
+@export var gun_emmiter_xoffset = 60
 
 var n_scene = null
 var blocked = false
@@ -53,6 +53,23 @@ func _on_body_exited(body):
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func attack(bonus_velocity=Vector2.ZERO):
+	# Gun is inside a wall
+	if blocked:
+		return
+	
+	# Create bullet and set its location and velocity
+	var n_bullet = p_Bullet.instantiate()
+	n_bullet.global_position = global_position + Vector2(cos(global_rotation), \
+			sin(global_rotation)) * gun_emmiter_xoffset
+	n_bullet.velocity = Vector2(cos(global_rotation), sin(global_rotation)) \
+			* bullet_speed
+	n_scene.add_child(n_bullet)
+	
+	# Play sound
+	n_audioplayer.stream = samples[random_generator.randi_range(0,sample_count)]
+	n_audioplayer.play()
+
+func shotgun_attack(bonus_velocity=Vector2.ZERO):
 	# Gun is inside a wall
 	if blocked:
 		return

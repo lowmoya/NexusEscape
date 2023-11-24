@@ -37,7 +37,7 @@ position = Vector2(-1, -6)
 
 [node name="Gun" parent="Held" instance=ExtResource("3_rakir")]
 use_parent_material = true
-position = Vector2(25, 0)
+position = Vector2(-1, 0)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 use_parent_material = true
