@@ -7,7 +7,7 @@ extends Weapon
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 @export var p_Bullet = preload("res://Weapons/Projectiles/p_bullet.tscn")
-@export var bullet_speed = 200
+@export var bullet_speed = 1000
 @export var gun_emmiter_xoffset = 36
 
 var n_scene = null

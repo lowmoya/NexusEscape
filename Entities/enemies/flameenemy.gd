@@ -10,6 +10,7 @@ extends Entity
 @export var desired_distance = 500
 
 @export var n_navagent: NavigationAgent2D
+@export var n_light: PointLight2D
 
 var n_scene = null
 var n_toprays = []
@@ -60,6 +61,7 @@ func _physics_process(delta):
 	if current_time > animation_frame:
 		n_sprite.frame = 0 if n_sprite.frame == 3 else n_sprite.frame + 1
 		animation_frame = current_time + animation_frame_duration
+		n_light.energy = randf_range(.5, 1)
 
 	n_shader.set_shader_parameter("frame", invincibility_frame - current_time \
 			if current_time <= invincibility_frame else 0)
@@ -82,7 +84,6 @@ func _physics_process(delta):
 		if current_time <= state_frame:
 			scale.y = 1 - (state_frame - current_time) / (2 * cooling_duration)
 			scale.x = 1 + (state_frame - current_time) / (2 * cooling_duration)
-			print(scale)
 		else:
 			scale.y = 1
 			scale.x = 1

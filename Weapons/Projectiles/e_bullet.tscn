@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dydrk1r3v5ysb"]
+[gd_scene load_steps=6 format=3 uid="uid://dydrk1r3v5ysb"]
 
 [ext_resource type="Script" path="res://Weapons/Projectiles/e_bullet.gd" id="1_ql6om"]
 [ext_resource type="Texture2D" uid="uid://wdaky1t0tymr" path="res://Resources/Sprites/Weapons/bullet.png" id="2_et8nq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrguc"]
 radius = 8.06226
+
+[sub_resource type="Gradient" id="Gradient_n4onf"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.214286, 0.600733, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.967109, 0.967109, 0.967109, 1, 0.152447, 0.152447, 0.152447, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tf8y4"]
+gradient = SubResource("Gradient_n4onf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -17,5 +29,10 @@ texture = ExtResource("2_et8nq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lrguc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.6875, 0.672852)
+color = Color(0.721569, 0.705882, 0.984314, 1)
+texture = SubResource("GradientTexture2D_tf8y4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

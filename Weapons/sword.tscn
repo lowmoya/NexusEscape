@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpisn7glxa323"]
+[gd_scene load_steps=8 format=3 uid="uid://bpisn7glxa323"]
 
 [ext_resource type="Script" path="res://Weapons/sword.gd" id="1_sk4ed"]
 [ext_resource type="Texture2D" uid="uid://blt4c7ji3qupu" path="res://Resources/Sprites/Weapons/sword.png" id="2_0xsrm"]
@@ -7,6 +7,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1shhj"]
 size = Vector2(80, 16)
+
+[sub_resource type="Gradient" id="Gradient_mcnaa"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.214286, 0.600733, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.967109, 0.967109, 0.967109, 1, 0.152447, 0.152447, 0.152447, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_emglc"]
+gradient = SubResource("Gradient_mcnaa")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
 
 [node name="Sword" type="Node2D"]
 use_parent_material = true
@@ -29,6 +41,13 @@ metadata/_edit_lock_ = true
 [node name="Shape" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(40, 0.000289917)
 shape = SubResource("RectangleShape2D_1shhj")
+
+[node name="PointLight2D" type="PointLight2D" parent="HitArea"]
+position = Vector2(40.0522, 0.377054)
+rotation = 1.5708
+scale = Vector2(1.125, 2.06665)
+color = Color(0.721569, 0.705882, 0.984314, 1)
+texture = SubResource("GradientTexture2D_emglc")
 
 [node name="Swordslash" type="Sprite2D" parent="."]
 visible = false

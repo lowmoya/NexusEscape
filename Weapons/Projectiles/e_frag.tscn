@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://nuctkjsxl8gt"]
+
+[ext_resource type="Script" path="res://Weapons/Projectiles/e_frag.gd" id="1_7m7xk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prtgk"]
+size = Vector2(8, 3)
+
+[sub_resource type="Gradient" id="Gradient_xgy3n"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.472527, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.152447, 0.152447, 0.152447, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6coln"]
+gradient = SubResource("Gradient_xgy3n")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[node name="Frag" type="Area2D" node_paths=PackedStringArray("n_rect", "n_light")]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_7m7xk")
+n_rect = NodePath("ColorRect")
+n_light = NodePath("PointLight2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0.5)
+shape = SubResource("RectangleShape2D_prtgk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -1.0
+offset_right = 8.0
+offset_bottom = 2.0
+color = Color(0.996078, 0.647059, 1, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.65625, 0.472656)
+color = Color(0.721569, 0.705882, 0.984314, 1)
+texture = SubResource("GradientTexture2D_6coln")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
