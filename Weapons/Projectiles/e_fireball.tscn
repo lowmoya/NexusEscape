@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b43e0c12eyy1k"]
+[gd_scene load_steps=6 format=3 uid="uid://b43e0c12eyy1k"]
 
 [ext_resource type="Script" path="res://Weapons/Projectiles/e_fireball.gd" id="1_ocq2j"]
 [ext_resource type="Texture2D" uid="uid://c5t4lkimkfi5x" path="res://Resources/Sprites/Weapons/fireball.png" id="2_eahhx"]
@@ -6,10 +6,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ak42d"]
 radius = 16.0
 
-[node name="Fireball" type="Area2D"]
+[sub_resource type="Gradient" id="Gradient_gw8nm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.214286, 0.487179, 0.965201, 0.983516, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.967109, 0.967109, 0.967109, 1, 0.152447, 0.152447, 0.152447, 1, 0.00575568, 0.00575568, 0.00575568, 1, 0.0025716, 0.0025716, 0.0025716, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wt1h5"]
+gradient = SubResource("Gradient_gw8nm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[node name="Fireball" type="Area2D" node_paths=PackedStringArray("n_sprite", "n_light")]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("1_ocq2j")
+n_sprite = NodePath("Sprite")
+n_light = NodePath("PointLight2D")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -18,5 +32,11 @@ hframes = 3
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ak42d")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.19209e-07, 1.49012e-08)
+scale = Vector2(1.5918, 1.53815)
+color = Color(0.721569, 0.705882, 0.984314, 1)
+texture = SubResource("GradientTexture2D_wt1h5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

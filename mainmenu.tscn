@@ -1,29 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://2vmvny1f2u1m"]
+[gd_scene load_steps=7 format=3 uid="uid://2vmvny1f2u1m"]
 
+[ext_resource type="Shader" path="res://Resources/Shaders/shimmerandstars.gdshader" id="1_ctjkg"]
 [ext_resource type="Texture2D" uid="uid://cagw0vrw5eh4b" path="res://Resources/Sprites/UI/Title-01.png" id="1_rp318"]
 
 [sub_resource type="GDScript" id="GDScript_d07pc"]
 script/source = "extends Control
 
+@export var n_splashscreen: Sprite2D
+var shader
+
+const max_star_count = 30
+var star_count = 0
+var max_star_delay = 2.
+var star_delay = randf() * max_star_delay
+var stars = []
+
+func _ready():
+	shader = n_splashscreen.material as ShaderMaterial
+
+func _physics_process(delta):
+	var i = 0
+	while i < star_count:
+		stars[i].z -= delta
+		print(stars[i].z, ' ', delta)
+		if stars[i].z <= 0.:
+			star_count -= 1
+			stars[i] = stars[star_count]
+			stars.pop_back()
+		else:
+			i += 1
+	if star_count < max_star_count and star_delay <= 0:
+		stars.append(Vector4(randf(), randf(), randf_range(.4, 1.2), \\
+				randf_range(0.004, 0.01)))
+		star_count += 1
+		star_delay = randf() * max_star_delay
+	else:
+		star_delay -= delta
+	shader.set_shader_parameter(\"count\", star_count)
+	shader.set_shader_parameter(\"points\", stars)
+
 func _topdown_button():
 	get_tree().change_scene_to_file(\"res://Levels/level1.tscn\")
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knf2x"]
+shader = ExtResource("1_ctjkg")
+shader_parameter/count = null
+shader_parameter/points = null
 
 [sub_resource type="Theme" id="Theme_41gwq"]
 default_font_size = 20
 
 [sub_resource type="Theme" id="Theme_urean"]
 
-[node name="main menu" type="Control"]
+[node name="main menu" type="Control" node_paths=PackedStringArray("n_splashscreen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_d07pc")
+n_splashscreen = NodePath("Title-01")
 
 [node name="Title-01" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_knf2x")
 position = Vector2(577, 246)
 scale = Vector2(0.0504208, 0.0504208)
 texture = ExtResource("1_rp318")

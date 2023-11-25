@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://csyn0uf3p42v1"]
+[gd_scene load_steps=8 format=3 uid="uid://csyn0uf3p42v1"]
 
 [ext_resource type="Script" path="res://Entities/enemies/flameenemy.gd" id="1_87fua"]
 [ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_mk3tv"]
@@ -12,12 +12,25 @@ shader_parameter/frame = 0
 radius = 23.0
 height = 64.0
 
-[node name="FlameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent")]
+[sub_resource type="Gradient" id="Gradient_e6n0w"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.214286, 0.487179, 0.965201, 0.983516, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.967109, 0.967109, 0.967109, 1, 0.152447, 0.152447, 0.152447, 1, 0.00575568, 0.00575568, 0.00575568, 1, 0.0025716, 0.0025716, 0.0025716, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4baq"]
+gradient = SubResource("Gradient_e6n0w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[node name="FlameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_light")]
 material = SubResource("ShaderMaterial_iejoq")
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_87fua")
 n_navagent = NodePath("NavigationAgent2D")
+n_light = NodePath("PointLight2D")
 
 [node name="TopRays" type="Node2D" parent="."]
 
@@ -91,3 +104,9 @@ collide_with_areas = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 80.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(2.21094, 2.62134)
+color = Color(0.721569, 0.705882, 0.984314, 1)
+texture = SubResource("GradientTexture2D_g4baq")

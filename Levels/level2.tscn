@@ -25,6 +25,7 @@ layer_1/tile_data = PackedInt32Array(-524300, 458752, 0, -458764, 458752, 1, -58
 
 [node name="Player" parent="." instance=ExtResource("2_qhkhn")]
 position = Vector2(-334, 31)
+max_health = 25
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 show_behind_parent = true

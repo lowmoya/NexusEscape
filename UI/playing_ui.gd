@@ -6,9 +6,11 @@ extends CanvasLayer
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-var n_health_bar = null
-var n_energy_bar = null
-var n_dash_fill = null
+@export var n_health_bar: TextureProgressBar
+@export var n_energy_bar: TextureProgressBar
+@export var n_dash_fill: Sprite2D
+@export var n_itembar: Sprite2D
+
 var n_weapon_fills = [ ]
 var n_player = null
 
@@ -22,18 +24,15 @@ var last_weapon = null
 
 func _ready():
 	# Load node references
-	n_health_bar = get_node("HealthBar")
-	n_energy_bar = get_node("EnergyBar")
-	n_dash_fill = get_node("Itembar/DashBackground")
 	n_weapon_fills.resize(Weapon.WeaponType.Count)
-	n_weapon_fills[Weapon.WeaponType.Fist] = [ get_node("Itembar/Fist/SelectedFill"), \
-			get_node("Itembar/Fist/UnselectedFill") ]
-	n_weapon_fills[Weapon.WeaponType.Sword] = [ get_node("Itembar/Sword/SelectedFill"), \
-			get_node("Itembar/Sword/UnselectedFill") ]
-	n_weapon_fills[Weapon.WeaponType.Gun] = [ get_node("Itembar/Gun/SelectedFill"), \
-			get_node("Itembar/Gun/UnselectedFill") ]
-	n_weapon_fills[Weapon.WeaponType.Flame] = [ get_node("Itembar/Flame/SelectedFill"), \
-			get_node("Itembar/Flame/UnselectedFill") ]
+	n_weapon_fills[Weapon.WeaponType.Fist] = [ n_itembar.get_node("Fist/SelectedFill"), \
+			n_itembar.get_node("Fist/UnselectedFill") ]
+	n_weapon_fills[Weapon.WeaponType.Sword] = [ n_itembar.get_node("Sword/SelectedFill"), \
+			n_itembar.get_node("Sword/UnselectedFill") ]
+	n_weapon_fills[Weapon.WeaponType.Gun] = [ n_itembar.get_node("Gun/SelectedFill"), \
+			n_itembar.get_node("Gun/UnselectedFill") ]
+	n_weapon_fills[Weapon.WeaponType.Flame] = [ n_itembar.get_node("Flame/SelectedFill"), \
+			n_itembar.get_node("Flame/UnselectedFill") ]
 	n_player = get_tree().current_scene.get_node("Player")
 	last_weapon = n_player.weapon
 	
@@ -70,3 +69,5 @@ func _process(delta):
 		last_weapon = n_player.weapon
 		n_weapon_fills[last_weapon][0].visible = true
 		n_weapon_fills[last_weapon][1].visible = false
+
+
