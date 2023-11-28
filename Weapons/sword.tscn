@@ -63,5 +63,6 @@ texture = ExtResource("4_wfsa7")
 texture_scale = 0.1
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 2.0
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_box_body_entered"]

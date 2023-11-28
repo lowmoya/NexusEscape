@@ -10,6 +10,7 @@ extends Entity
 @export var speed = 100
 @export var charging_speed = 40
 
+@export var n_audioplayer: AudioStreamPlayer2D
 @export var n_held: Node2D
 @export var n_navagent: NavigationAgent2D
 @export var n_gun: Node2D
@@ -140,11 +141,9 @@ func _physics_process(delta):
 			n_gun.scale.x = 2. / 5. * (attack_frame - current_time) / \
 					attack_durations[AttackState.SHOTGUN_ANTICIPATION] + .6
 			n_collection_light.energy += (current_time - collection_field_start_time) / 300. * delta
-			print(n_collection_light.energy, ' ', current_time, ' ', collection_field_start_time)
 			for i in range(collection_field_particle_count):
 				collection_field_particles[i] += collection_field_particle_accelerations[i] * \
 						(current_time - collection_field_start_time) * delta * 1e3
-				print(collection_field_particles[i])
 			n_collection_field_shader.set_shader_parameter("points", collection_field_particles)
 		else:
 			n_collection_light.energy = 0.

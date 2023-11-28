@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtw8rx3wobgvw"]
+[gd_scene load_steps=13 format=3 uid="uid://dtw8rx3wobgvw"]
 
 [ext_resource type="Script" path="res://Entities/enemies/gunenemy.gd" id="1_nhp72"]
 [ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_ryqc4"]
 [ext_resource type="Texture2D" uid="uid://byaonx761rtm0" path="res://Resources/Sprites/Entities/enemy gunner spritesheet.png" id="2_rihks"]
 [ext_resource type="PackedScene" uid="uid://kmrtr5tgshgq" path="res://Weapons/enemygun.tscn" id="3_rakir"]
 [ext_resource type="Shader" path="res://Resources/Shaders/collect.gdshader" id="4_hvvui"]
+[ext_resource type="AudioStream" uid="uid://c2t0hjyc4tvly" path="res://Resources/Sound Effects/enemy sounds/gun_enemy_movement.wav" id="6_lq4kv"]
+[ext_resource type="AudioStream" uid="uid://60myg02r4uaw" path="res://Resources/Sound Effects/enemy sounds/battle_alert.wav" id="7_aocyc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nx780"]
 shader = ExtResource("1_ryqc4")
@@ -28,16 +30,19 @@ shader_parameter/points = PackedVector2Array()
 radius = 19.0
 height = 64.0
 
-[node name="GunEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_held", "n_navagent", "n_gun", "n_collection_field", "n_collection_light")]
+[node name="GunEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_audioplayer", "n_held", "n_navagent", "n_gun", "n_collection_field", "n_collection_light", "n_alert_audioplayer", "n_hurt_audioplayer")]
 material = SubResource("ShaderMaterial_nx780")
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_nhp72")
+n_audioplayer = NodePath("General")
 n_held = NodePath("Polygon2D/Held")
 n_navagent = NodePath("NavAgent")
 n_gun = NodePath("Polygon2D/Held/Gun")
 n_collection_field = NodePath("Polygon2D/Held/Gun/CollectionField")
 n_collection_light = NodePath("Polygon2D/Held/Gun/CollectionLight")
+n_alert_audioplayer = NodePath("Alert")
+n_hurt_audioplayer = NodePath("Hurt")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 clip_children = 1
@@ -80,3 +85,15 @@ shape = SubResource("CapsuleShape2D_dvhsh")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 80.0
+
+[node name="General" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lq4kv")
+volume_db = -0.729
+autoplay = true
+attenuation = 3.73213
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_aocyc")
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+volume_db = 7.0

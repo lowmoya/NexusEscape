@@ -9,6 +9,7 @@ extends Entity
 @export var acceleration = 10
 @export var desired_distance = 500
 
+@export var n_audioplayer: AudioStreamPlayer2D
 @export var n_navagent: NavigationAgent2D
 @export var n_light: PointLight2D
 
@@ -140,7 +141,9 @@ func _physics_process(delta):
 				n_fireballs[i].velocity = fireball_speed * (n_player.global_position \
 						- n_fireballs[i].global_position).normalized()
 				n_scene.add_child(n_fireballs[i])
-
+			
+			n_audioplayer.pitch_scale = randf_range(.9, 1.1)
+			n_audioplayer.play()
 			state = STATE.COOLING
 			state_frame = current_time + cooling_duration
 		else:

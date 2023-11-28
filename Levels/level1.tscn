@@ -100,7 +100,7 @@ position = Vector2(2023, -2043)
 position = Vector2(2004, -2292)
 
 [node name="SwordEnemy2" parent="Tiles/EnemyController" instance=ExtResource("7_vs78x")]
-position = Vector2(1201, -86)
+position = Vector2(1284, -79)
 
 [node name="NavMesh" type="NavigationRegion2D" parent="."]
 visible = false

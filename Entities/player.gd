@@ -13,8 +13,13 @@ var n_weapons = [ ]
 
 # audio
 enum AudioLabel { Damaged = 0, Dash, Dodge, Footstep0, Footstep1, Footstep2, GameOver, SwitchHeld, Count }
-var n_audioplayer = null
+@export var n_audioplayer: AudioStreamPlayer2D
+@export var n_steps_audioplayer: AudioStreamPlayer2D
+@export var n_flamethrower_audioplayer: AudioStreamPlayer2D
+@export var n_pickup_audioplayer: AudioStreamPlayer2D
 var audiosamples = []
+
+const STEP_VELOCITY_THRESHOLD = 1000.
 
 # sprite
 enum SpriteLabel { Damaged = 0, Attack, DashHold, Dash, WalkRight, WalkLeft, IdleRight, IdleLeft }
@@ -58,11 +63,15 @@ func _ready():
 	n_weapons[Weapon.WeaponType.Flame] = n_held.get_node("FlameThrower")
 
 	# Obtain references to audio player and streams
-	n_audioplayer = get_node("AudioPlayer")
 	audiosamples.resize(AudioLabel.Count)
 	audiosamples[AudioLabel.Damaged] = load("res://Resources/Sound Effects/player movement/damage_taken.wav")
 	audiosamples[AudioLabel.GameOver] = load("res://Resources/Sound Effects/player movement/game_over.wav")
 	audiosamples[AudioLabel.SwitchHeld] = load("res://Resources/Sound Effects/player weapons/switch_weapon.wav")
+	audiosamples[AudioLabel.Dash] = load("res://Resources/Sound Effects/player movement/dash_robot_treads.wav")
+	audiosamples[AudioLabel.Dodge] = load("res://Resources/Sound Effects/player movement/dodge.wav")
+	audiosamples[AudioLabel.Footstep0] = load("res://Resources/Sound Effects/player movement/footstep_1.wav")
+	audiosamples[AudioLabel.Footstep1] = load("res://Resources/Sound Effects/player movement/footstep_2.wav")
+	audiosamples[AudioLabel.Footstep2] = load("res://Resources/Sound Effects/player movement/footstep_3.wav")
 	
 	# Obtain references to sprite
 	n_sprite = get_node("Sprite")
@@ -78,6 +87,7 @@ func _ready():
 func _physics_process(delta):
 	# Ensure the player is still alive or handle otherwise
 	if defeated:
+		# TODO: invis player , freeze camera, show game over overlay over the screen with restart level or quit
 		n_audioplayer.stream = audiosamples[AudioLabel.GameOver]
 		n_audioplayer.play()
 		get_tree().change_scene_to_file("res://Levels/mainmenu.tscn")
@@ -94,15 +104,17 @@ func _physics_process(delta):
 	var current_time = Time.get_ticks_msec()
 	
 	# Multliply by speed, include dash strength if in boost part of dash frame
-	movement *= speed if current_time > dash_frame - dash_end or current_time <= dash_frame - dash_start else speed + dash_strength
-	
+	movement *= speed if current_time > dash_frame - dash_end or current_time <= dash_frame - dash_start \
+			else speed + dash_strength
 	
 	# Process non-weapon related inputs
 	if Input.is_action_just_pressed("dash"):
-		if current_time <= dash_frame:
-			pass # Play audio here
-		else:
+		if current_time > dash_frame:
 			dash_frame = current_time + dash_delay
+			n_audioplayer.pitch_scale = randf_range(.9, 1.1)
+			n_audioplayer.stream = audiosamples[AudioLabel.Dash]
+			n_audioplayer.play()
+			n_steps_audioplayer.stop()
 		
 	# Process weapon related inputs
 	if n_weapons[weapon].idle:
@@ -110,10 +122,15 @@ func _physics_process(delta):
 			if energy >= n_weapons[weapon].energy_cost:
 				n_weapons[weapon].attack(velocity)
 				energy -= n_weapons[weapon].energy_cost
+				if weapon == Weapon.WeaponType.Flame and not n_flamethrower_audioplayer.playing:
+					n_flamethrower_audioplayer.pitch_scale = randf_range(.9, 1.1)
+					n_flamethrower_audioplayer.play()
 		elif Input.is_action_pressed("attack_main") and weapon == Weapon.WeaponType.Flame:
 			if energy >= n_weapons[weapon].energy_cost:
 				n_weapons[weapon].attack(velocity)
 				energy -= n_weapons[weapon].energy_cost
+		elif Input.is_action_just_released("attack_main") and weapon == Weapon.WeaponType.Flame:
+			n_flamethrower_audioplayer.stop()
 		if Input.is_action_just_pressed("select_one"):
 			switchHeld(0)
 		elif Input.is_action_just_pressed("select_two"):
@@ -130,6 +147,14 @@ func _physics_process(delta):
 	# Move velocity "towards" the players desired direction and move
 	velocity = lerp(velocity, movement, acceleration * delta)
 	move_and_slide()
+	
+	if velocity.x ** 2 + velocity.y ** 2 > STEP_VELOCITY_THRESHOLD:
+		if not n_steps_audioplayer.playing and current_time > dash_frame - dash_end:
+			n_steps_audioplayer.stream = audiosamples[AudioLabel.Footstep0 + randi_range(0, 2)]
+			n_steps_audioplayer.pitch_scale = randf_range(.9, 1.1)
+			n_steps_audioplayer.play()
+	elif n_steps_audioplayer.playing:
+		n_steps_audioplayer.stop()
 	
 	# Set animation
 	if current_time <= invincibility_frame + hurt_sprite_extra_delay:
@@ -173,7 +198,16 @@ func _physics_process(delta):
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 func damage(amount):
-	super(amount)
+	var current_time = Time.get_ticks_msec()
+	if current_time < invincibility_frame:
+		return
+	invincibility_frame = current_time + invincibility_millis
+	
+	# Update health and check if defeated
+	health -= amount
+	if health <= 0:
+		defeated = true
+	n_hurt_audioplayer.pitch_scale = randf_range(.9, 1.1)
 	n_audioplayer.stream = audiosamples[AudioLabel.Damaged]
 	n_audioplayer.play()
 	
@@ -199,12 +233,14 @@ func updateHeld(delta):
 func switchHeld(index):
 	if index == weapon:
 		return
-	
+	elif weapon == Weapon.WeaponType.Flame:
+		n_flamethrower_audioplayer.stop()
 	# Toggle last and new weapons visibility and update the weapon index
 	n_weapons[weapon].visible = false
 	weapon = index
 	n_weapons[weapon].visible = true
 	
 	# Play sound
+	n_audioplayer.pitch_scale = randf_range(.9, 1.1)
 	n_audioplayer.stream = audiosamples[AudioLabel.SwitchHeld]
 	n_audioplayer.play()

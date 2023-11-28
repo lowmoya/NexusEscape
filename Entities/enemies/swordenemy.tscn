@@ -1,10 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://f5ctu31jc4d5"]
+[gd_scene load_steps=17 format=3 uid="uid://f5ctu31jc4d5"]
 
 [ext_resource type="Script" path="res://Entities/enemies/swordenemy.gd" id="1_4o2w2"]
 [ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="2_840pb"]
 [ext_resource type="Texture2D" uid="uid://o5h2ntq3xays" path="res://Resources/Sprites/Entities/enemy swordbot spritesheet.png" id="2_go73x"]
 [ext_resource type="Texture2D" uid="uid://q1nyjmtyx1yt" path="res://Resources/Sprites/Weapons/sword sprite sheet.png" id="3_2q0p1"]
 [ext_resource type="Shader" path="res://Resources/Shaders/enemysword.gdshader" id="4_xaqnf"]
+[ext_resource type="AudioStream" uid="uid://60myg02r4uaw" path="res://Resources/Sound Effects/enemy sounds/battle_alert.wav" id="6_jmypj"]
+[ext_resource type="AudioStream" uid="uid://2k2s7yf2ogmn" path="res://Resources/Sound Effects/enemy sounds/sword_enemy_movement.wav" id="6_qt0ec"]
+[ext_resource type="AudioStream" uid="uid://eghmqfmpjpnq" path="res://Resources/Sound Effects/enemy sounds/sword_enemy_attack.wav" id="7_d0e7d"]
+[ext_resource type="AudioStream" uid="uid://d0mrvjkhil5nm" path="res://Resources/Sound Effects/enemy sounds/enemy_dodge.wav" id="8_8vymr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iiufc"]
 shader = ExtResource("2_840pb")
@@ -38,17 +42,21 @@ shader = ExtResource("4_xaqnf")
 shader_parameter/blue_factor = 1.0
 shader_parameter/frame = 0
 
-[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_sprite", "n_sword", "n_sword_sprite", "n_sword_collider", "n_sword_light")]
+[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_attack_audioplayer", "n_dodge_audioplayer", "n_navagent", "n_sprite", "n_sword", "n_sword_sprite", "n_sword_collider", "n_sword_light", "n_alert_audioplayer", "n_hurt_audioplayer")]
 material = SubResource("ShaderMaterial_iiufc")
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_4o2w2")
+n_attack_audioplayer = NodePath("Attack")
+n_dodge_audioplayer = NodePath("Dodge")
 n_navagent = NodePath("NavAgent")
 n_sprite = NodePath("Sprite")
 n_sword = NodePath("Sword")
 n_sword_sprite = NodePath("Sword/Sprite")
 n_sword_collider = NodePath("Sword/Area2D/CollisionPolygon2D")
 n_sword_light = NodePath("Sword/PointLight2D")
+n_alert_audioplayer = NodePath("Alert")
+n_hurt_audioplayer = NodePath("Hurt")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 40)
@@ -97,5 +105,25 @@ vframes = 4
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 target_desired_distance = 80.0
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_jmypj")
+
+[node name="Movement" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qt0ec")
+volume_db = -7.257
+autoplay = true
+attenuation = 2.92817
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_d0e7d")
+volume_db = 1.434
+
+[node name="Dodge" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8vymr")
+attenuation = 1.27456
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+volume_db = 7.0
 
 [connection signal="body_entered" from="Sword/Area2D" to="." method="_on_sword_area_body_entered"]

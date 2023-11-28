@@ -66,5 +66,6 @@ func attack(bonus_velocity = Vector2.ZERO):
 	n_scene.add_child(n_bullet)
 	
 	# Play sound
+	n_audioplayer.pitch_scale = randf_range(.9, 1.1)
 	n_audioplayer.stream = samples[random_generator.randi_range(0,sample_count)]
 	n_audioplayer.play()

@@ -9,9 +9,11 @@ extends Entity
 @export var acceleration = 10
 @export var speed = 200
 @export var attack_delay = .5
-@export var knockback = 600
+@export var knockback = 1200.
 
 # Animation variables
+@export var n_attack_audioplayer: AudioStreamPlayer2D
+@export var n_dodge_audioplayer: AudioStreamPlayer2D
 @export var n_navagent: NavigationAgent2D
 @export var n_sprite: Sprite2D
 @export var n_sword: Node2D
@@ -99,6 +101,8 @@ func _physics_process(delta):
 						dash_durations[DashStates.ANTICIPATION]
 				scale.x = normal_scaling.x + portion * dash_scale
 				scale.y = normal_scaling.y - portion * dash_scale
+				n_dodge_audioplayer.pitch_scale = randf_range(.9, 1.1)
+				n_dodge_audioplayer.play()
 		DashStates.FOLLOW_THROUGH:
 			if current_time > dash_frame or squared_player_distance < \
 						dash_cancel_distance_threshold:
@@ -158,6 +162,8 @@ func _physics_process(delta):
 						attack_durations[AttackStates.ANTICIPATION]
 				n_sword_light.energy = portion
 				n_sword_sprite_shader.set_shader_parameter("blue_factor", portion)
+				n_attack_audioplayer.pitch_scale = randf_range(.9, 1.1)
+				n_attack_audioplayer.play()
 		AttackStates.ACTION:
 			if current_time > attack_frame0:
 				attack_state = AttackStates.FOLLOW_THROUGH
@@ -195,4 +201,4 @@ func _physics_process(delta):
 func _on_sword_area_body_entered(body):
 	body.damage(3)
 	body.velocity += knockback * (body.global_position - global_position).normalized()
-	n_sword_collider.disabled = true
+	n_sword_collider.set_deferred("disabled", true)

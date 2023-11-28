@@ -29,7 +29,7 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	hit = true
 	visible = false
-	n_collider.disabled = true
+	n_collider.set_deferred("disabled", true)
 	if body is Entity:
 		body.damage(1)
 	elif not body is TileMap:

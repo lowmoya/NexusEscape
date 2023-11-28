@@ -2,11 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-<<<<<<< HEAD
-uid="uid://ybnh0afg4qt1"
-=======
-uid="uid://b2c6rm1vpscnr"
->>>>>>> 3ca475cf12c1736eb6ad5c742ebc50cff1687d6d
+uid="uid://dp112wnbt4i2s"
 path="res://.godot/imported/pulse_explosion_attack.wav-2be34a4555e127394da5161d40e0db10.sample"
 
 [deps]

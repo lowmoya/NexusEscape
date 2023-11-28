@@ -16,7 +16,7 @@ enum PickupType { HEALTH = 0, ENERGY, COUNT }
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 @export var type = PickupType.HEALTH
-@export var value = 1
+@export var value = randf_range(3., 6.)
 @export var pickup_range = 20
 @export var drag_range = 150
 @export var drag_speed = 10000
@@ -60,6 +60,8 @@ func _physics_process(delta):
 			n_target.health = min(n_target.health + value, n_target.max_health)
 		elif type == PickupType.ENERGY:
 			n_target.energy = min(n_target.energy + value, n_target.max_energy)
+		n_target.n_pickup_audioplayer.pitch_scale = randf_range(.9, 1.1)
+		n_target.n_pickup_audioplayer.play()
 		queue_free()
 	elif distance < drag_range:
 		# Move towards the target

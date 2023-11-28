@@ -51,6 +51,7 @@ polygon = PackedVector2Array(-46, -99, -88, -67, -88, -56, -78, -51, -76, -24, -
 [node name="Held" type="Node2D" parent="."]
 
 [node name="SwordPivot" type="Node2D" parent="Held"]
+visible = false
 position = Vector2(-200, -1.921)
 
 [node name="Sword" type="Sprite2D" parent="Held/SwordPivot"]

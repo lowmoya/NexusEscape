@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7hod7ehn4yyo"]
+
+[ext_resource type="Texture2D" uid="uid://hofc3rallrjn" path="res://Resources/Sprites/UI/ai chat box.png" id="1_bwk5o"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 3292.0
+offset_bottom = 3797.0
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bwk5o")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bwk5o")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bwk5o")

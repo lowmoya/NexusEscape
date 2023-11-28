@@ -28,6 +28,7 @@ position = Vector2(26, 0)
 shape = SubResource("CapsuleShape2D_po1o1")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 2.0
 
 [node name="ObstructionArea" type="Area2D" parent="."]
 collision_layer = 0

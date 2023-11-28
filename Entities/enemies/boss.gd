@@ -64,9 +64,6 @@ const AWAKEN_SDT: float = 3.5e5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Get references
-	n_player = get_tree().current_scene.get_node("Player")
-	
 	var current_time = Time.get_ticks_msec() / 1.e3
 
 	# Prepare animation components
@@ -213,7 +210,7 @@ func sword_phase(delta, to_player, to_player_d):
 func _process(delta):
 	# Get common variables
 	var current_time = Time.get_ticks_msec() / 1.e3
-	var to_player = n_player.position - position
+	var to_player = n_player.global_position - global_position
 	var to_player_sd = to_player.x ** 2 + to_player.y ** 2
 	var to_player_d = sqrt(to_player_sd)
 	

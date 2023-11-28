@@ -15,14 +15,40 @@
 [ext_resource type="Texture2D" uid="uid://cy5wch1inkpnw" path="res://Resources/Sprites/UI/itembar_gun.png" id="13_7hg1i"]
 [ext_resource type="Texture2D" uid="uid://dl3ll55v2kvmu" path="res://Resources/Sprites/UI/itembar_flame.png" id="14_v5kkm"]
 
-[node name="PlayingUI" type="CanvasLayer" node_paths=PackedStringArray("n_health_bar", "n_energy_bar", "n_dash_fill", "n_itembar")]
+[node name="PlayingUI" type="CanvasLayer" node_paths=PackedStringArray("n_front_health_bar", "n_back_health_bar", "n_energy_bar", "n_dash_fill", "n_itembar")]
 script = ExtResource("1_orb0g")
-n_health_bar = NodePath("HealthBar")
+n_front_health_bar = NodePath("FrontHealthBar")
+n_back_health_bar = NodePath("BackHealthBar")
 n_energy_bar = NodePath("EnergyBar")
 n_dash_fill = NodePath("Control/Itembar/DashBackground")
 n_itembar = NodePath("Control/Itembar")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
+[node name="BackHealthBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.994
+anchor_right = 0.177
+anchor_bottom = 0.994
+offset_left = -199.904
+offset_top = -32.112
+offset_right = -99.904
+offset_bottom = -24.112
+scale = Vector2(4, 4)
+size_flags_vertical = 10
+max_value = 10.0
+step = 0.1
+value = 7.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_xvhqq")
+texture_progress = ExtResource("3_iwd42")
+tint_progress = Color(1, 0.231373, 0.141176, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="FrontHealthBar" type="TextureProgressBar" parent="."]
 anchors_preset = -1
 anchor_left = 0.177
 anchor_top = 0.994
@@ -42,7 +68,6 @@ stretch_margin_left = 2
 stretch_margin_top = 3
 stretch_margin_right = 2
 stretch_margin_bottom = 2
-texture_under = ExtResource("2_xvhqq")
 texture_progress = ExtResource("3_iwd42")
 tint_progress = Color(1, 1, 0.227451, 1)
 metadata/_edit_use_anchors_ = true

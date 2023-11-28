@@ -6,7 +6,8 @@ extends CanvasLayer
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var n_health_bar: TextureProgressBar
+@export var n_front_health_bar: TextureProgressBar
+@export var n_back_health_bar: TextureProgressBar
 @export var n_energy_bar: TextureProgressBar
 @export var n_dash_fill: Sprite2D
 @export var n_itembar: Sprite2D
@@ -16,6 +17,10 @@ var n_weapon_fills = [ ]
 
 var last_weapon = null
 
+const DAMAGE_COLOR = Color(1., .23, .14, 1.)
+const HEAL_COLOR = Color(.34, .77, .94, 1.)
+const HEALTH_ADJUST = 2.3
+var floating_health: float
 
 
 # ################################################## #
@@ -36,7 +41,8 @@ func _ready():
 	last_weapon = n_player.weapon
 	
 	# Set bar max values
-	n_health_bar.max_value = n_player.max_health
+	n_front_health_bar.max_value = n_player.max_health
+	floating_health = n_player.max_health
 	n_energy_bar.max_value = n_player.max_energy
 
 
@@ -44,12 +50,22 @@ func _process(delta):
 	
 	# If there's not a player set health and energy to zero and return
 	if n_player == null:
-		n_health_bar.value = 0
-		n_energy_bar.value = 0
+		n_front_health_bar.value = 0.
+		n_back_health_bar.value = 0.
+		n_energy_bar.value = 0.
 		return
 	
 	# Set status bars
-	n_health_bar.value = n_player.health
+	if floating_health < n_player.health:
+		floating_health += clamp(n_player.health - floating_health, -HEALTH_ADJUST * delta, HEALTH_ADJUST * delta)
+		n_front_health_bar.value = floating_health
+		n_back_health_bar.value = n_player.health
+		n_back_health_bar.tint_progress = HEAL_COLOR
+	else:
+		floating_health += clamp(n_player.health - floating_health, -HEALTH_ADJUST * delta, HEALTH_ADJUST * delta)
+		n_front_health_bar.value = n_player.health
+		n_back_health_bar.value = floating_health
+		n_back_health_bar.tint_progress = DAMAGE_COLOR
 	n_energy_bar.value = n_player.energy
 	
 	# Set dash icon

@@ -67,6 +67,7 @@ func attack(_bonus_velocity = Vector2.ZERO):
 	n_slash.visible = true
 	
 	# Play sound
+	n_audioplayer.pitch_scale = randf_range(.9, 1.1)
 	n_audioplayer.stream = samples[random_generator.randi_range(0,1)]
 	n_audioplayer.play()
 

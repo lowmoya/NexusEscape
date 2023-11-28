@@ -12,8 +12,12 @@ class_name Entity
 var invincibility_frame = 0
 var defeated = false
 
+@export var n_alert_audioplayer: AudioStreamPlayer2D
+@export var n_hurt_audioplayer: AudioStreamPlayer2D
 @export var n_player: CharacterBody2D
 var n_shader
+var n_hurt_streams = [ load("res://Resources/Sound Effects/enemy sounds/enemy_damage_taken_1.wav"), \
+		load("res://Resources/Sound Effects/enemy sounds/enemy_damage_taken_2.wav")]
 
 
 # ################################################## #
@@ -49,3 +53,7 @@ func damage(amount):
 	if health <= 0:
 		defeated = true
 		despawn()
+	else:
+		n_hurt_audioplayer.stream = n_hurt_streams[randi_range(0, 1)]
+		n_hurt_audioplayer.pitch_scale = randf_range(.9, 1.1)
+		n_hurt_audioplayer.play()

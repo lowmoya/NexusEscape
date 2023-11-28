@@ -71,7 +71,7 @@ func _process(delta):
 		if randf() < drop_chance:
 			# Create a pickup and initialize its values
 			var n_pickup = p_Pickup.instantiate()
-			n_pickup.type = randi_range(0, Pickup.PickupType.COUNT)
+			n_pickup.type = randi_range(0, Pickup.PickupType.COUNT - 1)
 			n_pickup.n_target = n_player
 			n_pickup.global_position = enemies[enemy].global_position
 			n_scene.add_child(n_pickup)
@@ -122,6 +122,8 @@ func _process(delta):
 func activate_enemy(enemy):
 	# Toggle enemies idle condition (pass player data)
 	idle_enemies[enemy].n_player = n_player
+	idle_enemies[enemy].n_alert_audioplayer.pitch_scale = randf_range(.9, 1.1)
+	idle_enemies[enemy].n_alert_audioplayer.play()
 	# Move idle enemy to non-idle enemy list
 	enemies.append(idle_enemies[enemy])
 	enemy_count += 1

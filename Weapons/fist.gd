@@ -65,6 +65,7 @@ func attack(_bonus_velocity = Vector2.ZERO):
 	if not idle or obstructed:
 		return
 	idle = false
+	n_audioplayer.pitch_scale = randf_range(.9, 1.1)
 	n_audioplayer.stream = audiosamples[random_generator.randi_range(0, 2)]
 	n_audioplayer.play()
 	direction = 1

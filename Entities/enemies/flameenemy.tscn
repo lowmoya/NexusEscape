@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://csyn0uf3p42v1"]
+[gd_scene load_steps=11 format=3 uid="uid://csyn0uf3p42v1"]
 
 [ext_resource type="Script" path="res://Entities/enemies/flameenemy.gd" id="1_87fua"]
 [ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_mk3tv"]
 [ext_resource type="Texture2D" uid="uid://cc86gqwehduv0" path="res://Resources/Sprites/Entities/enemy fire spritesheet.png" id="2_fi8wd"]
+[ext_resource type="AudioStream" uid="uid://cbdydajved6kp" path="res://Resources/Sound Effects/enemy sounds/fire_enemy_movement.wav" id="4_4n3dy"]
+[ext_resource type="AudioStream" uid="uid://60myg02r4uaw" path="res://Resources/Sound Effects/enemy sounds/battle_alert.wav" id="4_i6htb"]
+[ext_resource type="AudioStream" uid="uid://blp5y42lbb7v1" path="res://Resources/Sound Effects/enemy sounds/fire_enemy_attack.wav" id="4_supek"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iejoq"]
 shader = ExtResource("1_mk3tv")
@@ -24,13 +27,16 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 1)
 metadata/_snap_enabled = true
 
-[node name="FlameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_light")]
+[node name="FlameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_audioplayer", "n_navagent", "n_light", "n_alert_audioplayer", "n_hurt_audioplayer")]
 material = SubResource("ShaderMaterial_iejoq")
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_87fua")
+n_audioplayer = NodePath("Attack")
 n_navagent = NodePath("NavigationAgent2D")
 n_light = NodePath("PointLight2D")
+n_alert_audioplayer = NodePath("Alert")
+n_hurt_audioplayer = NodePath("Hurt")
 
 [node name="TopRays" type="Node2D" parent="."]
 
@@ -110,3 +116,19 @@ position = Vector2(0, -32)
 scale = Vector2(2.21094, 2.62134)
 color = Color(0.721569, 0.705882, 0.984314, 1)
 texture = SubResource("GradientTexture2D_g4baq")
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i6htb")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_supek")
+volume_db = -0.252
+
+[node name="Movement" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4n3dy")
+volume_db = -1.434
+autoplay = true
+attenuation = 3.86374
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+volume_db = 7.0

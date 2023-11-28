@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmqlftislw13w"]
+[gd_scene load_steps=4 format=3 uid="uid://bmqlftislw13w"]
 
 [ext_resource type="Texture2D" uid="uid://dhlhj16p7merw" path="res://Resources/Sprites/Effects/poof.png" id="1_vt4lb"]
 [ext_resource type="Script" path="res://poof.gd" id="2_1f4oe"]
+[ext_resource type="AudioStream" uid="uid://dq2gaa215l8cp" path="res://Resources/Sound Effects/enemy sounds/enemy_defeated.wav" id="3_xh2b5"]
 
-[node name="Poof!" type="Sprite2D"]
+[node name="Poof!" type="Sprite2D" node_paths=PackedStringArray("n_audio_player")]
 scale = Vector2(4, 4)
 texture = ExtResource("1_vt4lb")
 hframes = 5
 script = ExtResource("2_1f4oe")
+n_audio_player = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xh2b5")
+volume_db = -13.627
+pitch_scale = 0.99
