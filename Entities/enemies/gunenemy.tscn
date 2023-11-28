@@ -31,7 +31,7 @@ height = 64.0
 [node name="GunEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_held", "n_navagent", "n_gun", "n_collection_field", "n_collection_light")]
 material = SubResource("ShaderMaterial_nx780")
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_nhp72")
 n_held = NodePath("Polygon2D/Held")
 n_navagent = NodePath("NavAgent")

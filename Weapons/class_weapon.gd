@@ -25,8 +25,8 @@ var idle = true
 # Utility Functions                                  #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack(bonus_velocity = Vector2.ZERO):
+func attack(_bonus_velocity = Vector2.ZERO):
 	pass
 
-func tick(delta):
+func tick(_delta):
 	pass

@@ -31,4 +31,6 @@ func _on_body_entered(body):
 		# Damage and apply knockback
 		body.velocity += velocity.normalized() * knockback
 		body.damage(damage)
+	elif not body is TileMap:
+		body.try(2)
 	queue_free()

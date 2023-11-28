@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://6xad6hxwvmcs"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/transition.gdshader" id="2_k7set"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tby2n"]
+size = Vector2(128, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqjc7"]
+shader = ExtResource("2_k7set")
+
+[node name="Hallway" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.4375, -18.1875)
+shape = SubResource("RectangleShape2D_tby2n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_aqjc7")
+offset_left = -65.0
+offset_top = -50.0
+offset_right = 64.0
+offset_bottom = 242.0
+color = Color(1, 1, 1, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

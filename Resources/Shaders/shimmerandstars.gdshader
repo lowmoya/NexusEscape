@@ -10,7 +10,7 @@ void fragment() {
 	} else {
 		for (int i = 0; i < count; i++) {
 			if (abs(points[i].x - UV.x) + abs(points[i].y - UV.y) < points[i].w)
-				COLOR = vec4(.6, .6, .8, points[i].z / 1.2);
+				COLOR = vec4(.6, .6, .8, points[i].z / 3.);
 		}
 	}
 }

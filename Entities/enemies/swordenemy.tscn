@@ -1,26 +1,60 @@
-[gd_scene load_steps=7 format=3 uid="uid://f5ctu31jc4d5"]
+[gd_scene load_steps=13 format=3 uid="uid://f5ctu31jc4d5"]
 
 [ext_resource type="Script" path="res://Entities/enemies/swordenemy.gd" id="1_4o2w2"]
 [ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="2_840pb"]
 [ext_resource type="Texture2D" uid="uid://o5h2ntq3xays" path="res://Resources/Sprites/Entities/enemy swordbot spritesheet.png" id="2_go73x"]
 [ext_resource type="Texture2D" uid="uid://q1nyjmtyx1yt" path="res://Resources/Sprites/Weapons/sword sprite sheet.png" id="3_2q0p1"]
+[ext_resource type="Shader" path="res://Resources/Shaders/enemysword.gdshader" id="4_xaqnf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iiufc"]
 shader = ExtResource("2_840pb")
 shader_parameter/frame = 0
 
+[sub_resource type="Gradient" id="Gradient_ky3oh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_80ms3"]
+gradient = SubResource("Gradient_ky3oh")
+fill = 1
+fill_from = Vector2(0.508547, 0.487179)
+fill_to = Vector2(0.846154, 0.15812)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dyfhr"]
 radius = 27.0
 height = 82.0
 
-[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_sprite", "n_sword")]
+[sub_resource type="Gradient" id="Gradient_hf6rm"]
+offsets = PackedFloat32Array(0, 0.561702, 1)
+colors = PackedColorArray(0.573217, 0.573217, 0.573217, 1, 0.340426, 0.340426, 0.340426, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t1tc8"]
+gradient = SubResource("Gradient_hf6rm")
+fill = 1
+fill_from = Vector2(0.5, 0.478632)
+fill_to = Vector2(0.833333, 0.162393)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opv2m"]
+shader = ExtResource("4_xaqnf")
+shader_parameter/blue_factor = 1.0
+shader_parameter/frame = 0
+
+[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_sprite", "n_sword", "n_sword_sprite", "n_sword_collider", "n_sword_light")]
 material = SubResource("ShaderMaterial_iiufc")
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_4o2w2")
 n_navagent = NodePath("NavAgent")
 n_sprite = NodePath("Sprite")
 n_sword = NodePath("Sword")
+n_sword_sprite = NodePath("Sword/Sprite")
+n_sword_collider = NodePath("Sword/Area2D/CollisionPolygon2D")
+n_sword_light = NodePath("Sword/PointLight2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 40)
+scale = Vector2(1, 0.65625)
+color = Color(0, 0.211765, 0.768627, 1)
+texture = SubResource("GradientTexture2D_80ms3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 use_parent_material = true
@@ -37,12 +71,31 @@ shape = SubResource("CapsuleShape2D_dyfhr")
 use_parent_material = true
 position = Vector2(72, 2)
 
+[node name="PointLight2D" type="PointLight2D" parent="Sword"]
+position = Vector2(-16, -8)
+scale = Vector2(2.36506, 4.12598)
+skew = -0.45204
+color = Color(0.105882, 0.556863, 1, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_t1tc8")
+
+[node name="Area2D" type="Area2D" parent="Sword"]
+position = Vector2(-72, -2)
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sword/Area2D"]
+polygon = PackedVector2Array(15, -59, 31, -16, 55.8428, -5.10432, 112, 69, 137, 71, 157, 43, 153, -2, 89, -55, 25, -79)
+disabled = true
+
 [node name="Sprite" type="Sprite2D" parent="Sword"]
-use_parent_material = true
+material = SubResource("ShaderMaterial_opv2m")
+position = Vector2(0, -11)
 scale = Vector2(4.01892, 3.97439)
 texture = ExtResource("3_2q0p1")
-hframes = 9
-vframes = 2
+hframes = 2
+vframes = 4
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 target_desired_distance = 80.0
+
+[connection signal="body_entered" from="Sword/Area2D" to="." method="_on_sword_area_body_entered"]

@@ -1,17 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvpbom0cilasq"]
+[gd_scene load_steps=5 format=3 uid="uid://bvpbom0cilasq"]
 
 [ext_resource type="Script" path="res://Weapons/Projectiles/p_firefield.gd" id="1_m8vr3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sap0k"]
 radius = 0.01
 
-[node name="FireField" type="Area2D"]
+[sub_resource type="Gradient" id="Gradient_5gu1n"]
+offsets = PackedFloat32Array(0, 0.225532, 0.434043, 0.885106, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.683672, 0.683672, 0.683672, 1, 0.443699, 0.443699, 0.443699, 1, 0.123404, 0.123404, 0.123404, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a16j4"]
+gradient = SubResource("Gradient_5gu1n")
+fill = 1
+fill_from = Vector2(0.495726, 0.491453)
+fill_to = Vector2(0.807692, 0.217949)
+
+[node name="FireField" type="Area2D" node_paths=PackedStringArray("n_light")]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_m8vr3")
+n_light = NodePath("PointLight2D")
 
 [node name="Field" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sap0k")
 metadata/_edit_lock_ = true
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(1.40625, 1.35938)
+color = Color(0.72549, 0.152941, 0, 1)
+texture = SubResource("GradientTexture2D_a16j4")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

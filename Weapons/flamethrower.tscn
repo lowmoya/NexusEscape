@@ -10,7 +10,7 @@ size = Vector2(62, 40)
 [node name="FlameThrower" type="Area2D"]
 use_parent_material = true
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("1_wemdq")
 
 [node name="Sprite" type="Sprite2D" parent="."]

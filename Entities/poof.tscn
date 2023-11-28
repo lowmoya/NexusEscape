@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmqlftislw13w"]
+
+[ext_resource type="Texture2D" uid="uid://dhlhj16p7merw" path="res://Resources/Sprites/Effects/poof.png" id="1_vt4lb"]
+[ext_resource type="Script" path="res://poof.gd" id="2_1f4oe"]
+
+[node name="Poof!" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_vt4lb")
+hframes = 5
+script = ExtResource("2_1f4oe")

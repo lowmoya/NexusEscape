@@ -47,8 +47,11 @@ func _on_hit_box_body_entered(body):
 		return
 	
 	# Damage and apply knockback
-	body.damage(damage)
-	body.velocity += (body.get_global_position() - get_global_position()).normalized() * knockback
+	if body is Entity:
+		body.damage(damage)
+		body.velocity += (body.get_global_position() - get_global_position()).normalized() * knockback
+	else:
+		body.try(1)
 
 
 
@@ -56,7 +59,7 @@ func _on_hit_box_body_entered(body):
 # Class Functions                                    #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack(bonus_velocity = Vector2.ZERO):
+func attack(_bonus_velocity = Vector2.ZERO):
 	# Toggle slash effect and idle state
 	if not idle:
 		return

@@ -43,11 +43,11 @@ func _ready():
 # Linked Functions                                   #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	blocked = true
 
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	blocked = false
 
 
@@ -56,7 +56,7 @@ func _on_body_exited(body):
 # Class Functions                                    #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-func attack(bonus_velocity=Vector2.ZERO):
+func attack(_bonus_velocity=Vector2.ZERO):
 	# Gun is inside a wall
 	if blocked:
 		return

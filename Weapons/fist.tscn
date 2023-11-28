@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj3kijv6ex1o5"]
+[gd_scene load_steps=5 format=3 uid="uid://dj3kijv6ex1o5"]
 
 [ext_resource type="Texture2D" uid="uid://coydu8lyufg3h" path="res://Resources/Sprites/Weapons/fist.png" id="1_mtjxv"]
 [ext_resource type="Script" path="res://Weapons/fist.gd" id="1_obotb"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_po1o1"]
 radius = 9.0
 height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2t3g"]
+size = Vector2(42, 29)
 
 [node name="Fist" type="Node2D"]
 script = ExtResource("1_obotb")
@@ -18,7 +21,7 @@ texture = ExtResource("1_mtjxv")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(26, 0)
@@ -26,4 +29,14 @@ shape = SubResource("CapsuleShape2D_po1o1")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 
+[node name="ObstructionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstructionArea"]
+position = Vector2(21, 1.5)
+shape = SubResource("RectangleShape2D_v2t3g")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ObstructionArea" to="." method="_on_obstruction_area_body_entered"]
+[connection signal="body_exited" from="ObstructionArea" to="." method="_on_obstruction_area_body_exited"]

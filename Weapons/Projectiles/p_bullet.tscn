@@ -20,7 +20,7 @@ metadata/_snap_enabled = true
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_ibio8")
 
 [node name="Bullet" type="Sprite2D" parent="."]

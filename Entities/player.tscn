@@ -18,8 +18,9 @@ height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_h6lpl")
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_db5lo")
+max_health = 10
 
 [node name="Sprite" type="Sprite2D" parent="."]
 use_parent_material = true

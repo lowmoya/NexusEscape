@@ -45,7 +45,8 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="PlayingUI" parent="." instance=ExtResource("4_3u1ps")]
+[node name="PlayingUI" parent="." node_paths=PackedStringArray("n_player") instance=ExtResource("4_3u1ps")]
+n_player = NodePath("../Player")
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource("5_50glm")

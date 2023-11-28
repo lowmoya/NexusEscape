@@ -67,11 +67,9 @@ func _physics_process(delta):
 	var player_offset =  n_player.global_position - global_position
 	var squared_distance: float = player_offset.x ** 2 + player_offset.y ** 2
 	if squared_distance < chase_distance_threshold:
-		var move = player_offset / sqrt(squared_distance)
-		if squared_distance < desired_squared_distance:
-			move *= -1
-		velocity = lerp(velocity, (speed if attack_state != AttackState.SHOTGUN_ANTICIPATION else \
-				charging_speed) * move, acceleration * delta)
+		velocity = lerp(velocity, player_offset / sqrt(squared_distance) * clamp(\
+				squared_distance - desired_squared_distance, -speed, speed),
+				acceleration * delta)
 	else:
 		n_navagent.target_position = n_player.global_position
 		velocity = (n_navagent.get_next_path_position() - position).normalized() * speed

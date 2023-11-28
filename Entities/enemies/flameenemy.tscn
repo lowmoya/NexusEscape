@@ -27,7 +27,7 @@ metadata/_snap_enabled = true
 [node name="FlameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_navagent", "n_light")]
 material = SubResource("ShaderMaterial_iejoq")
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_87fua")
 n_navagent = NodePath("NavigationAgent2D")
 n_light = NodePath("PointLight2D")

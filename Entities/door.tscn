@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cphwe4utlthiy"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/door.gdshader" id="1_ie0vu"]
+[ext_resource type="Script" path="res://Entities/door.gd" id="1_p62qu"]
+[ext_resource type="Texture2D" uid="uid://2ecw115too3s" path="res://Resources/Tilemaps/tilemap traps and doors.png" id="1_wen5c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6n0ah"]
+size = Vector2(128, 65)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmbu0"]
+shader = ExtResource("1_ie0vu")
+shader_parameter/damage_frame = null
+shader_parameter/immune_frame = null
+
+[node name="Door" type="StaticBody2D" node_paths=PackedStringArray("n_sprite")]
+z_index = -1
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_p62qu")
+n_sprite = NodePath("TilemapTrapsAndDoors")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -29.5)
+shape = SubResource("RectangleShape2D_6n0ah")
+
+[node name="TilemapTrapsAndDoors" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hmbu0")
+scale = Vector2(4, 4)
+texture = ExtResource("1_wen5c")
+vframes = 8

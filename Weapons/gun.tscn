@@ -10,7 +10,7 @@ size = Vector2(62, 40)
 use_parent_material = true
 position = Vector2(40, 0)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("1_sl4md")
 
 [node name="Gun" type="Sprite2D" parent="."]

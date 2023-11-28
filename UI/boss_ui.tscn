@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2tgs7khcxind"]
+
+[ext_resource type="Script" path="res://UI/boss_ui.gd" id="1_hqh8c"]
+[ext_resource type="Texture2D" uid="uid://bb5jq6ga7cmpj" path="res://Resources/Sprites/UI/boss_topbar_background.png" id="2_vaoco"]
+[ext_resource type="Texture2D" uid="uid://cjni4w8v1mylq" path="res://Resources/Sprites/UI/healthbar_foreground.png" id="3_7yead"]
+[ext_resource type="Texture2D" uid="uid://cnq1215r667s0" path="res://Resources/Sprites/UI/boss_bottombar_background.png" id="4_m0mow"]
+
+[node name="BossUI" type="CanvasLayer" node_paths=PackedStringArray("n_healthbar", "n_eletricbar", "n_firebar")]
+script = ExtResource("1_hqh8c")
+n_healthbar = NodePath("HealthBar")
+n_eletricbar = NodePath("EletricBar")
+n_firebar = NodePath("FireBar")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 1.0
+offset_right = -114.0
+offset_bottom = 5.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+size_flags_horizontal = 4
+size_flags_vertical = 10
+step = 0.1
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 4
+stretch_margin_right = 2
+texture_under = ExtResource("2_vaoco")
+texture_progress = ExtResource("3_7yead")
+tint_progress = Color(1, 1, 0.227451, 1)
+
+[node name="EletricBar" type="TextureProgressBar" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 5.0
+offset_right = -114.0
+offset_bottom = 9.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+size_flags_horizontal = 4
+size_flags_vertical = 10
+step = 0.1
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 4
+stretch_margin_right = 2
+texture_under = ExtResource("2_vaoco")
+texture_progress = ExtResource("3_7yead")
+tint_progress = Color(0, 0.435294, 0.709804, 1)
+
+[node name="FireBar" type="TextureProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 9.0
+offset_right = -114.0
+offset_bottom = 15.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+size_flags_horizontal = 4
+size_flags_vertical = 10
+step = 0.1
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("4_m0mow")
+texture_progress = ExtResource("3_7yead")
+tint_progress = Color(1, 0.239216, 0.0862745, 1)

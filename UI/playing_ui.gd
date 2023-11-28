@@ -10,9 +10,9 @@ extends CanvasLayer
 @export var n_energy_bar: TextureProgressBar
 @export var n_dash_fill: Sprite2D
 @export var n_itembar: Sprite2D
+@export var n_player: CharacterBody2D
 
 var n_weapon_fills = [ ]
-var n_player = null
 
 var last_weapon = null
 
@@ -33,7 +33,6 @@ func _ready():
 			n_itembar.get_node("Gun/UnselectedFill") ]
 	n_weapon_fills[Weapon.WeaponType.Flame] = [ n_itembar.get_node("Flame/SelectedFill"), \
 			n_itembar.get_node("Flame/UnselectedFill") ]
-	n_player = get_tree().current_scene.get_node("Player")
 	last_weapon = n_player.weapon
 	
 	# Set bar max values
@@ -42,6 +41,7 @@ func _ready():
 
 
 func _process(delta):
+	
 	# If there's not a player set health and energy to zero and return
 	if n_player == null:
 		n_health_bar.value = 0

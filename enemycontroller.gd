@@ -8,6 +8,7 @@ extends Node
 
 # Drop prefab and variables
 @export var p_Pickup = preload("res://Entities/pickup.tscn")
+@export var p_Poof = preload("res://Entities/poof.tscn")
 @export var drop_chance = .5
 
 @export var enemy_seperation_threshold = 130000
@@ -61,6 +62,11 @@ func _process(delta):
 			enemy += 1
 			continue
 		
+		var n_poof = p_Poof.instantiate()
+		n_poof.global_position = enemies[enemy].global_position
+		n_scene.add_child(n_poof)
+
+		
 		# Check if something should drop
 		if randf() < drop_chance:
 			# Create a pickup and initialize its values
@@ -103,6 +109,9 @@ func _process(delta):
 			j += 1
 		
 		i += 1
+		
+	if idle_enemy_count == 0 and enemy_count == 0:
+		n_player.energy = n_player.max_energy
 
 
 

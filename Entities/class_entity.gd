@@ -7,12 +7,12 @@ class_name Entity
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
 @export var max_health = 5
-@export var health: int
+@export var health: float
 @export var invincibility_millis = 100
 var invincibility_frame = 0
 var defeated = false
 
-var n_player: CharacterBody2D
+@export var n_player: CharacterBody2D
 var n_shader
 
 
