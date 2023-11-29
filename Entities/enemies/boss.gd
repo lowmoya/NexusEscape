@@ -1,6 +1,9 @@
 extends Entity
 
+@export var n_ui: CanvasLayer
+
 # Body Variables
+@export var p_Poof = preload("res://Entities/boss_poof.tscn")
 @export var n_sprite: Sprite2D
 const ANIMATION_FRAME_DURATION: float = .1
 const ANIMATION_FRAMES: int = 3
@@ -8,7 +11,21 @@ var animation_frame: float
 
 const desired_distance: float = 6.e2
 const speed: float = 250.
-const acceleration: float = .99
+const acceleration: float = 10.
+
+# Sound Variables
+@export var n_attack_audioplayer: AudioStreamPlayer2D
+@export var n_general_audioplayer: AudioStreamPlayer2D
+enum StreamLabels { BOSS_ALERT = 0, BOSS_DAMAGE_TAKEN, BOSS_DEFEATED, BOSS_SWORD_ATTACK_0, BOSS_SWORD_ATTACK_1, \
+		BOSS_SWORD_ATTACK_2 }
+var streams = [
+	load("res://Resources/Sound Effects/boss sounds/boss_alert.wav"),
+	load("res://Resources/Sound Effects/boss sounds/boss_damage_taken.wav"),
+	load("res://Resources/Sound Effects/boss sounds/boss_defeated.wav"),
+	load("res://Resources/Sound Effects/boss sounds/boss_sword_attack_1.wav"),
+	load("res://Resources/Sound Effects/boss sounds/boss_sword_attack_2.wav"),
+	load("res://Resources/Sound Effects/boss sounds/boss_sword_attack_3.wav")
+]
 
 # Weapon variables
 const WEAPON_SWITCH_DELAY: float = 2.
@@ -55,8 +72,8 @@ var follow_player = true
 # State Variables
 enum Phases { IDLE = -1, SWORD, GUN, ELECTRIC }
 var phase: Phases = Phases.IDLE
-var fire_shield: float = 100.
-var electric_shield: float = 100.
+var sword_shield: float = 100.
+var gun_shield: float = 100.
 
 
 # Condition Constants
@@ -181,7 +198,14 @@ func sword_phase(delta, to_player, to_player_d):
 			n_sword.scale.y = sword_states[0][1]
 			sword_states.pop_front()
 		SwordStates.DISABLE_COLLIDER:
-			n_sword_collider.disabled = sword_states[0][1]
+			if sword_states[0][1]:
+				n_sword_collider.disabled = true
+			else:
+				n_sword_collider.disabled = false
+				n_attack_audioplayer.stream = streams[StreamLabels.BOSS_SWORD_ATTACK_0 \
+						+ randi_range(0, 2)]
+				n_attack_audioplayer.pitch_scale = randf_range(.9, 1.1)
+				n_attack_audioplayer.play()
 			sword_states.pop_front()
 		SwordStates.TOGGLE_FOLLOW:
 			if follow_player:
@@ -233,21 +257,25 @@ func _process(delta):
 			if to_player_sd < AWAKEN_SDT:
 				phase = Phases.SWORD
 				n_sword.visible = true
+				n_general_audioplayer.stream = streams[StreamLabels.BOSS_ALERT]
+				n_general_audioplayer.pitch_scale = randf_range(.9, 1.1)
+				n_general_audioplayer.play()
+				n_ui.visible = true
 	
 
 func damage(amount):
 	match phase:
 		Phases.SWORD:
-			fire_shield -= amount
-			if fire_shield <= 0:
-				fire_shield = 0
+			sword_shield -= amount
+			if sword_shield <= 0:
+				sword_shield = 0
 				phase = Phases.GUN
 				n_sword.visible = false
 				n_gun.visible = true
 		Phases.GUN:
-			electric_shield -= amount
-			if electric_shield <= 0:
-				electric_shield = 0
+			gun_shield -= amount
+			if gun_shield <= 0:
+				gun_shield = 0
 				phase = Phases.ELECTRIC
 				n_gun.visible = false
 				n_coil.visible = true
@@ -257,7 +285,12 @@ func damage(amount):
 				health = 0
 				queue_free()
 				n_coil.visible = false
-				# can add a death phase
+				var n_poof = p_Poof.instantiate()
+				n_poof.global_position = global_position
+				get_tree().current_scene.add_child(n_poof)
+	n_general_audioplayer.stream = streams[StreamLabels.BOSS_DAMAGE_TAKEN]
+	n_general_audioplayer.pitch_scale = randf_range(.9, 1.1)
+	n_general_audioplayer.play()
 
 
 

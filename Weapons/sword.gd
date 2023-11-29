@@ -71,6 +71,9 @@ func attack(_bonus_velocity = Vector2.ZERO):
 	n_audioplayer.stream = samples[random_generator.randi_range(0,1)]
 	n_audioplayer.play()
 
+func can_attack():
+	return idle
+
 func tick(delta):
 	# Can skip if not currently attacking
 	if idle:

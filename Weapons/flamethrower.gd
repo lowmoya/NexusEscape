@@ -47,7 +47,7 @@ func attack(bonus_velocity = Vector2.ZERO):
 	# Gun is inside a wall
 	var current_time = Time.get_ticks_msec()
 	if blocked or current_time < fired_frame:
-		return
+		return 0
 	fired_frame = current_time + delay
 	
 	for i in range(2):
@@ -56,4 +56,7 @@ func attack(bonus_velocity = Vector2.ZERO):
 		flame.global_position = global_position + aim_offset * emitter_xoffset
 		flame.velocity = aim_offset * flame_speed + bonus_velocity
 		n_scene.add_child(flame)
-	
+	return energy_cost
+
+func can_attack():
+	return not blocked and Time.get_ticks_msec() >= fired_frame

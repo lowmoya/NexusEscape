@@ -35,6 +35,7 @@ script = ExtResource("1_87fua")
 n_audioplayer = NodePath("Attack")
 n_navagent = NodePath("NavigationAgent2D")
 n_light = NodePath("PointLight2D")
+max_health = 30
 n_alert_audioplayer = NodePath("Alert")
 n_hurt_audioplayer = NodePath("Hurt")
 

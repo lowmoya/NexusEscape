@@ -252,7 +252,7 @@ texture_scale = 0.5
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 limit_left = -6080
 limit_top = -10502
-limit_right = 6000
+limit_right = 10720
 limit_bottom = 14130
 limit_smoothed = true
 position_smoothing_enabled = true

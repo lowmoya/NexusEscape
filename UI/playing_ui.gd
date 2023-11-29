@@ -8,19 +8,22 @@ extends CanvasLayer
 
 @export var n_front_health_bar: TextureProgressBar
 @export var n_back_health_bar: TextureProgressBar
-@export var n_energy_bar: TextureProgressBar
+@export var n_front_energy_bar: TextureProgressBar
+@export var n_back_energy_bar: TextureProgressBar
 @export var n_dash_fill: Sprite2D
 @export var n_itembar: Sprite2D
 @export var n_player: CharacterBody2D
 
 var n_weapon_fills = [ ]
-
 var last_weapon = null
 
 const DAMAGE_COLOR = Color(1., .23, .14, 1.)
 const HEAL_COLOR = Color(.34, .77, .94, 1.)
-const HEALTH_ADJUST = 2.3
+const DRAIN_COLOR = Color(.42, .42, .45, 1.)
+const REPLENISH_COLOR = Color(.92, .92, 1., 1.)
+const STATUS_MATCH_RATE = 2.3
 var floating_health: float
+var floating_energy: float
 
 
 # ################################################## #
@@ -42,8 +45,11 @@ func _ready():
 	
 	# Set bar max values
 	n_front_health_bar.max_value = n_player.max_health
+	n_back_health_bar.max_value = n_player.max_health
 	floating_health = n_player.max_health
-	n_energy_bar.max_value = n_player.max_energy
+	n_front_energy_bar.max_value = n_player.max_energy
+	n_back_energy_bar.max_value = n_player.max_energy
+	floating_energy = n_player.max_energy
 
 
 func _process(delta):
@@ -52,21 +58,35 @@ func _process(delta):
 	if n_player == null:
 		n_front_health_bar.value = 0.
 		n_back_health_bar.value = 0.
-		n_energy_bar.value = 0.
+		n_front_energy_bar.value = 0.
+		n_back_energy_bar.value = 0.
 		return
 	
 	# Set status bars
 	if floating_health < n_player.health:
-		floating_health += clamp(n_player.health - floating_health, -HEALTH_ADJUST * delta, HEALTH_ADJUST * delta)
+		floating_health += clamp(n_player.health - floating_health, -STATUS_MATCH_RATE * delta, \
+				STATUS_MATCH_RATE * delta)
 		n_front_health_bar.value = floating_health
 		n_back_health_bar.value = n_player.health
 		n_back_health_bar.tint_progress = HEAL_COLOR
 	else:
-		floating_health += clamp(n_player.health - floating_health, -HEALTH_ADJUST * delta, HEALTH_ADJUST * delta)
+		floating_health += clamp(n_player.health - floating_health, -STATUS_MATCH_RATE * delta, \
+				STATUS_MATCH_RATE * delta)
 		n_front_health_bar.value = n_player.health
 		n_back_health_bar.value = floating_health
 		n_back_health_bar.tint_progress = DAMAGE_COLOR
-	n_energy_bar.value = n_player.energy
+	if floating_energy < n_player.energy:
+		floating_energy += clamp(n_player.energy - floating_energy, -STATUS_MATCH_RATE * delta, \
+				STATUS_MATCH_RATE * delta)
+		n_front_energy_bar.value = floating_energy
+		n_back_energy_bar.value = n_player.energy
+		n_back_energy_bar.tint_progress = REPLENISH_COLOR
+	else:
+		floating_energy += clamp(n_player.energy - floating_energy, -STATUS_MATCH_RATE * delta, \
+				STATUS_MATCH_RATE * delta)
+		n_front_energy_bar.value = n_player.energy
+		n_back_energy_bar.value = floating_energy
+		n_back_energy_bar.tint_progress = DRAIN_COLOR
 	
 	# Set dash icon
 	var dash_difference = n_player.dash_frame - Time.get_ticks_msec()

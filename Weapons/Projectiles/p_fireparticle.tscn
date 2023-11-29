@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwesqdc7vs6gd"]
+[gd_scene load_steps=4 format=3 uid="uid://cwesqdc7vs6gd"]
 
 [ext_resource type="Script" path="res://Weapons/Projectiles/p_fireparticle.gd" id="1_806gs"]
+[ext_resource type="AudioStream" uid="uid://cotg0dhcwkkry" path="res://Resources/Sound Effects/boss sounds/fire_loop.wav" id="2_rqj1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qln7j"]
 size = Vector2(4.24264, 4.24264)
 
-[node name="FireParticle" type="Area2D" node_paths=PackedStringArray("n_rect", "n_collider")]
+[node name="FireParticle" type="Area2D" node_paths=PackedStringArray("n_rect", "n_collider", "n_audioplayer")]
 rotation = 0.785398
 collision_layer = 0
 collision_mask = 14
 script = ExtResource("1_806gs")
 n_rect = NodePath("ColorRect")
 n_collider = NodePath("CollisionShape2D")
+n_audioplayer = NodePath("AudioStreamPlayer2D")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -2.0
@@ -23,5 +25,11 @@ color = Color(0.701961, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qln7j")
 disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rqj1u")
+volume_db = -2.213
+autoplay = true
+attenuation = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

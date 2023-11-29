@@ -41,6 +41,7 @@ n_navagent = NodePath("NavAgent")
 n_gun = NodePath("Polygon2D/Held/Gun")
 n_collection_field = NodePath("Polygon2D/Held/Gun/CollectionField")
 n_collection_light = NodePath("Polygon2D/Held/Gun/CollectionLight")
+max_health = 30
 n_alert_audioplayer = NodePath("Alert")
 n_hurt_audioplayer = NodePath("Hurt")
 

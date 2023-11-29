@@ -13,7 +13,6 @@ material = SubResource("ShaderMaterial_a8qed")
 script = ExtResource("1_rntg6")
 
 [node name="Battery" type="Sprite2D" parent="."]
-visible = false
 use_parent_material = true
 scale = Vector2(4, 4)
 texture = ExtResource("1_ge3aw")
