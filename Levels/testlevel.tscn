@@ -86,10 +86,6 @@ position = Vector2(3175, -1223)
 [node name="PlayingUI" parent="." node_paths=PackedStringArray("n_player") instance=ExtResource("6_eemkd")]
 n_player = NodePath("../Player")
 
-[node name="BossUI" parent="." node_paths=PackedStringArray("n_boss") instance=ExtResource("11_c0pbj")]
-visible = false
-n_boss = NodePath("../Boss")
-
 [node name="Camera Transition" type="Area2D" parent="." node_paths=PackedStringArray("n_entrance", "n_player_camera", "n_boss_camera")]
 position = Vector2(1577, -4429)
 collision_layer = 0
@@ -131,7 +127,21 @@ n_ui = NodePath("../BossUI")
 n_player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_atocb")]
-position = Vector2(259, 270)
+position = Vector2(350, 266)
+weapon = 0
+dash_sprites = 8.0
+hurt_sprite_extra_delay = 150.0
+walk_sprites = 15
+walk_sprites_per_second = 30
+max_energy = 10.0
+speed = 340
+acceleration = 10
+dash_delay = 3000.0
+dash_start_delay = 200.0
+dash_length = 800.0
+dash_strength = 400
+health = 0.0
+invincibility_millis = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -6080
@@ -141,6 +151,7 @@ limit_bottom = 14130
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 show_behind_parent = true
@@ -149,5 +160,10 @@ energy = 0.21
 shadow_enabled = true
 texture = ExtResource("5_dmwhj")
 texture_scale = 0.5
+metadata/_edit_lock_ = true
+
+[node name="BossUI" parent="." node_paths=PackedStringArray("n_boss") instance=ExtResource("11_c0pbj")]
+visible = false
+n_boss = NodePath("../Boss")
 
 [connection signal="body_entered" from="Camera Transition" to="Camera Transition" method="_on_body_entered"]

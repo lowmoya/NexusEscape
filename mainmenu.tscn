@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2vmvny1f2u1m"]
+[gd_scene load_steps=8 format=3 uid="uid://2vmvny1f2u1m"]
 
 [ext_resource type="Shader" path="res://Resources/Shaders/shimmerandstars.gdshader" id="1_ctjkg"]
 [ext_resource type="Texture2D" uid="uid://cagw0vrw5eh4b" path="res://Resources/Sprites/UI/Title-01.png" id="1_rp318"]
@@ -39,7 +39,7 @@ func _physics_process(delta):
 	shader.set_shader_parameter(\"points\", stars)
 
 func _topdown_button():
-	get_tree().change_scene_to_file(\"res://Levels/level1.tscn\")
+	get_tree().change_scene_to_file(\"res://Levels/testlevel.tscn\")
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knf2x"]
@@ -51,6 +51,9 @@ shader_parameter/points = null
 default_font_size = 20
 
 [sub_resource type="Theme" id="Theme_urean"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shqwd"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
 
 [node name="main menu" type="Control" node_paths=PackedStringArray("n_splashscreen")]
 layout_mode = 3
@@ -77,10 +80,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -166.0
-offset_top = 17.0
-offset_right = 166.0
-offset_bottom = 54.0
+offset_left = -242.5
+offset_top = -16.0
+offset_right = 242.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_41gwq")
@@ -89,7 +92,7 @@ theme_override_constants/separation = 8
 [node name="TopdownButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 theme = SubResource("Theme_urean")
+theme_override_styles/normal = SubResource("StyleBoxFlat_shqwd")
 text = "Start"
-flat = true
 
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcpav2807vdex"]
+[gd_scene load_steps=15 format=3 uid="uid://bcpav2807vdex"]
 
 [ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_5ohyo"]
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_db5lo"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://b2ee1lyjryad1" path="res://Resources/Sound Effects/player movement/dash_robot_treads.wav" id="8_nldq7"]
 [ext_resource type="AudioStream" uid="uid://bsiiuc1ebfosy" path="res://Resources/Sound Effects/player weapons/flamethrower.wav" id="8_ovoie"]
 [ext_resource type="AudioStream" uid="uid://371oyx7dgdro" path="res://Resources/Sound Effects/other sounds/item_pickup.wav" id="9_8uogf"]
+[ext_resource type="PackedScene" uid="uid://djqhgdh3j1nsi" path="res://UI/pause_screen.tscn" id="11_rukxv"]
+[ext_resource type="PackedScene" uid="uid://bamk6jcnwqo1e" path="res://UI/death_screen.tscn" id="12_r4d4j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h6lpl"]
 shader = ExtResource("1_5ohyo")
@@ -19,10 +21,13 @@ shader_parameter/frame = 0
 radius = 23.0
 height = 74.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("n_audioplayer", "n_steps_audioplayer", "n_dash_audioplayer", "n_flamethrower_audioplayer", "n_pickup_audioplayer", "n_hurt_audioplayer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("n_hitbox", "n_deathscreen", "n_pausescreen", "n_audioplayer", "n_steps_audioplayer", "n_dash_audioplayer", "n_flamethrower_audioplayer", "n_pickup_audioplayer", "n_hurt_audioplayer")]
 material = SubResource("ShaderMaterial_h6lpl")
 collision_mask = 15
 script = ExtResource("1_db5lo")
+n_hitbox = NodePath("HitBox")
+n_deathscreen = NodePath("Death Screen")
+n_pausescreen = NodePath("Pause Screen")
 n_audioplayer = NodePath("General")
 n_steps_audioplayer = NodePath("Steps")
 n_dash_audioplayer = NodePath("Dash")
@@ -85,3 +90,11 @@ stream = ExtResource("8_ovoie")
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_8uogf")
+
+[node name="Pause Screen" parent="." instance=ExtResource("11_rukxv")]
+process_mode = 4
+visible = false
+
+[node name="Death Screen" parent="." instance=ExtResource("12_r4d4j")]
+process_mode = 4
+visible = false

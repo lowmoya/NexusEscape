@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://djqhgdh3j1nsi"]
+
+[ext_resource type="Script" path="res://UI/pause_screen.gd" id="1_h3wtc"]
+[ext_resource type="Theme" uid="uid://5xwso0c7pqgc" path="res://UI/death_screen.tres" id="2_nmj4s"]
+[ext_resource type="Texture2D" uid="uid://cr1ohf2opro0j" path="res://Resources/Sprites/UI/retry.png" id="3_3apr0"]
+[ext_resource type="Texture2D" uid="uid://3lstford158c" path="res://Resources/Sprites/UI/exit.png" id="4_11f2t"]
+[ext_resource type="Texture2D" uid="uid://dmoli6e4ywlfy" path="res://Resources/Sprites/UI/paused.png" id="5_bqlnu"]
+
+[sub_resource type="FontVariation" id="FontVariation_hv5sj"]
+spacing_glyph = 1
+spacing_space = 1
+spacing_top = 3
+spacing_bottom = 3
+
+[sub_resource type="Theme" id="Theme_w7v6r"]
+default_font = SubResource("FontVariation_hv5sj")
+
+[node name="Pause Screen" type="CanvasLayer"]
+script = ExtResource("1_h3wtc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1439.0
+offset_top = -1068.0
+offset_right = 1554.0
+offset_bottom = 1103.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.0941176, 0.129412, 0.878431)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -51.0
+offset_right = 208.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_w7v6r")
+
+[node name="Try again" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_nmj4s")
+icon = ExtResource("3_3apr0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+"
+icon = ExtResource("4_11f2t")
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.396267
+anchor_top = 0.231481
+anchor_right = 0.601128
+anchor_bottom = 0.299383
+offset_left = 90.0
+offset_right = -87.0
+offset_bottom = -33.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(30, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("5_bqlnu")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer/Try again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

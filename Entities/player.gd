@@ -6,6 +6,10 @@ extends Entity
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
+@export var n_hitbox: CollisionShape2D
+@export var n_deathscreen: CanvasLayer
+@export var n_pausescreen: CanvasLayer
+
 # weapons
 @export var weapon = Weapon.WeaponType.Fist
 var n_held = null
@@ -30,6 +34,7 @@ enum SpriteLabel { Damaged = 0, Attack, DashHold, Dash, WalkRight, WalkLeft, Idl
 @export var walk_sprites_per_second = 30
 var n_sprite = null
 var walk_sprite = 0.
+
 
 # resources
 @export var max_energy = 10.
@@ -87,10 +92,7 @@ func _ready():
 func _physics_process(delta):
 	# Ensure the player is still alive or handle otherwise
 	if defeated:
-		# TODO: invis player , freeze camera, show game over overlay over the screen with restart level or quit
-		n_audioplayer.stream = audiosamples[AudioLabel.GameOver]
-		n_audioplayer.play()
-		get_tree().change_scene_to_file("res://Levels/mainmenu.tscn")
+		return
 	
 	# Obtain the players desired direction 
 	movement = Vector2(
@@ -147,6 +149,11 @@ func _physics_process(delta):
 			switchHeld(0 if weapon == Weapon.WeaponType.Count - 1 else weapon + 1)
 		elif Input.is_action_just_pressed("select_left"):
 			switchHeld(Weapon.WeaponType.Count - 1 if weapon == 0 else weapon - 1)
+		elif Input.is_action_just_pressed("pause"):
+			n_pausescreen.visible = true
+			n_pausescreen.delay = Time.get_ticks_msec() + 100
+			n_pausescreen.process_mode = Node.PROCESS_MODE_ALWAYS
+			get_tree().paused = true
 	
 	# Move velocity "towards" the players desired direction and move
 	velocity = lerp(velocity, movement, acceleration * delta)
@@ -211,9 +218,18 @@ func damage(amount):
 	health -= amount
 	if health <= 0:
 		defeated = true
-	n_hurt_audioplayer.pitch_scale = randf_range(.9, 1.1)
-	n_audioplayer.stream = audiosamples[AudioLabel.Damaged]
-	n_audioplayer.play()
+		n_audioplayer.pitch_scale = randf_range(.9, 1.1)
+		n_audioplayer.stream = audiosamples[AudioLabel.GameOver]
+		n_audioplayer.play()
+		visible = false
+		set_collision_layer_value(1, false)
+		n_deathscreen.visible = true
+		n_deathscreen.process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().paused = true
+	else:
+		n_hurt_audioplayer.pitch_scale = randf_range(.9, 1.1)
+		n_audioplayer.stream = audiosamples[AudioLabel.Damaged]
+		n_audioplayer.play()
 	
 
 
