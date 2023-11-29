@@ -17,5 +17,7 @@ func _process(delta):
 	frame = floor(FRAME_RATE * (MAX_LIFE - life))
 	life -= delta
 	if life < 0:
+		n_player_camera.position_smoothing_enabled = false
+		n_player_camera.global_position = n_boss_camera.global_position
 		n_boss_camera.enabled = false
 		queue_free()

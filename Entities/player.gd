@@ -10,7 +10,7 @@ extends Entity
 @export var n_hitbox: CollisionShape2D
 @export var n_deathscreen: CanvasLayer
 @export var n_pausescreen: CanvasLayer
-const CAMERA_MOVE_SPEED = 1.
+const CAMERA_MOVE_SPEED = .5
 
 # weapons
 @export var weapon = Weapon.WeaponType.Fist
@@ -98,6 +98,8 @@ func _physics_process(delta):
 	if n_camera.position != Vector2.ZERO:
 		n_camera.position = lerp(n_camera.position, Vector2.ZERO, \
 				CAMERA_MOVE_SPEED * delta)
+	else:
+		n_camera.position_smoothing_enabled = true
 	
 	# Obtain the players desired direction 
 	movement = Vector2(
