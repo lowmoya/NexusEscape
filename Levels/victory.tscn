@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://dx8m50g0m1sdl"]
+
+[ext_resource type="Script" path="res://Levels/victory.gd" id="1_1tn37"]
+[ext_resource type="Shader" path="res://Resources/Shaders/shimmerandstars.gdshader" id="2_qxiq1"]
+[ext_resource type="Texture2D" uid="uid://b2ljag57qakdk" path="res://Resources/Sprites/UI/victory.png" id="3_kc78l"]
+[ext_resource type="Texture2D" uid="uid://diki4kfcfrr88" path="res://Resources/Sprites/UI/playagain.png" id="4_7wfh6"]
+[ext_resource type="Texture2D" uid="uid://3lstford158c" path="res://Resources/Sprites/UI/exit.png" id="5_yk6d2"]
+[ext_resource type="AudioStream" uid="uid://pg6fvl0ms4td" path="res://Resources/Music/menu_song.mp3" id="6_pk42h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbqkv"]
+shader = ExtResource("2_qxiq1")
+shader_parameter/count = null
+shader_parameter/points = null
+
+[sub_resource type="Theme" id="Theme_41gwq"]
+default_font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8dif"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajxmp"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
+
+[node name="Victory" type="Control" node_paths=PackedStringArray("n_splashscreen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1tn37")
+n_splashscreen = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_rbqkv")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0820312
+anchor_top = 0.12963
+anchor_right = 0.925781
+anchor_bottom = 0.87037
+offset_left = 360.0
+offset_top = 120.0
+offset_right = -369.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(120, 40)
+texture = ExtResource("3_kc78l")
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289931
+anchor_top = 0.462963
+anchor_right = 0.710938
+anchor_bottom = 0.604938
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_41gwq")
+theme_override_constants/separation = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Play Again" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_e8dif")
+icon = ExtResource("4_7wfh6")
+icon_alignment = 1
+
+[node name="Exit" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ajxmp")
+text = "
+"
+icon = ExtResource("5_yk6d2")
+icon_alignment = 1
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pk42h")
+autoplay = true
+
+[connection signal="pressed" from="ButtonContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="ButtonContainer/Exit" to="." method="_on_exit_pressed"]

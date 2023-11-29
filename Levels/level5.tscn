@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0416ds6u82i7"]
+[gd_scene load_steps=12 format=3 uid="uid://c0416ds6u82i7"]
 
 [ext_resource type="TileSet" uid="uid://damfbuciwmh81" path="res://Resources/Tilemaps/tilemap2.tres" id="1_m776l"]
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="2_hfwor"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://th74c3jjep2e" path="res://Resources/Sprites/Effects/light.png" id="7_lwxry"]
 [ext_resource type="Texture2D" uid="uid://2ecw115too3s" path="res://Resources/Tilemaps/tilemap traps and doors.png" id="8_qlk3y"]
 [ext_resource type="Script" path="res://Levels/Camera Transition.gd" id="8_yg8co"]
+[ext_resource type="AudioStream" uid="uid://dkseiewpakgf" path="res://Resources/Music/levels_song.mp3" id="10_02ijq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sompr"]
 size = Vector2(192, 109)
@@ -66,15 +67,18 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Boss" parent="TileMap" node_paths=PackedStringArray("n_ui", "n_player") instance=ExtResource("3_sbs6r")]
+[node name="Boss" parent="TileMap" node_paths=PackedStringArray("n_boss_camera", "n_player_camera", "n_ui", "n_exit", "n_player") instance=ExtResource("3_sbs6r")]
 position = Vector2(519.75, 200.75)
 scale = Vector2(0.25, 0.25)
+n_boss_camera = NodePath("../../BossCamera")
+n_player_camera = NodePath("../Player/Camera2D2")
 n_ui = NodePath("../../BossUI")
+n_exit = NodePath("../../Exit")
 max_health = 100
 health = 100.0
 n_player = NodePath("../Player")
 
-[node name="Door" parent="." instance=ExtResource("4_fvcke")]
+[node name="Exit" parent="." instance=ExtResource("4_fvcke")]
 position = Vector2(2048, 469)
 type = 4
 
@@ -85,12 +89,13 @@ n_player = NodePath("../TileMap/Player")
 visible = false
 n_boss = NodePath("../TileMap/Boss")
 
-[node name="Camera Transition" type="Area2D" parent="." node_paths=PackedStringArray("n_entrance", "n_player_camera", "n_boss_camera")]
+[node name="Camera Transition" type="Area2D" parent="." node_paths=PackedStringArray("n_entrance", "n_player_camera", "n_boss_camera", "n_musicplayer")]
 collision_layer = 0
 script = ExtResource("8_yg8co")
 n_entrance = NodePath("../Entrance/CollisionShape2D")
 n_player_camera = NodePath("../TileMap/Player/Camera2D2")
 n_boss_camera = NodePath("../BossCamera")
+n_musicplayer = NodePath("../AudioStreamPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera Transition"]
 polygon = PackedVector2Array(1869, 1659, 1908, 1659, 1917, 1529, 2228, 1532, 2236, 1659, 2269, 1659, 2256, 1500, 1886, 1496)
@@ -118,5 +123,10 @@ position = Vector2(2083, 970)
 offset = Vector2(0, 100)
 enabled = false
 zoom = Vector2(0.5, 0.5)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_02ijq")
+volume_db = -6.0
+autoplay = true
 
 [connection signal="body_entered" from="Camera Transition" to="Camera Transition" method="_on_body_entered"]

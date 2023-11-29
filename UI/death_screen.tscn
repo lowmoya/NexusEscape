@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bamk6jcnwqo1e"]
+[gd_scene load_steps=11 format=3 uid="uid://bamk6jcnwqo1e"]
 
 [ext_resource type="Theme" uid="uid://5xwso0c7pqgc" path="res://UI/death_screen.tres" id="1_lwres"]
 [ext_resource type="Script" path="res://UI/death_screen.gd" id="1_xj17r"]
@@ -15,6 +15,12 @@ spacing_bottom = 3
 
 [sub_resource type="Theme" id="Theme_w7v6r"]
 default_font = SubResource("FontVariation_hv5sj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chxoe"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsd2"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
 
 [node name="Death Screen" type="CanvasLayer"]
 script = ExtResource("1_xj17r")
@@ -52,12 +58,15 @@ theme = SubResource("Theme_w7v6r")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_lwres")
+theme_override_styles/normal = SubResource("StyleBoxFlat_chxoe")
 icon = ExtResource("2_yeta1")
 icon_alignment = 1
 expand_icon = true
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_vcsd2")
 text = "
 "
 icon = ExtResource("3_eueh4")
@@ -82,6 +91,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_u1dc0")
+volume_db = 8.0
 autoplay = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]

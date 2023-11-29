@@ -1,13 +1,22 @@
 extends Entity
 
+@export var n_boss_camera: Camera2D
+@export var n_player_camera: Camera2D
 @export var n_ui: CanvasLayer
+@export var n_exit: StaticBody2D
+var scene
 
 # Body Variables
 @export var p_Poof = preload("res://Entities/boss_poof.tscn")
+@export var p_Pickup = preload("res://Entities/pickup.tscn")
 @export var n_sprite: Sprite2D
+const PICKUP_DISTANCE: float = 100.
 const ANIMATION_FRAME_DURATION: float = .1
 const ANIMATION_FRAMES: int = 3
 var animation_frame: float
+
+const DAMAGE_PER_PICKUP: float = 50.
+var stacked_damage: float = 0.
 
 const desired_distance: float = 6.e2
 const speed: float = 250.
@@ -82,7 +91,8 @@ const AWAKEN_SDT: float = 3.5e5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var current_time = Time.get_ticks_msec() / 1.e3
-
+	scene = get_tree().current_scene
+	
 	# Prepare animation components
 	animation_frame = current_time + ANIMATION_FRAME_DURATION
 
@@ -268,10 +278,19 @@ func damage(amount):
 		Phases.SWORD:
 			sword_shield -= amount
 			if sword_shield <= 0:
-				sword_shield = 0
-				phase = Phases.GUN
+				# TEMP kill boss after first phase for demo
+				queue_free()
 				n_sword.visible = false
-				n_gun.visible = true
+				var n_poof = p_Poof.instantiate()
+				n_poof.n_boss_camera = n_boss_camera
+				n_poof.n_player_camera = n_player_camera
+				n_poof.global_position = global_position
+				get_tree().current_scene.add_child(n_poof)
+				sword_shield = 0
+				n_exit.queue_free()
+				#phase = Phases.GUN
+				#n_sword.visible = false
+				#n_gun.visible = true
 		Phases.GUN:
 			gun_shield -= amount
 			if gun_shield <= 0:
@@ -286,11 +305,23 @@ func damage(amount):
 				queue_free()
 				n_coil.visible = false
 				var n_poof = p_Poof.instantiate()
+				n_poof.n_boss_camera = n_boss_camera
+				n_poof.n_player_camera = n_player_camera
 				n_poof.global_position = global_position
 				get_tree().current_scene.add_child(n_poof)
+				n_exit.queue_free()
 	n_general_audioplayer.stream = streams[StreamLabels.BOSS_DAMAGE_TAKEN]
 	n_general_audioplayer.pitch_scale = randf_range(.9, 1.1)
 	n_general_audioplayer.play()
+	stacked_damage += amount
+	if stacked_damage > DAMAGE_PER_PICKUP:
+		var pickup = p_Pickup.instantiate()
+		pickup.global_position = global_position + (n_player.global_position - global_position).normalized() \
+				* PICKUP_DISTANCE
+		pickup.type = randi_range(0, Pickup.PickupType.COUNT - 1)
+		pickup.n_target = n_player
+		scene.add_child(pickup)
+		stacked_damage = 0.
 
 
 

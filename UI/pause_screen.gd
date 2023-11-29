@@ -11,7 +11,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause") and Time.get_ticks_msec() > delay:
 		visible = false
 		get_tree().paused = false

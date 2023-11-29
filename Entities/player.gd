@@ -6,9 +6,11 @@ extends Entity
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
+@export var n_camera: Camera2D
 @export var n_hitbox: CollisionShape2D
 @export var n_deathscreen: CanvasLayer
 @export var n_pausescreen: CanvasLayer
+const CAMERA_MOVE_SPEED = 1.
 
 # weapons
 @export var weapon = Weapon.WeaponType.Fist
@@ -93,6 +95,9 @@ func _physics_process(delta):
 	# Ensure the player is still alive or handle otherwise
 	if defeated:
 		return
+	if n_camera.position != Vector2.ZERO:
+		n_camera.position = lerp(n_camera.position, Vector2.ZERO, \
+				CAMERA_MOVE_SPEED * delta)
 	
 	# Obtain the players desired direction 
 	movement = Vector2(

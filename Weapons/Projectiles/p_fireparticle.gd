@@ -33,6 +33,6 @@ func _on_body_entered(body):
 	visible = false
 	n_collider.set_deferred("disabled", true)
 	if body is Entity:
-		body.damage(.06)
+		body.damage(.1)
 	elif not body is TileMap:
 		body.try(3)

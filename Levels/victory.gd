@@ -32,5 +32,11 @@ func _physics_process(delta):
 	shader.set_shader_parameter("count", star_count)
 	shader.set_shader_parameter("points", stars)
 
-func _topdown_button():
+
+
+func _on_play_again_pressed():
 	get_tree().change_scene_to_file("res://Levels/testlevel.tscn")
+
+
+func _on_exit_pressed():
+	get_tree().quit()

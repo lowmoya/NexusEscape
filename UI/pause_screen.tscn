@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djqhgdh3j1nsi"]
+[gd_scene load_steps=10 format=3 uid="uid://djqhgdh3j1nsi"]
 
 [ext_resource type="Script" path="res://UI/pause_screen.gd" id="1_h3wtc"]
 [ext_resource type="Theme" uid="uid://5xwso0c7pqgc" path="res://UI/death_screen.tres" id="2_nmj4s"]
@@ -14,6 +14,12 @@ spacing_bottom = 3
 
 [sub_resource type="Theme" id="Theme_w7v6r"]
 default_font = SubResource("FontVariation_hv5sj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5hij"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce6kb"]
+bg_color = Color(0.231373, 0.321569, 0.380392, 1)
 
 [node name="Pause Screen" type="CanvasLayer"]
 script = ExtResource("1_h3wtc")
@@ -51,12 +57,15 @@ theme = SubResource("Theme_w7v6r")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_nmj4s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5hij")
 icon = ExtResource("3_3apr0")
 icon_alignment = 1
 expand_icon = true
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ce6kb")
 text = "
 "
 icon = ExtResource("4_11f2t")
