@@ -66,9 +66,12 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Boss" parent="TileMap" node_paths=PackedStringArray("n_player") instance=ExtResource("3_sbs6r")]
+[node name="Boss" parent="TileMap" node_paths=PackedStringArray("n_ui", "n_player") instance=ExtResource("3_sbs6r")]
 position = Vector2(519.75, 200.75)
 scale = Vector2(0.25, 0.25)
+n_ui = NodePath("../../BossUI")
+max_health = 100
+health = 100.0
 n_player = NodePath("../Player")
 
 [node name="Door" parent="." instance=ExtResource("4_fvcke")]
@@ -79,6 +82,7 @@ type = 4
 n_player = NodePath("../TileMap/Player")
 
 [node name="BossUI" parent="." node_paths=PackedStringArray("n_boss") instance=ExtResource("7_7ungv")]
+visible = false
 n_boss = NodePath("../TileMap/Boss")
 
 [node name="Camera Transition" type="Area2D" parent="." node_paths=PackedStringArray("n_entrance", "n_player_camera", "n_boss_camera")]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2kvp5c323c0"]
+
+[ext_resource type="Texture2D" uid="uid://dhlhj16p7merw" path="res://Resources/Sprites/Effects/poof.png" id="1_c5yng"]
+[ext_resource type="Script" path="res://Entities/boss_poof.gd" id="2_lg68v"]
+[ext_resource type="AudioStream" uid="uid://cr1us1r0pcduf" path="res://Resources/Sound Effects/boss sounds/boss_defeated.wav" id="3_ukfk5"]
+
+[node name="Boss Poof!" type="Sprite2D" node_paths=PackedStringArray("n_audio_player")]
+scale = Vector2(8, 8)
+texture = ExtResource("1_c5yng")
+hframes = 5
+script = ExtResource("2_lg68v")
+n_audio_player = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ukfk5")
+volume_db = -13.627
+pitch_scale = 0.99

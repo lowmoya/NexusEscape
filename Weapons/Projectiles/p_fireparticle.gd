@@ -2,6 +2,7 @@ extends Area2D
 
 @export var n_rect: ColorRect
 @export var n_collider: CollisionShape2D
+@export var n_audioplayer: AudioStreamPlayer2D
 
 var color_falloff: float
 var displacement_radius: float
@@ -16,6 +17,7 @@ func setup(frame, max_radius):
 	displacement_direction = Vector2(1. if randi_range(0, 1) == 1 else -1., \
 			1. if randi_range(0, 1) == 1 else -1.)
 	initial_time = Time.get_ticks_msec()
+	n_audioplayer.pitch_scale = randf_range(.9, 1.1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -31,6 +33,6 @@ func _on_body_entered(body):
 	visible = false
 	n_collider.set_deferred("disabled", true)
 	if body is Entity:
-		body.damage(1)
+		body.damage(.06)
 	elif not body is TileMap:
 		body.try(3)

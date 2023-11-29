@@ -12,9 +12,10 @@ var n_held = null
 var n_weapons = [ ]
 
 # audio
-enum AudioLabel { Damaged = 0, Dash, Dodge, Footstep0, Footstep1, Footstep2, GameOver, SwitchHeld, Count }
+enum AudioLabel { Damaged = 0, Footstep0, Footstep1, Footstep2, GameOver, SwitchHeld, Blocked, Count }
 @export var n_audioplayer: AudioStreamPlayer2D
 @export var n_steps_audioplayer: AudioStreamPlayer2D
+@export var n_dash_audioplayer: AudioStreamPlayer2D
 @export var n_flamethrower_audioplayer: AudioStreamPlayer2D
 @export var n_pickup_audioplayer: AudioStreamPlayer2D
 var audiosamples = []
@@ -67,11 +68,10 @@ func _ready():
 	audiosamples[AudioLabel.Damaged] = load("res://Resources/Sound Effects/player movement/damage_taken.wav")
 	audiosamples[AudioLabel.GameOver] = load("res://Resources/Sound Effects/player movement/game_over.wav")
 	audiosamples[AudioLabel.SwitchHeld] = load("res://Resources/Sound Effects/player weapons/switch_weapon.wav")
-	audiosamples[AudioLabel.Dash] = load("res://Resources/Sound Effects/player movement/dash_robot_treads.wav")
-	audiosamples[AudioLabel.Dodge] = load("res://Resources/Sound Effects/player movement/dodge.wav")
 	audiosamples[AudioLabel.Footstep0] = load("res://Resources/Sound Effects/player movement/footstep_1.wav")
 	audiosamples[AudioLabel.Footstep1] = load("res://Resources/Sound Effects/player movement/footstep_2.wav")
 	audiosamples[AudioLabel.Footstep2] = load("res://Resources/Sound Effects/player movement/footstep_3.wav")
+	audiosamples[AudioLabel.Blocked] = load("res://Resources/Sound Effects/player weapons/gun_empty.wav")
 	
 	# Obtain references to sprite
 	n_sprite = get_node("Sprite")
@@ -111,24 +111,28 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash"):
 		if current_time > dash_frame:
 			dash_frame = current_time + dash_delay
-			n_audioplayer.pitch_scale = randf_range(.9, 1.1)
-			n_audioplayer.stream = audiosamples[AudioLabel.Dash]
-			n_audioplayer.play()
-			n_steps_audioplayer.stop()
+			n_dash_audioplayer.pitch_scale = randf_range(.9, 1.1)
+			n_dash_audioplayer.play()
 		
 	# Process weapon related inputs
 	if n_weapons[weapon].idle:
 		if Input.is_action_just_pressed("attack_main"):
-			if energy >= n_weapons[weapon].energy_cost:
+			if energy >= n_weapons[weapon].energy_cost and n_weapons[weapon].can_attack():
 				n_weapons[weapon].attack(velocity)
 				energy -= n_weapons[weapon].energy_cost
 				if weapon == Weapon.WeaponType.Flame and not n_flamethrower_audioplayer.playing:
 					n_flamethrower_audioplayer.pitch_scale = randf_range(.9, 1.1)
 					n_flamethrower_audioplayer.play()
+			else:
+				n_audioplayer.stream = audiosamples[AudioLabel.Blocked]
+				n_audioplayer.pitch_scale = randf_range(.9, 1.1)
+				n_audioplayer.play()
 		elif Input.is_action_pressed("attack_main") and weapon == Weapon.WeaponType.Flame:
 			if energy >= n_weapons[weapon].energy_cost:
 				n_weapons[weapon].attack(velocity)
 				energy -= n_weapons[weapon].energy_cost
+			else:
+				n_flamethrower_audioplayer.stop()
 		elif Input.is_action_just_released("attack_main") and weapon == Weapon.WeaponType.Flame:
 			n_flamethrower_audioplayer.stop()
 		if Input.is_action_just_pressed("select_one"):

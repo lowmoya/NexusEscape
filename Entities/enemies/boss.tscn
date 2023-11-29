@@ -25,11 +25,13 @@ gradient = SubResource("Gradient_tjwl1")
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0q1b1"]
 gradient = SubResource("Gradient_k6cfy")
 
-[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("n_sprite", "n_held", "n_sword", "n_sword_collider", "n_sword_light", "n_gun", "n_gun_light", "n_coil", "n_coil_light")]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("n_sprite", "n_attack_audioplayer", "n_general_audioplayer", "n_held", "n_sword", "n_sword_collider", "n_sword_light", "n_gun", "n_gun_light", "n_coil", "n_coil_light")]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_chsgl")
 n_sprite = NodePath("BossMainBody")
+n_attack_audioplayer = NodePath("AttackAudioPlayer")
+n_general_audioplayer = NodePath("GeneralAudioPlayer")
 n_held = NodePath("Held")
 n_sword = NodePath("Held/SwordPivot")
 n_sword_collider = NodePath("Held/SwordPivot/HitArea/CollisionPolygon2D")
@@ -91,5 +93,11 @@ hframes = 3
 
 [node name="PointLight2D" type="PointLight2D" parent="Held/Coil"]
 texture = SubResource("GradientTexture2D_0q1b1")
+
+[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="GeneralAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 1.5
+attenuation = 1.68179
 
 [connection signal="body_entered" from="Held/SwordPivot/HitArea" to="." method="_on_sword_hit_area_body_entered"]

@@ -28,5 +28,8 @@ var idle = true
 func attack(_bonus_velocity = Vector2.ZERO):
 	pass
 
+func can_attack():
+	return true
+
 func tick(_delta):
 	pass

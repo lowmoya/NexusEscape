@@ -6,6 +6,11 @@ extends Weapon
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
+var p_Pickup = preload("res://Entities/pickup.tscn")
+
+@export var n_player: CharacterBody2D
+var n_scene
+
 # Audio
 var n_audioplayer = null
 var audiosamples = []
@@ -38,6 +43,8 @@ func _ready():
 	audiosamples[0] = load("res://Resources/Sound Effects/player weapons/punch_1.wav")
 	audiosamples[1] = load("res://Resources/Sound Effects/player weapons/punch_2.wav")
 	audiosamples[2] = load("res://Resources/Sound Effects/player weapons/punch_3.wav")
+	
+	n_scene = get_tree().current_scene
 
 
 
@@ -49,8 +56,14 @@ func _on_body_entered(body):
 	if direction == 0:
 		return
 	elif body is Entity:
-		body.damage(1)
+		body.damage(3)
 		body.velocity += (body.global_position - global_position).normalized() * knockback
+		if randi_range(1, 8) == 1:
+			var pickup = p_Pickup.instantiate()
+			pickup.type = Pickup.PickupType.ENERGY
+			pickup.global_position = global_position
+			pickup.n_target = n_player
+			n_scene.add_child(pickup)
 	elif not body is TileMap:
 		body.try(0)
 	direction = 0
@@ -69,6 +82,9 @@ func attack(_bonus_velocity = Vector2.ZERO):
 	n_audioplayer.stream = audiosamples[random_generator.randi_range(0, 2)]
 	n_audioplayer.play()
 	direction = 1
+
+func can_attack():
+	return idle and not obstructed
 
 func tick(delta):
 	if idle:

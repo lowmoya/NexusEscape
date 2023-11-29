@@ -10,4 +10,4 @@ func _on_body_entered(_body):
 	n_boss_camera.enabled = true
 	n_player_camera.enabled = false
 	n_entrance.visible = true
-	n_entrance.disabled = false
+	n_entrance.set_deferred("disabled", false)

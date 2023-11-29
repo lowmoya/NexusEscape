@@ -110,8 +110,8 @@ func _process(delta):
 		
 		i += 1
 		
-	if idle_enemy_count == 0 and enemy_count == 0:
-		n_player.energy = n_player.max_energy
+	#if idle_enemy_count == 0 and enemy_count == 0:
+		#n_player.energy = n_player.max_energy
 
 
 

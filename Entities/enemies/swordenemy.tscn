@@ -55,6 +55,7 @@ n_sword = NodePath("Sword")
 n_sword_sprite = NodePath("Sword/Sprite")
 n_sword_collider = NodePath("Sword/Area2D/CollisionPolygon2D")
 n_sword_light = NodePath("Sword/PointLight2D")
+max_health = 30
 n_alert_audioplayer = NodePath("Alert")
 n_hurt_audioplayer = NodePath("Hurt")
 

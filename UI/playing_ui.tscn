@@ -15,11 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://cy5wch1inkpnw" path="res://Resources/Sprites/UI/itembar_gun.png" id="13_7hg1i"]
 [ext_resource type="Texture2D" uid="uid://dl3ll55v2kvmu" path="res://Resources/Sprites/UI/itembar_flame.png" id="14_v5kkm"]
 
-[node name="PlayingUI" type="CanvasLayer" node_paths=PackedStringArray("n_front_health_bar", "n_back_health_bar", "n_energy_bar", "n_dash_fill", "n_itembar")]
+[node name="PlayingUI" type="CanvasLayer" node_paths=PackedStringArray("n_front_health_bar", "n_back_health_bar", "n_front_energy_bar", "n_back_energy_bar", "n_dash_fill", "n_itembar")]
 script = ExtResource("1_orb0g")
 n_front_health_bar = NodePath("FrontHealthBar")
 n_back_health_bar = NodePath("BackHealthBar")
-n_energy_bar = NodePath("EnergyBar")
+n_front_energy_bar = NodePath("FrontEnergyBar")
+n_back_energy_bar = NodePath("BackEnergyBar")
 n_dash_fill = NodePath("Control/Itembar/DashBackground")
 n_itembar = NodePath("Control/Itembar")
 
@@ -72,7 +73,7 @@ texture_progress = ExtResource("3_iwd42")
 tint_progress = Color(1, 1, 0.227451, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="EnergyBar" type="TextureProgressBar" parent="."]
+[node name="BackEnergyBar" type="TextureProgressBar" parent="."]
 anchors_preset = -1
 anchor_left = 0.174
 anchor_top = 1.0
@@ -92,6 +93,29 @@ stretch_margin_left = 2
 stretch_margin_top = 2
 stretch_margin_right = 2
 texture_under = ExtResource("4_jhn0a")
+texture_progress = ExtResource("5_ptktg")
+tint_progress = Color(0.427451, 0.423529, 0.458824, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="FrontEnergyBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 1.0
+anchor_right = 0.174
+anchor_bottom = 1.0
+offset_left = -161.448
+offset_top = -40.0
+offset_right = -80.448
+offset_bottom = -36.0
+scale = Vector2(4, 4)
+size_flags_vertical = 10
+max_value = 10.0
+step = 0.1
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
 texture_progress = ExtResource("5_ptktg")
 tint_progress = Color(0.8, 0.780392, 1, 1)
 metadata/_edit_use_anchors_ = true
