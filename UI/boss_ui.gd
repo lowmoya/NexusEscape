@@ -28,6 +28,7 @@ func _ready():
 	n_front_coilbar.value = n_boss.health
 	
 	n_shader = n_control.material as ShaderMaterial
+	n_shader.set_shader_parameter("shake", false)
 
 func _process(delta):
 	if not n_boss == null:

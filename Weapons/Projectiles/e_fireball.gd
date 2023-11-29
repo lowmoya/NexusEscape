@@ -6,7 +6,7 @@ extends Area2D
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var damage = .7
+@export var damage = .4
 @export var knockback = 400
 @export var sprite_frame_duration = 100
 
@@ -49,5 +49,6 @@ func _on_body_entered(body):
 	if body is Entity:
 		body.velocity += velocity.normalized() * knockback
 		body.damage(damage)
+		body.fire_stacks += .5
 	queue_free()
 

@@ -57,6 +57,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	update(delta, true)
 	var current_time = Time.get_ticks_msec()
 	# Animation code
 	if current_time > animation_frame:
@@ -64,8 +65,6 @@ func _physics_process(delta):
 		animation_frame = current_time + animation_frame_duration
 		n_light.energy = randf_range(.5, 1)
 
-	n_shader.set_shader_parameter("frame", invincibility_frame - current_time \
-			if current_time <= invincibility_frame else 0)
 	
 	# If not yet awaken
 	if n_player == null:

@@ -13,6 +13,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iiufc"]
 shader = ExtResource("2_840pb")
 shader_parameter/frame = 0
+shader_parameter/firestacks = 0.0
 
 [sub_resource type="Gradient" id="Gradient_ky3oh"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -41,6 +42,7 @@ fill_to = Vector2(0.833333, 0.162393)
 shader = ExtResource("4_xaqnf")
 shader_parameter/blue_factor = 1.0
 shader_parameter/frame = 0
+shader_parameter/firestacks = 0.0
 
 [node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("n_attack_audioplayer", "n_dodge_audioplayer", "n_navagent", "n_sprite", "n_sword", "n_sword_sprite", "n_sword_collider", "n_sword_light", "n_alert_audioplayer", "n_hurt_audioplayer")]
 material = SubResource("ShaderMaterial_iiufc")

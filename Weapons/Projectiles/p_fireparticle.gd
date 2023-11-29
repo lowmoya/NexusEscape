@@ -9,6 +9,7 @@ var displacement_radius: float
 var displacement_direction: Vector2
 var initial_time: int
 var hit: bool = false
+var last_acted: int = 0
 
 func setup(frame, max_radius):
 	n_rect.color.g = randf_range(.4, .7)
@@ -29,10 +30,15 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+	if body is Entity:
+		var current_time = Time.get_ticks_msec()
+		if current_time > last_acted:
+			body.damage(.02)
+			body.fire_stacks += .08
+			last_acted = current_time + .1
+		return
+	elif not body is TileMap:
+		body.try(3)
 	hit = true
 	visible = false
 	n_collider.set_deferred("disabled", true)
-	if body is Entity:
-		body.damage(.1)
-	elif not body is TileMap:
-		body.try(3)

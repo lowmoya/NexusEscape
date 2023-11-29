@@ -1,10 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5ww5xo4jex0t"]
+[gd_scene load_steps=14 format=3 uid="uid://c5ww5xo4jex0t"]
 
+[ext_resource type="Shader" path="res://Resources/Shaders/entityshader.gdshader" id="1_456pa"]
 [ext_resource type="Script" path="res://Entities/enemies/boss.gd" id="1_chsgl"]
 [ext_resource type="Texture2D" uid="uid://obo5kkb4vd5f" path="res://Resources/Sprites/Entities/boss main body.png" id="1_w5x2r"]
 [ext_resource type="Texture2D" uid="uid://dimemmte2oiv6" path="res://Resources/Sprites/Weapons/boss sword.png" id="3_im7bb"]
 [ext_resource type="Texture2D" uid="uid://b53qka8p4c070" path="res://Resources/Sprites/Weapons/boss tesla coil.png" id="4_u0ljc"]
 [ext_resource type="Texture2D" uid="uid://53f7abe8w1sa" path="res://Resources/Sprites/Weapons/boss gun.png" id="5_64dp8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3a37"]
+shader = ExtResource("1_456pa")
+shader_parameter/frame = 0
+shader_parameter/firestacks = 0.0
 
 [sub_resource type="Gradient" id="Gradient_rol7v"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -26,6 +32,7 @@ gradient = SubResource("Gradient_tjwl1")
 gradient = SubResource("Gradient_k6cfy")
 
 [node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("n_sprite", "n_attack_audioplayer", "n_general_audioplayer", "n_held", "n_sword", "n_sword_collider", "n_sword_light", "n_gun", "n_gun_light", "n_coil", "n_coil_light")]
+material = SubResource("ShaderMaterial_t3a37")
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_chsgl")

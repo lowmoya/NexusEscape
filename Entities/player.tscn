@@ -16,6 +16,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h6lpl"]
 shader = ExtResource("1_5ohyo")
 shader_parameter/frame = 0
+shader_parameter/firestacks = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddbao"]
 radius = 23.0

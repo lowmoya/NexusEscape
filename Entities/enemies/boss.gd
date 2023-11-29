@@ -95,7 +95,8 @@ func _ready():
 	
 	# Prepare animation components
 	animation_frame = current_time + ANIMATION_FRAME_DURATION
-
+	n_shader = material as ShaderMaterial
+	
 	# Prepare state componensts
 	health = 100.
 
@@ -241,7 +242,18 @@ func sword_phase(delta, to_player, to_player_d):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
+	# Fire damage
+	if fire_stacks > 4.:
+		fire_stacks = 4.
+	n_shader.set_shader_parameter("firestacks", fire_stacks) 
+	if fire_frame >= 1.:
+		fire_frame -= 1.
+		if fire_stacks > 0.:
+			damage(fire_stacks)
+			fire_stacks = fire_stacks - 1. if fire_stacks > 1. else 0.
+	else:
+		fire_frame += delta
 	# Get common variables
 	var current_time = Time.get_ticks_msec() / 1.e3
 	var to_player = n_player.global_position - global_position

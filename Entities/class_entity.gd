@@ -19,6 +19,8 @@ var n_shader
 var n_hurt_streams = [ load("res://Resources/Sound Effects/enemy sounds/enemy_damage_taken_1.wav"), \
 		load("res://Resources/Sound Effects/enemy sounds/enemy_damage_taken_2.wav")]
 
+var fire_stacks: float = 0.
+var fire_frame: float = 0.
 
 # ################################################## #
 # Ready / Process Functions                          #
@@ -30,6 +32,23 @@ func _ready():
 	n_shader.shader = (material as ShaderMaterial).shader.duplicate()
 	material = n_shader
 
+
+func update(delta, flame_resistant = false):
+	var current_time = Time.get_ticks_msec()
+	n_shader.set_shader_parameter("frame", invincibility_frame - current_time \
+			if current_time <= invincibility_frame else 0)
+	if flame_resistant:
+		return
+	if fire_stacks > 10.:
+		fire_stacks = 10.
+	n_shader.set_shader_parameter("firestacks", fire_stacks) 
+	if fire_frame >= 1.:
+		fire_frame -= 1.
+		if fire_stacks > 0.:
+			damage(fire_stacks)
+			fire_stacks = fire_stacks - 1. if fire_stacks > 1. else 0.
+	else:
+		fire_frame += delta
 
 
 # ################################################## #

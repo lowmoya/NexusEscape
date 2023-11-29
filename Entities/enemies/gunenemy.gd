@@ -58,11 +58,10 @@ func _physics_process(delta):
 	# Handle idle conditions
 	if n_player == null:
 		return
+		
+	update(delta)
 	
-	# Handle hit flash
 	var current_time = Time.get_ticks_msec()
-	n_shader.set_shader_parameter("frame", invincibility_frame - current_time \
-			if current_time <= invincibility_frame else 0)
 
 	# Handle movement
 	var player_offset =  n_player.global_position - global_position

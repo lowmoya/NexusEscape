@@ -70,6 +70,7 @@ func _physics_process(delta):
 	# If should just idle
 	if n_player == null:
 		return
+	update(delta)
 	
 	# Regularly accessed variables
 	var player_offset =  n_player.global_position - global_position
@@ -77,10 +78,9 @@ func _physics_process(delta):
 	var current_time = Time.get_ticks_msec()
 	
 	# Animation
-	n_shader.set_shader_parameter("frame", invincibility_frame - current_time \
-			if current_time <= invincibility_frame else 0)
 	n_sword_sprite_shader.set_shader_parameter("frame", invincibility_frame - current_time \
 			if current_time <= invincibility_frame else 0)
+	n_sword_sprite_shader.set_shader_parameter("firestacks", fire_stacks)
 	
 	if current_time > animation_frame:
 		n_sprite.frame = n_sprite.frame + 1 if n_sprite.frame < animation_frames - 1 else 0
