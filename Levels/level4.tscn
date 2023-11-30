@@ -36,3 +36,6 @@ tile_set = ExtResource("4_qehan")
 format = 2
 layer_0/name = "base"
 layer_0/z_index = -2
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
