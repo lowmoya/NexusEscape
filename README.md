@@ -1,6 +1,6 @@
 # Nexus:Escape
 
-**Special Instructions:** N/A
+**Instructions:** Have the .exe and .pck files in the same directory. Run the .exe to start the game. Use the appropriate build for your system (Windows or Linux available)
 
 **Known Bugs/Glitches:** Collider glitch that sometimes gives enemies larger boosts of speed
 
