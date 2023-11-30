@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgtd8v50juh0i"]
+
+[ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="1_dvbml"]
+[ext_resource type="Texture2D" uid="uid://th74c3jjep2e" path="res://Resources/Sprites/Effects/light.png" id="2_ct7up"]
+[ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="3_6egly"]
+[ext_resource type="TileSet" uid="uid://damfbuciwmh81" path="res://Resources/Tilemaps/tilemap2.tres" id="4_qehan"]
+
+[node name="Node" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_dvbml")]
+position = Vector2(-334, 31)
+max_health = 25
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+show_behind_parent = true
+position = Vector2(-1, -1)
+color = Color(0.215686, 0.666667, 0.615686, 1)
+energy = 0.21
+shadow_enabled = true
+texture = ExtResource("2_ct7up")
+texture_scale = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -6080
+limit_top = -10502
+limit_right = 6000
+limit_bottom = 14130
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="PlayingUI" parent="." instance=ExtResource("3_6egly")]
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource("4_qehan")
+format = 2
+layer_0/name = "base"
+layer_0/z_index = -2
