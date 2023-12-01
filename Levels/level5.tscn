@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://damfbuciwmh81" path="res://Resources/Tilemaps/tilemap2.tres" id="1_m776l"]
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="2_hfwor"]
 [ext_resource type="PackedScene" uid="uid://c5ww5xo4jex0t" path="res://Entities/enemies/boss.tscn" id="3_sbs6r"]
-[ext_resource type="PackedScene" uid="uid://cphwe4utlthiy" path="res://Entities/door.tscn" id="4_fvcke"]
+[ext_resource type="PackedScene" path="res://Entities/door.tscn" id="4_fvcke"]
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="6_4hyid"]
 [ext_resource type="PackedScene" uid="uid://c2tgs7khcxind" path="res://UI/boss_ui.tscn" id="7_7ungv"]
 [ext_resource type="Texture2D" uid="uid://th74c3jjep2e" path="res://Resources/Sprites/Effects/light.png" id="7_lwxry"]
