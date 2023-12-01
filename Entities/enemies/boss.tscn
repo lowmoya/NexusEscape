@@ -47,6 +47,7 @@ n_gun = NodePath("Held/Gun")
 n_gun_light = NodePath("Held/Gun/PointLight2D")
 n_coil = NodePath("Held/Coil")
 n_coil_light = NodePath("Held/Coil/PointLight2D")
+max_health = 150
 
 [node name="BossMainBody" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)

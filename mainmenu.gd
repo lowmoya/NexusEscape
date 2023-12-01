@@ -33,4 +33,8 @@ func _physics_process(delta):
 	shader.set_shader_parameter("points", stars)
 
 func _topdown_button():
-	get_tree().change_scene_to_file("res://Levels/testlevel.tscn")
+	get_tree().change_scene_to_file("res://Levels/level1story.tscn")
+
+
+func _on_topdown_button_button_down():
+	pass # Replace with function body.

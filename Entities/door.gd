@@ -10,6 +10,7 @@ enum DoorType {
 
 @export var type: DoorType
 @export var n_sprite: Sprite2D
+@export var n_dialogue: Control
 var n_shader: ShaderMaterial
 
 var health = 5
@@ -40,3 +41,4 @@ func try(key):
 			damage_frame = .1
 	else:
 		immune_frame = .3
+		n_dialogue.say("I can't go through the exit!\n[i]Searching database for solutions...[/i]I see! There's only one method of attack that will work on these.")

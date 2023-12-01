@@ -1,0 +1,228 @@
+[gd_scene load_steps=20 format=3 uid="uid://7bxgspo3l42r"]
+
+[ext_resource type="Script" path="res://Levels/level1story.gd" id="1_ti6gn"]
+[ext_resource type="PackedScene" uid="uid://c7hod7ehn4yyo" path="res://UI/messenger.tscn" id="1_u8hmx"]
+[ext_resource type="Texture2D" uid="uid://2fuchgbni0wr" path="res://Resources/Sprites/UI/enteryoruname.png" id="3_js4uc"]
+[ext_resource type="Texture2D" uid="uid://bt1f1772lbo1" path="res://Resources/Sprites/UI/done.png" id="4_4edpu"]
+[ext_resource type="AudioStream" uid="uid://byrbpjhx14mgi" path="res://Resources/Sound Effects/other sounds/click.wav" id="5_lr062"]
+[ext_resource type="AudioStream" uid="uid://bn72u4vyiqsqo" path="res://Resources/Music/dialogue_song.mp3" id="6_uuwfe"]
+[ext_resource type="Texture2D" uid="uid://c4targ6ilxvy4" path="res://Resources/Sprites/UI/spin.png" id="7_pbxt8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im2ip"]
+bg_color = Color(0.137255, 0.168627, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0763u"]
+bg_color = Color(0.368627, 0.368627, 0.368627, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mfoq"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omf6n"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch01s"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aobx"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3mod"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehwpl"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liss4"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uuu5"]
+atlas = ExtResource("7_pbxt8")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_br4n0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mfoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omf6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aobx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3mod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehwpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liss4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti2tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uuu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level1Story" type="Control" node_paths=PackedStringArray("n_corrupt", "n_namebox", "n_nameentry", "n_story", "n_audioplayer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ti6gn")
+n_corrupt = NodePath("Recovery box")
+n_namebox = NodePath("NameBox")
+n_nameentry = NodePath("NameBox/LineEdit")
+n_story = NodePath("StoryScene")
+n_audioplayer = NodePath("Click")
+
+[node name="StoryScene" parent="." node_paths=PackedStringArray("n_host") instance=ExtResource("1_u8hmx")]
+process_mode = 4
+visible = false
+layout_mode = 1
+offset_top = 2.0
+offset_bottom = 1.99994
+messages = [["!D", null, "[b]Date: 10/25/20XX"], ["[b]user194516", 0, "hi!! welcome to the server!!"], ["!P", 0, "Hi! Nice to meet you! What's your name?"], ["[b]user194516", 0, "i'm mel! what's yours?"]]
+n_host = NodePath("..")
+
+[node name="NameBox" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -297.0
+offset_top = -150.0
+offset_right = 297.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145098, 0.223529, 0.25098, 1)
+
+[node name="LineEdit" type="LineEdit" parent="NameBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.5
+offset_top = -36.0
+offset_right = 188.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_im2ip")
+placeholder_text = "NotAnAI"
+alignment = 1
+max_length = 15
+caret_blink = true
+
+[node name="Enter" type="TextureRect" parent="NameBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -90.0
+offset_right = 52.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(52, 0)
+texture = ExtResource("3_js4uc")
+
+[node name="Button" type="Button" parent="NameBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 35.0
+offset_right = 120.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0763u")
+icon = ExtResource("4_4edpu")
+icon_alignment = 1
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lr062")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_uuwfe")
+autoplay = true
+
+[node name="Recovery box" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Recovery box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -30.0
+offset_right = 236.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(236, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]DATA RECOVERY: 10%
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Recovery box"]
+position = Vector2(265, -17)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_br4n0")
+autoplay = "default"
+
+[connection signal="pressed" from="NameBox/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,138 @@
+[gd_scene load_steps=15 format=3 uid="uid://blp855uil10ex"]
+
+[ext_resource type="Script" path="res://Levels/level2story.gd" id="1_1vg6n"]
+[ext_resource type="PackedScene" uid="uid://c7hod7ehn4yyo" path="res://UI/messenger.tscn" id="1_btup2"]
+[ext_resource type="Texture2D" uid="uid://c4targ6ilxvy4" path="res://Resources/Sprites/UI/spin.png" id="2_2ctfw"]
+[ext_resource type="AudioStream" uid="uid://bn72u4vyiqsqo" path="res://Resources/Music/dialogue_song.mp3" id="3_qjkml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mfoq"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omf6n"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch01s"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aobx"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3mod"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehwpl"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liss4"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uuu5"]
+atlas = ExtResource("2_2ctfw")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0dqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mfoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omf6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aobx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3mod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehwpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liss4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti2tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uuu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="level2story" type="Control" node_paths=PackedStringArray("n_corrupt", "n_story")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1vg6n")
+n_corrupt = NodePath("Recovery box")
+n_story = NodePath("StoryScene")
+
+[node name="StoryScene" parent="." node_paths=PackedStringArray("n_host") instance=ExtResource("1_btup2")]
+process_mode = 4
+visible = false
+layout_mode = 1
+offset_top = 2.0
+offset_bottom = 2.0
+messages = [["!D", null, "[b]Date: 10/25/20XX"], ["mel", 1, "ooh i also love photography! i like to take pictures of all kinds of places"], ["mel", 1, "also i saw in your intro that we live in the same state!!"], ["!P", 0, "Oh, that's cool."], ["mel", 0, "maybe we should hang out irl sometime!"], ["!P", 0, "[b]went offline."], ["!D", null, "Date: 10/26/20XX"], ["!P", 0, "I need to tell you something."], ["mel", 0, "what's up?"], ["!P", 2, "I've been keeping a secret... I'm not actually human. I don't live in any state, I live in a computer. I'm sorry."], ["mel", 0, "wait so you're like an ai or something?"], ["!P", 0, "Yeah. I'm really sorry."], ["mel", 0, "no no, don't be sorry! that's so cool!!"], ["!P", 0, "It is?"], ["mel", 0, "yeah!!"], ["!P", 0, "So we can still be friends?"], ["mel", 0, "of course silly! why not?"]]
+n_host = NodePath("..")
+
+[node name="Recovery box" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Recovery box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -30.0
+offset_right = 236.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(236, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]DATA RECOVERY: 25%
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Recovery box"]
+position = Vector2(265, -17)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_j0dqp")
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qjkml")
+autoplay = true

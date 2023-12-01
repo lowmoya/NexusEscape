@@ -160,8 +160,7 @@ func _physics_process(delta):
 			switchHeld(Weapon.WeaponType.Count - 1 if weapon == 0 else weapon - 1)
 		elif Input.is_action_just_pressed("pause"):
 			n_pausescreen.visible = true
-			n_pausescreen.delay = Time.get_ticks_msec() + 100
-			n_pausescreen.process_mode = Node.PROCESS_MODE_ALWAYS
+			n_pausescreen.set_deferred("process_mode", Node.PROCESS_MODE_ALWAYS)
 			get_tree().paused = true
 	
 	# Move velocity "towards" the players desired direction and move

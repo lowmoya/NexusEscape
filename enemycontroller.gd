@@ -42,6 +42,9 @@ func _ready():
 
 
 func _process(delta):
+	if idle_enemy_count == 0 and enemy_count == 0:
+		n_player.energy = n_player.max_energy
+		return
 	# Check if any enemies are close enough for activation or have been damaged
 	var enemy = 0
 	while enemy < idle_enemy_count:
@@ -71,7 +74,8 @@ func _process(delta):
 		if randf() < drop_chance:
 			# Create a pickup and initialize its values
 			var n_pickup = p_Pickup.instantiate()
-			n_pickup.type = randi_range(0, Pickup.PickupType.COUNT - 1)
+			n_pickup.type = randi_range(0, Pickup.PickupType.COUNT - 1) if n_player.energy != n_player.max_energy \
+					else Pickup.PickupType.HEALTH
 			n_pickup.n_target = n_player
 			n_pickup.global_position = enemies[enemy].global_position
 			n_scene.add_child(n_pickup)
@@ -110,8 +114,6 @@ func _process(delta):
 		
 		i += 1
 		
-	#if idle_enemy_count == 0 and enemy_count == 0:
-		#n_player.energy = n_player.max_energy
 
 
 

@@ -33,7 +33,7 @@ func _ready():
 func _process(delta):
 	if not n_boss == null:
 		if floating_coil != 0:
-			if n_boss.health < 10.:
+			if n_boss.health < 15.:
 				n_shader.set_shader_parameter("shake", true)
 			if floating_coil != n_boss.health:
 				floating_coil += clamp(n_boss.health - floating_coil, -BAR_TRACK_RATE * delta, \
@@ -45,7 +45,7 @@ func _process(delta):
 					n_front_gunbar.visible = false
 					n_back_gunbar.visible = false
 		if floating_gun != 0:
-			if n_boss.gun_shield < 10.:
+			if n_boss.gun_shield < 15.:
 				n_shader.set_shader_parameter("shake", true)
 			if floating_gun != n_boss.gun_shield:
 				floating_gun += clamp(n_boss.gun_shield - floating_gun, -BAR_TRACK_RATE \
@@ -57,7 +57,7 @@ func _process(delta):
 					n_back_gunbar.visible = false
 					n_front_gunbar.visible = false
 		if floating_sword != 0:
-			if n_boss.sword_shield < 10.:
+			if n_boss.sword_shield < 15.:
 				n_shader.set_shader_parameter("shake", true)
 			if floating_sword != n_boss.sword_shield:
 				floating_sword += clamp(n_boss.sword_shield - floating_sword, -BAR_TRACK_RATE * delta, \

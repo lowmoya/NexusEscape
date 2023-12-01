@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx3xi6u4mxhca"]
+
+[ext_resource type="Script" path="res://UI/dialogue.gd" id="1_vbfgb"]
+[ext_resource type="Texture2D" uid="uid://dctxq4blut5t" path="res://Resources/Sprites/UI/dialogue_box.png" id="2_h8nda"]
+[ext_resource type="AudioStream" uid="uid://byrbpjhx14mgi" path="res://Resources/Sound Effects/other sounds/click.wav" id="2_nqf37"]
+[ext_resource type="Texture2D" uid="uid://b6tam5emaydo3" path="res://Resources/Sprites/UI/dialogue_close.png" id="3_r873t"]
+[ext_resource type="Texture2D" uid="uid://bd2d8nh028237" path="res://Resources/Sprites/UI/dialogue_close_pressed.png" id="4_um7b2"]
+[ext_resource type="Texture2D" uid="uid://ck6dft843km4i" path="res://Resources/Sprites/UI/dialogue_close_hover.png" id="5_crfxb"]
+[ext_resource type="AudioStream" uid="uid://c2alt5xpeglse" path="res://Resources/Sound Effects/other sounds/hover_over_selection.wav" id="7_x7oi3"]
+
+[node name="Dialogue" type="Control" node_paths=PackedStringArray("n_hover_audioplayer", "n_click_audioplayer", "n_dialogue_audioplayer", "n_popup", "n_label")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vbfgb")
+n_hover_audioplayer = NodePath("Hover")
+n_click_audioplayer = NodePath("Click")
+n_dialogue_audioplayer = NodePath("Talking")
+n_popup = NodePath("TextureRect")
+n_label = NodePath("TextureRect/RichTextLabel")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nqf37")
+
+[node name="Talking" type="AudioStreamPlayer" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_x7oi3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.5
+offset_right = 284.5
+offset_bottom = 149.0
+grow_horizontal = 2
+pivot_offset = Vector2(343, 0)
+texture = ExtResource("2_h8nda")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 7.5
+offset_top = 24.0
+offset_right = 567.5
+offset_bottom = 148.0
+bbcode_enabled = true
+text = "Example dialogue text..."
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.5
+offset_right = -4.5
+offset_bottom = 20.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_r873t")
+texture_pressed = ExtResource("4_um7b2")
+texture_hover = ExtResource("5_crfxb")
+
+[connection signal="focus_entered" from="TextureRect/TextureButton" to="." method="_on_texture_button_focus_entered"]
+[connection signal="mouse_entered" from="TextureRect/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="pressed" from="TextureRect/TextureButton" to="." method="_on_texture_button_pressed"]

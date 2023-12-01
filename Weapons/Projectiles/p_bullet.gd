@@ -6,7 +6,7 @@ extends Area2D
 # Variables                                          #
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv #
 
-@export var damage = 5.
+@export var damage = 7.
 @export var knockback = 400
 
 var velocity = Vector2.ZERO

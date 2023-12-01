@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cieu15i7uy7bh"]
+
+[ext_resource type="Script" path="res://UI/date_chat.gd" id="1_h8625"]
+
+[node name="Date" type="MarginContainer" node_paths=PackedStringArray("n_message")]
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 19
+script = ExtResource("1_h8625")
+n_message = NodePath("Label")
+
+[node name="Label" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/table_v_separation = 5
+theme_override_constants/text_highlight_v_padding = 16
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+bbcode_enabled = true
+text = "[b]Date: 10/25/20XX"
+scroll_active = false

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byy1hv3myi840" path="res://Resources/Sprites/Effects/swordslashglow.png" id="4_wfsa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1shhj"]
-size = Vector2(80, 16)
+size = Vector2(80, 16.0003)
 
 [sub_resource type="Gradient" id="Gradient_mcnaa"]
 interpolation_mode = 2
@@ -39,7 +39,7 @@ texture = ExtResource("2_0xsrm")
 metadata/_edit_lock_ = true
 
 [node name="Shape" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(40, 0.000289917)
+position = Vector2(40, 0.000144958)
 shape = SubResource("RectangleShape2D_1shhj")
 
 [node name="PointLight2D" type="PointLight2D" parent="HitArea"]

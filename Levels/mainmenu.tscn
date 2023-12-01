@@ -4,7 +4,7 @@
 script/source = "extends Control
 
 func _topdown_button():
-	get_tree().change_scene_to_file(\"res://Levels/level1.tscn\")
+	get_tree().change_scene_to_file(\"res://Levels/level1story.tscn\")
 "
 
 [sub_resource type="Theme" id="Theme_41gwq"]

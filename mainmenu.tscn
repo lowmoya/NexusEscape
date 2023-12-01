@@ -77,4 +77,5 @@ text = "Start"
 stream = ExtResource("3_a65lj")
 autoplay = true
 
+[connection signal="button_down" from="ButtonContainer/TopdownButton" to="." method="_on_topdown_button_button_down"]
 [connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]

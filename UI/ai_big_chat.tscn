@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://feiuqmtd7705"]
+
+[ext_resource type="Script" path="res://UI/chat_box.gd" id="1_4odlf"]
+[ext_resource type="Texture2D" uid="uid://hofc3rallrjn" path="res://Resources/Sprites/UI/ai chat box.png" id="1_23nhk"]
+
+[node name="AiBigChat" type="MarginContainer" node_paths=PackedStringArray("n_name", "n_message")]
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_right = 60
+script = ExtResource("1_4odlf")
+n_name = NodePath("TextureRect/Name")
+n_message = NodePath("TextureRect/Message")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_23nhk")
+expand_mode = 5
+
+[node name="Name" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 2
+offset_left = 154.0
+offset_top = 48.0
+offset_right = 905.0
+offset_bottom = 333.0
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+bbcode_enabled = true
+text = "[b]You"
+
+[node name="Message" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 2
+offset_left = 154.0
+offset_top = 92.0
+offset_right = 617.0
+offset_bottom = 222.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "Hi there"

@@ -81,8 +81,8 @@ var follow_player = true
 # State Variables
 enum Phases { IDLE = -1, SWORD, GUN, ELECTRIC }
 var phase: Phases = Phases.IDLE
-var sword_shield: float = 100.
-var gun_shield: float = 100.
+var sword_shield: float = 150.
+var gun_shield: float = 150.
 
 
 # Condition Constants
@@ -98,7 +98,7 @@ func _ready():
 	n_shader = material as ShaderMaterial
 	
 	# Prepare state componensts
-	health = 100.
+	health = 150.
 
 
 func sword_phase(delta, to_player, to_player_d):

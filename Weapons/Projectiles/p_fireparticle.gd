@@ -34,8 +34,8 @@ func _on_body_entered(body):
 		var current_time = Time.get_ticks_msec()
 		if current_time > last_acted:
 			body.damage(.02)
-			body.fire_stacks += .08
-			last_acted = current_time + .1
+			body.fire_stacks += .1
+			last_acted = current_time + 100
 		return
 	elif not body is TileMap:
 		body.try(3)
