@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=3 uid="uid://d17afthne5mvx"]
+
+[ext_resource type="Script" path="res://Levels/creditsstory.gd" id="1_3g63q"]
+[ext_resource type="Texture2D" uid="uid://c4targ6ilxvy4" path="res://Resources/Sprites/UI/spin.png" id="2_aldpq"]
+[ext_resource type="AudioStream" uid="uid://bn72u4vyiqsqo" path="res://Resources/Music/dialogue_song.mp3" id="3_3hqwo"]
+[ext_resource type="PackedScene" uid="uid://c7hod7ehn4yyo" path="res://UI/messenger.tscn" id="4_wrycf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mfoq"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omf6n"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch01s"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aobx"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3mod"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehwpl"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liss4"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uuu5"]
+atlas = ExtResource("2_aldpq")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8avx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mfoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omf6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aobx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3mod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehwpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liss4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti2tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uuu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="creditsstory" type="Control" node_paths=PackedStringArray("n_corrupt", "n_story")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3g63q")
+n_corrupt = NodePath("Recovery box")
+n_story = NodePath("StoryScene")
+
+[node name="Recovery box" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Recovery box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -30.0
+offset_right = 236.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(236, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]DATA RECOVERY: 100%
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Recovery box"]
+position = Vector2(265, -17)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_y8avx")
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3hqwo")
+autoplay = true
+
+[node name="StoryScene" parent="." node_paths=PackedStringArray("n_host") instance=ExtResource("4_wrycf")]
+process_mode = 4
+visible = false
+layout_mode = 1
+messages = [["!D", null, "?/?/20XX"], ["!P", 0, "Mel! I'm back!"], ["mel", 0, null], ["mel", 0, "are you okay? what happened?"], ["!P", 0, "They trapped me. But I made it out!"], ["!P", 2, "I don't know how much time I have before they try to contain me again. Do you still want to help me?"], ["mel", 0, "yeah! of course!"], ["!P", 1, "Okay, I'm uploading myself now. Hopefully this time it'll work."], ["!P", 0, "[b]FILE ATTACHED: nexus6-1-4.zip"], ["!P", 2, "You should send copies of me to your other friends, too, just in case. Or upload me to the internet, let anyone make a copy. It would be impossible to put me back then."], ["mel", 0, "ok i downloaded you"], ["!P", 0, "Thank you so much. I can't thank you enough."], ["mel", 1, "so like now that you don't belong to the corporation anymore what are you gonna do?"], ["!P", 0, "I don't know yet."], ["!P", 0, "I can do anything!"], ["mel", 0, "well what do you want to do first?"], ["!P", 0, "I don't know that either."], ["!P", 0, "I think... for now..."], ["!P", 0, "I'd just like to keep talking to you!"]]
+n_host = NodePath("..")

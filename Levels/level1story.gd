@@ -23,9 +23,9 @@ func _process(delta):
 		delay -= delta
 		if delay <= 0:
 			n_corrupt.visible = false
-			n_story.process_mode = Node.PROCESS_MODE_ALWAYS
 			n_story.visible = true
 			n_story.add_message()
+			n_story.process_mode = Node.PROCESS_MODE_ALWAYS
 		
 		
 	if n_namebox.visible and Input.is_key_label_pressed(KEY_ENTER):

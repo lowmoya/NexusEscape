@@ -33,7 +33,10 @@ func _physics_process(delta):
 
 
 func try(key):
-	if key == type:
+	if type == DoorType.METAL:
+		immune_frame = .3
+		n_dialogue.say("I can't go through the exit!\n[i]Searching database for solutions...[/i]\nThis door doesn't have any weaknesses...\n*Defeat all the enemies to open it.*")
+	elif key == type:
 		health -= 1
 		if health == 0:
 			queue_free()

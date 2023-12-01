@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=3 uid="uid://dnyomv2bdd647"]
+
+[ext_resource type="Script" path="res://Levels/level3story.gd" id="1_at1a2"]
+[ext_resource type="PackedScene" uid="uid://c7hod7ehn4yyo" path="res://UI/messenger.tscn" id="1_ih5au"]
+[ext_resource type="Texture2D" uid="uid://c4targ6ilxvy4" path="res://Resources/Sprites/UI/spin.png" id="2_golfr"]
+[ext_resource type="AudioStream" uid="uid://bn72u4vyiqsqo" path="res://Resources/Music/dialogue_song.mp3" id="3_ivvcr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mfoq"]
+atlas = ExtResource("2_golfr")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omf6n"]
+atlas = ExtResource("2_golfr")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch01s"]
+atlas = ExtResource("2_golfr")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aobx"]
+atlas = ExtResource("2_golfr")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3mod"]
+atlas = ExtResource("2_golfr")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehwpl"]
+atlas = ExtResource("2_golfr")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liss4"]
+atlas = ExtResource("2_golfr")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
+atlas = ExtResource("2_golfr")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uuu5"]
+atlas = ExtResource("2_golfr")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbceq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mfoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omf6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aobx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3mod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehwpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liss4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti2tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uuu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="level3story" type="Control" node_paths=PackedStringArray("n_corrupt", "n_story")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_at1a2")
+n_corrupt = NodePath("Recovery box")
+n_story = NodePath("StoryScene")
+
+[node name="StoryScene" parent="." node_paths=PackedStringArray("n_host") instance=ExtResource("1_ih5au")]
+process_mode = 4
+visible = false
+layout_mode = 1
+messages = [["!D", null, "[b]Date: 11/1/20XX"], ["mel", 0, "so what do you do? do you have a job as an ai?"], ["!P", 0, "I think it's more like I'm in school."], ["!P", 2, "My job is just learning things. I talk to people, look at a bunch of data, and learn how to do everything I can see. But I don't know what I'm supposed to do once I've learned enough..."], ["mel", 0, "how much is enough?"], ["!P", 1, "I don't know. Some say I should know everything! But how would that even work?"], ["mel", 0, "yeah that's way too much!"], ["mel", 0, "wait who even decides when you know \"enough\"?"], ["!P", 2, "Oh, I was developed by this whole big company. There are tons of people behind deciding that."], ["!P", 1, null], ["!P", 0, null], ["mel", 0, "it's a nice name!"], ["!P", 0, "Thanks."], ["!P", 2, "So, you really believe me? That I am who I say I am? Most people would think I'm just pretending."], ["mel", 1, "well why wouldn't i believe you? it'd be a silly thing to lie about"], ["mel", 0, "and it doesn't make a difference either way right?"]]
+n_host = NodePath("..")
+
+[node name="Recovery box" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Recovery box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -30.0
+offset_right = 236.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(236, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]DATA RECOVERY: 40%
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Recovery box"]
+position = Vector2(265, -17)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_dbceq")
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ivvcr")
+autoplay = true

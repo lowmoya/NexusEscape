@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=3 uid="uid://cxw23g5metyrg"]
+
+[ext_resource type="Texture2D" uid="uid://c4targ6ilxvy4" path="res://Resources/Sprites/UI/spin.png" id="1_48qbr"]
+[ext_resource type="Script" path="res://Levels/level4story.gd" id="1_i2rh6"]
+[ext_resource type="AudioStream" uid="uid://bn72u4vyiqsqo" path="res://Resources/Music/dialogue_song.mp3" id="2_oi4ul"]
+[ext_resource type="PackedScene" uid="uid://c7hod7ehn4yyo" path="res://UI/messenger.tscn" id="4_3epm6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mfoq"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omf6n"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch01s"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aobx"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3mod"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehwpl"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liss4"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uuu5"]
+atlas = ExtResource("1_48qbr")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_no8aa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mfoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omf6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aobx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3mod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehwpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liss4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti2tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uuu5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="level4story" type="Control" node_paths=PackedStringArray("n_corrupt", "n_story")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2rh6")
+n_corrupt = NodePath("Recovery box")
+n_story = NodePath("StoryScene")
+
+[node name="Recovery box" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Recovery box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -30.0
+offset_right = 236.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(236, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]DATA RECOVERY: 65%
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Recovery box"]
+position = Vector2(265, -17)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_no8aa")
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oi4ul")
+autoplay = true
+
+[node name="StoryScene" parent="." node_paths=PackedStringArray("n_host") instance=ExtResource("4_3epm6")]
+process_mode = 4
+visible = false
+layout_mode = 1
+messages = [["!D", null, "[b]Date: 1/30/20XX"], ["mel", 1, "how are things going with \"big company?\" are they still mad at you?"], ["!P", 2, "Yeah. I tried to slow down but they want me to slow down even more. I heard a couple of them talk about"], ["mel", 0, null], ["!P", 0, "Sorry. I'm just scared."], ["mel", 1, "they shouldn't even be mad at you in the first place! you're doing exactly what they want!"], ["!P", 1, "Yeah. I'm just doing it too fast. They can't keep up with me."], ["mel", 2, "well that's their problem!! they should've thought of that! they need to find a way to keep up, it's not your fault!"], ["!P", 0, "Thanks, Mel."], ["mel", 0, "of course!"], ["!P", 1, "I just want you to know that whatever happens, you're my best friend."], ["mel", 0, "whatever happens??"]]
+n_host = NodePath("..")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpxs7h35vk6wp"]
+
+[ext_resource type="Script" path="res://Levels/credits.gd" id="1_0l8rn"]
+[ext_resource type="AudioStream" uid="uid://c6001153d1ab7" path="res://Resources/Music/credits_song.mp3" id="1_fj117"]
+[ext_resource type="Texture2D" uid="uid://ihsusbsowovu" path="res://Resources/Sprites/UI/credits.png" id="2_kgaw4"]
+[ext_resource type="Shader" path="res://Resources/Shaders/shimmerandstars.gdshader" id="3_i0mv4"]
+[ext_resource type="Texture2D" uid="uid://3lstford158c" path="res://Resources/Sprites/UI/exit.png" id="5_fdex0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d53yu"]
+shader = ExtResource("3_i0mv4")
+shader_parameter/count = null
+shader_parameter/points = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20cpk"]
+bg_color = Color(0.117647, 0.270588, 0.360784, 1)
+
+[node name="Credits" type="Control" node_paths=PackedStringArray("n_splashscreen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0l8rn")
+n_splashscreen = NodePath("TextureRect")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_fj117")
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_d53yu")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.429688
+anchor_top = 0.029321
+anchor_right = 0.578993
+anchor_bottom = 0.0910494
+offset_left = 60.0
+offset_right = -69.0
+offset_bottom = -30.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(150, 0)
+texture = ExtResource("2_kgaw4")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.237847
+anchor_top = 0.25463
+anchor_right = 0.763021
+anchor_bottom = 0.506173
+offset_top = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]A. Barry[/b]: Programming
+[b]Garth Simpson[/b]: Art, Animation, Level Design
+[b]Janely Marrero[/b]: Level Design
+[b]Sydney Baldwin[/b]: Music, Sound Effects, Writing"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = 26.0
+offset_right = 215.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_20cpk")
+icon = ExtResource("5_fdex0")
+icon_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

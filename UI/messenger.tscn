@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7hod7ehn4yyo"]
+[gd_scene load_steps=9 format=3 uid="uid://c7hod7ehn4yyo"]
 
 [ext_resource type="Script" path="res://UI/messenger.gd" id="1_lk8bo"]
 [ext_resource type="Texture2D" uid="uid://r1jm3blopq7p" path="res://Resources/Sprites/UI/continue_or_skip.png" id="3_cjji8"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://5sf0nnbs3wqs" path="res://Resources/Sound Effects/other sounds/friend_typing_1.wav" id="5_pku75"]
 [ext_resource type="Texture2D" uid="uid://b0jq2et72c7mq" path="res://Resources/Sprites/UI/spaceoresctoexit.png" id="5_pl7eo"]
 [ext_resource type="AudioStream" uid="uid://byrbpjhx14mgi" path="res://Resources/Sound Effects/other sounds/click.wav" id="6_8kg6j"]
+[ext_resource type="Script" path="res://UI/messenger.scrollcontainer.gd" id="7_grb61"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6ky3"]
 shader = ExtResource("3_qdjkp")
@@ -19,27 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_lk8bo")
-n_messagebox = NodePath("Messages")
+n_messagebox = NodePath("ScrollContainer/Messages")
 n_continue = NodePath("ContSkip")
 n_exit = NodePath("Exit")
 messages = [[null, null]]
 n_click_audioplayer = NodePath("Click")
 n_typing_audioplayer = NodePath("Typing")
-
-[node name="Messages" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -112.998
-offset_right = 575.0
-offset_bottom = -39.9979
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(0, 40)
 
 [node name="ContSkip" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_m6ky3")
@@ -83,3 +69,19 @@ volume_db = -3.0
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8kg6j")
 volume_db = -3.983
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.00307221
+anchor_right = 1.0
+anchor_bottom = 0.952384
+grow_horizontal = 2
+horizontal_scroll_mode = 0
+script = ExtResource("7_grb61")
+metadata/_edit_use_anchors_ = true
+
+[node name="Messages" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10

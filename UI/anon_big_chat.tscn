@@ -19,9 +19,9 @@ flip_h = true
 
 [node name="Name" type="RichTextLabel" parent="TextureRect"]
 layout_mode = 2
-offset_left = 154.0
+offset_left = 54.0
 offset_top = 48.0
-offset_right = 905.0
+offset_right = 805.0
 offset_bottom = 333.0
 theme_override_font_sizes/normal_font_size = 23
 theme_override_font_sizes/bold_font_size = 23
@@ -30,9 +30,9 @@ text = "Hi there"
 
 [node name="Message" type="RichTextLabel" parent="TextureRect"]
 layout_mode = 2
-offset_left = 154.0
+offset_left = 54.0
 offset_top = 92.0
-offset_right = 617.0
+offset_right = 517.0
 offset_bottom = 222.0
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20

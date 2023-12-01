@@ -8,14 +8,14 @@ radius = 9.0
 height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2t3g"]
-size = Vector2(42, 29)
+size = Vector2(32, 29)
 
 [node name="Fist" type="Node2D"]
 script = ExtResource("1_obotb")
 
 [node name="Fist" type="Sprite2D" parent="."]
 use_parent_material = true
-position = Vector2(20, 0)
+position = Vector2(18, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("1_mtjxv")
 
@@ -24,7 +24,7 @@ collision_layer = 0
 collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(26, 0)
+position = Vector2(22, 1)
 shape = SubResource("CapsuleShape2D_po1o1")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -35,7 +35,7 @@ collision_layer = 0
 collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstructionArea"]
-position = Vector2(21, 1.5)
+position = Vector2(16, 1)
 shape = SubResource("RectangleShape2D_v2t3g")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

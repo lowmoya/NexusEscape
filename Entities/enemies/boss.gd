@@ -81,7 +81,7 @@ var follow_player = true
 # State Variables
 enum Phases { IDLE = -1, SWORD, GUN, ELECTRIC }
 var phase: Phases = Phases.IDLE
-var sword_shield: float = 150.
+var sword_shield: float = 200.
 var gun_shield: float = 150.
 
 

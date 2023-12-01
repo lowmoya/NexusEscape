@@ -70,6 +70,7 @@ func _ready():
 
 func add_message():
 	var message = messages[message_index]
+	message_index += 1
 	var n_message
 	if message[0] == "!P":
 		match message[1]:
@@ -77,7 +78,7 @@ func add_message():
 				n_message = p_SmallAiMessage.instantiate()
 			SizeLabel.MEDIUM:
 				n_message = p_MediumAiMessage.instantiate()
-			SizeLabel.BIG:
+			_: # BIG
 				n_message = p_BigAiMessage.instantiate()
 		# check singleton for the players name, default value should be You
 		n_message.n_name.text = "[b]" + n_globals.player_name
@@ -88,7 +89,6 @@ func add_message():
 			n_message = p_Date.instantiate()
 			n_message.n_message.text = message[2]
 			n_messagebox.add_child(n_message)
-			message_index += 1
 			if message_index == message_length:
 				if phase == 0:
 					n_continue.visible = false
@@ -110,20 +110,20 @@ func add_message():
 				n_message = p_MediumAnonMessage.instantiate()
 				n_typing_audioplayer.stream = medium_typing_samples[randi_range(0, \
 						medium_typing_sample_count - 1)]
-			SizeLabel.BIG:
-				n_messagebox = p_BigAiMessage.instantiate()
+			_:
+				n_message = p_BigAnonMessage.instantiate()
 				n_typing_audioplayer.stream = long_typing_samples[randi_range(0, \
 						long_typing_sample_count - 1)]
 		n_message.n_name.text = message[0]
 	n_message.n_message.text = message[2]
 	n_messagebox.add_child(n_message)
-	message_index += 1
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("continue"):
 		n_click_audioplayer.pitch_scale = randf_range(1., 1.1)
 		n_click_audioplayer.play()
+		print(message_index, ' ', message_length)
 		if message_index == message_length:
 			n_host.done()
 			return
