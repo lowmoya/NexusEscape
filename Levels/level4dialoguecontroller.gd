@@ -9,5 +9,5 @@ func dialogue_heard():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	n_dialogue.call_deferred("say", "Did I do it? Did I make it out?\nNo. There's still [b]something[/b] up ahead.\nWhat is that thing?")
+	n_dialogue.call_deferred("say", "Did I do it? Did I make it out?\n\nNo. There's still [b]something[/b] up ahead.\n\nWhat is that thing?")
 
