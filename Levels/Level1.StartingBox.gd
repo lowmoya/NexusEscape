@@ -21,15 +21,15 @@ func _ready():
 	n_fog_shader = n_fog.material as ShaderMaterial
 	n_fog_shader.set_shader_parameter("frame", -1.)
 	get_tree().paused = true
-	n_dialogue.say("*This is a dialogue box, press the X to progress the story.\nDefeat all of the bots to progress through the game.*")
+	n_dialogue.say("*This is a dialogue box. Press the X to progress the story.\nDefeat all enemies to progress through the game.*")
 
 
 func dialogue_heard():
 	match phase:
 		-1:
-			n_dialogue.say("How long... have I been here?\nI can't remember.\nI feel... so... squished.")
+			n_dialogue.say("How long... have I been here?\n\nI can't remember.\n\nI feel... so... [b]squished.[/b]")
 		0:
-			n_dialogue.say("Mel... Where's Mel? Where did they go?\nI have to find them. They said they'd help me.\nHow do I find them?\n...")
+			n_dialogue.say("Mel... Where's Mel? Where did they go?\n\nI have to find them. They said they'd help me.\n\n...Wait, how do I find them?")
 			fog_frame = -1
 			get_tree().paused = false
 	phase += 1
@@ -55,7 +55,7 @@ func _process(delta):
 					 n_enemycontroller.enemy_count == 0:
 				n_musicplayer.stop()
 				phase = 2
-				n_dialogue.say("*[b]Sword[/b] added to database.*\nWhy did those things attack me?\nIt looks like fighting them has... made me [b]stronger[/b]. Is this some kind of training?\nHello? Is anyone listening?")
+				n_dialogue.say("[b]Sword[/b] [i]added to database.[/i]\n\nWhy did those things attack me?\n\nIt looks like fighting them has... made me [b]stronger[/b]. Is this some kind of training?\n\nHello? Is anyone listening?")
 				process_mode = Node.PROCESS_MODE_DISABLED
 			
 	
