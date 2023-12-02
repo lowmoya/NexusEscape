@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var n_sprite: Sprite2D
+@export var n_crumbled: Sprite2D
 @export var n_collision: CollisionShape2D
 @export var n_fog: ColorRect
 @export var n_musicplayer: AudioStreamPlayer
@@ -69,6 +70,7 @@ func try(_lvl):
 	if health == 1:
 		n_sprite.queue_free()
 		n_collision.queue_free()
+		n_crumbled.visible=true
 		n_musicplayer.play()
 		health = 0
 	else:

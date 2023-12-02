@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5hub5lk82s66"]
+[gd_scene load_steps=15 format=3 uid="uid://b5hub5lk82s66"]
 
 [ext_resource type="TileSet" uid="uid://q7lt60hdjx6y" path="res://Resources/Tilemaps/tilemap1.tres" id="1_hif0e"]
 [ext_resource type="Script" path="res://Levels/TileMap.gd" id="2_1hrwq"]
@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://cphwe4utlthiy" path="res://Entities/door.tscn" id="10_xorde"]
 [ext_resource type="PackedScene" uid="uid://blih5cvqkw7nq" path="res://Entities/transition.tscn" id="11_wak4u"]
 [ext_resource type="AudioStream" uid="uid://dkseiewpakgf" path="res://Resources/Music/levels_song.mp3" id="13_xrdv7"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_74pvk"]
+vertices = PackedVector2Array(4679, 2788, 4054, 2790, 4187, 2740, -298, 274, -200, 292, -156, 352, -379, 364, -398, 303, 1494, 83, 1503, -28, 1793, -11, 1694, 146, 1646, 217, 2121, 752, 2251, 680, 2285, 943, 2142, 1017, 2080, 1024, 3471, 1996, 3459, 1934, 3610, 1939, 3613, 1993, -519, 291, -522, -340, -297, -299, -326, 176, 2318, 2187, 1885, 2186, 1889, 2145, 2023, 2133, 2069, 2135, 4692, 2045, 4181, 2503, 1564, 1013, 1561, 653, 1651, 497, 1751, 508, -139, 205, -41, -292, 141, -287, 771, 167, 821, -96, 869, -92, 863, 69, 843, 115, 769, 211, 541, 216, 540, 216, 374, -184, 559, -190, 746, -190, 770, -147, 4264, -228, 4438, -216, 4438, -176, 4252, -176, 2314, 2139, 2053, 2076, 2024, 2069, -34, -336, 136, -329, 251, 238, 145, 351, -114, 351, 315, -282, 815, -141, 4059, 2477, 4059, 2413, 4128, 2395, 4128, 2101, 4352, 2055, 838, 160, 1484, 93, 1705, 216, 2076, 533, 2139, 1642, 2082, 1681, 1920, 2072, 1947, 1829, 2386, 1995, 1888, 2086, 1836, 2069, 1839, 1904, 2149, 2077, 2317, 2082, 2217, 2080, 2363, 2036, 4376, 1985, 4288, 1272, 4402, 1219, 4869, 213, 4781, 782, 4622, 1086, 3814, 757, 3817, 162, 3992, 48, 4679, 40, 4117, -174, 4559, -170)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(7, 22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29, 30), PackedInt32Array(31, 0, 2, 32), PackedInt32Array(25, 3, 7), PackedInt32Array(17, 33, 34, 35, 36), PackedInt32Array(37, 25, 24, 38, 39), PackedInt32Array(40, 41, 42, 43, 44), PackedInt32Array(40, 45, 46, 47, 48, 49, 50, 51), PackedInt32Array(52, 53, 54, 55), PackedInt32Array(30, 56, 26), PackedInt32Array(57, 30, 29, 58), PackedInt32Array(38, 59, 60, 39), PackedInt32Array(61, 62, 63, 37, 39, 64, 48), PackedInt32Array(47, 61, 48), PackedInt32Array(40, 51, 65, 41), PackedInt32Array(32, 66, 67, 68), PackedInt32Array(31, 32, 68, 69, 70), PackedInt32Array(44, 71, 40), PackedInt32Array(72, 44, 43, 8), PackedInt32Array(12, 72, 8), PackedInt32Array(12, 11, 73, 35), PackedInt32Array(35, 73, 36), PackedInt32Array(17, 36, 74, 13), PackedInt32Array(17, 16, 75, 76), PackedInt32Array(77, 78, 76, 75, 79, 58), PackedInt32Array(77, 80, 81, 82, 78), PackedInt32Array(57, 58, 79, 83), PackedInt32Array(84, 85, 83, 79, 86), PackedInt32Array(69, 86, 79, 18), PackedInt32Array(69, 18, 21, 70), PackedInt32Array(87, 31, 70), PackedInt32Array(87, 70, 88, 89), PackedInt32Array(90, 91, 92, 89, 88, 93, 94, 95, 96), PackedInt32Array(96, 95, 97, 55, 54, 98)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-533, -353, -529, 301, -406, 312, -387, 375, -137, 361, -195, 283, -290, 265, -312, 188, -148, 214, -123, 361, 150, 362, 256, 248, 541, 226, 779, 221, 781, 176, 848, 170, 852, 125, 1481, 103, 1636, 222, 1641, 494, 1551, 650, 1555, 1023, 2070, 1034, 2072, 1677, 1940, 1821, 1830, 1899, 1826, 2077, 1888, 2097, 1922, 2082, 2014, 2079, 2013, 2124, 1880, 2136, 1874, 2196, 2329, 2198, 2324, 2130, 2077, 2125, 2066, 2086, 2149, 2087, 2217, 2090, 2322, 2093, 2367, 2046, 4118, 2111, 4118, 2387, 4049, 2405, 4049, 2486, 4171, 2511, 4177, 2733, 4000, 2801, 4689, 2798, 4703, 2037, 4386, 1977, 4412, 1225, 4630, 1094, 4791, 786, 4880, 210, 4687, 34, 4566, -180, 4448, -186, 4448, -226, 4257, -239, 4244, -186, 4111, -184, 3984, 41, 3808, 157, 3804, 761, 4278, 1276, 4341, 2044, 3623, 1984, 3620, 1930, 3447, 1924, 3459, 1986, 2391, 1985, 2149, 1639, 2152, 1023, 2296, 950, 2260, 664, 2128, 737, 2085, 524, 1760, 499, 1715, 214, 1704, 148, 1810, -21, 1494, -39, 1485, 73, 873, 59, 880, -102, 830, -105, 824, -151, 776, -156, 753, -201, 559, -200, 380, -194, 322, -292, 149.782, -296.737, 146, -339, -43, -347, -50.2463, -302.24, -296, -309), PackedVector2Array(-460, -238, -466, -129, -363, -138, -376, -222)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node" type="Node"]
 
@@ -47,7 +53,6 @@ scale = Vector2(0.325956, 0.315845)
 skew = -3.44515e-05
 n_camera = NodePath("Camera2D")
 mastery = 1
-max_health = 25
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMap/Player"]
 show_behind_parent = true
@@ -159,3 +164,6 @@ stream = ExtResource("13_xrdv7")
 volume_db = -6.0
 autoplay = true
 bus = &"Music"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_74pvk")

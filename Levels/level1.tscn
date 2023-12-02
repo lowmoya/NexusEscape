@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmc6u0x3tasos"]
+[gd_scene load_steps=21 format=3 uid="uid://bmc6u0x3tasos"]
 
 [ext_resource type="TileSet" uid="uid://q7lt60hdjx6y" path="res://Resources/Tilemaps/tilemap1.tres" id="1_gfqjn"]
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="2_71mvp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://Resources/Shaders/limit.gdshader" id="12_oywrv"]
 [ext_resource type="Texture2D" uid="uid://b8mhs2iam3fb5" path="res://Resources/Sprites/Entities/starting_door.png" id="12_sxul7"]
 [ext_resource type="Script" path="res://Levels/Level1.StartingBox.gd" id="12_t0sb8"]
+[ext_resource type="Texture2D" uid="uid://rba1x5ydouyq" path="res://Resources/Sprites/Entities/crumbled_wall.png" id="16_f63q7"]
 [ext_resource type="PackedScene" uid="uid://bx3xi6u4mxhca" path="res://UI/dialogue.tscn" id="16_fe40h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ngakk"]
@@ -115,6 +116,7 @@ position_smoothing_speed = 10.0
 metadata/_edit_lock_ = true
 
 [node name="NavMesh" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-2, 2)
 navigation_polygon = SubResource("NavigationPolygon_ngakk")
 
@@ -157,7 +159,7 @@ volume_db = -6.0
 autoplay = true
 bus = &"Music"
 
-[node name="StartingBox" type="StaticBody2D" parent="." node_paths=PackedStringArray("n_sprite", "n_collision", "n_fog", "n_musicplayer", "n_dialogue", "n_enemycontroller", "n_player", "n_playerui")]
+[node name="StartingBox" type="StaticBody2D" parent="." node_paths=PackedStringArray("n_sprite", "n_crumbled", "n_collision", "n_fog", "n_musicplayer", "n_dialogue", "n_enemycontroller", "n_player", "n_playerui")]
 process_mode = 3
 material = SubResource("ShaderMaterial_fcpwn")
 position = Vector2(-334, 31)
@@ -165,6 +167,7 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("12_t0sb8")
 n_sprite = NodePath("Sprite2D")
+n_crumbled = NodePath("Crumble")
 n_collision = NodePath("CollisionShape2D")
 n_fog = NodePath("../Level1 UI Components/Fog")
 n_musicplayer = NodePath("../MusicPlayer")
@@ -184,3 +187,10 @@ texture = ExtResource("12_sxul7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartingBox"]
 position = Vector2(123, -6)
 shape = SubResource("RectangleShape2D_8sk4s")
+
+[node name="Crumble" type="Sprite2D" parent="StartingBox"]
+visible = false
+z_index = -1
+position = Vector2(143.5, -8.25)
+scale = Vector2(3.86364, 4.35625)
+texture = ExtResource("16_f63q7")

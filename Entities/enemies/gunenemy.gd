@@ -72,7 +72,7 @@ func _physics_process(delta):
 				acceleration * delta)
 	else:
 		n_navagent.target_position = n_player.global_position
-		velocity = (n_navagent.get_next_path_position() - position).normalized() * speed
+		velocity = (n_navagent.get_next_path_position() - global_position).normalized() * speed
 	move_and_slide()
 	
 	# Handle aiming and facing direction

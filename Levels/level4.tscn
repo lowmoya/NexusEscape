@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lcui70ritq2"]
+[gd_scene load_steps=15 format=3 uid="uid://lcui70ritq2"]
 
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="1_dvbml"]
 [ext_resource type="PackedScene" uid="uid://bx3xi6u4mxhca" path="res://UI/dialogue.tscn" id="2_8geo8"]
@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://blih5cvqkw7nq" path="res://Entities/transition.tscn" id="9_otnta"]
 [ext_resource type="PackedScene" uid="uid://cphwe4utlthiy" path="res://Entities/door.tscn" id="10_rgwqe"]
 [ext_resource type="AudioStream" uid="uid://dkseiewpakgf" path="res://Resources/Music/levels_song.mp3" id="12_kwjkj"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ljgj8"]
+vertices = PackedVector2Array(158, 710, 158, -87, 199, -41, 207, 628, 203, 715, 1204, 341, 1202, 716, 649, 721, 659, 635, 1124, 53, 1196, 281, 530, -24, 540, -109, 1143, -113, 1196, 47, 3500, 268, 3637, 259, 3632, 1157, 2195, 1158, 3410, 276, 2194, 331, 3131, -1793, 3603, -1921, 3696, -1910, 5010, -1683, 5044, -750, 3504, -734, 3405, -744, 3415, -5616, 5038, -5626, 5020, -4470, 4270, -4470, 3413, -4472, 4177, -4470, 4185, -3953, 4264, -3958, 3586, -2864, 3283, -2861, 3288, -3954, 5229, -3966, 5234, -2852, 3702, -2850, 3096, -761)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 9, 8), PackedInt32Array(9, 14, 10), PackedInt32Array(15, 16, 17, 18, 19), PackedInt32Array(3, 2, 11, 8), PackedInt32Array(5, 10, 19, 20), PackedInt32Array(21, 22, 23, 24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31, 32), PackedInt32Array(33, 32, 31), PackedInt32Array(34, 33, 31, 35), PackedInt32Array(36, 37, 38, 34), PackedInt32Array(34, 35, 39, 40, 41, 36), PackedInt32Array(22, 36, 41, 23), PackedInt32Array(27, 42, 21), PackedInt32Array(19, 27, 26, 15), PackedInt32Array(19, 18, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(148, -114, 148, 720, 213, 726, 217, 638, 648, 645, 638, 732, 1212, 726, 1214, 351, 2184, 341, 2186, 1169, 3642, 1167, 3648, 249, 3510, 257, 3514, -724, 5055, -741, 5020, -1692, 3706, -1918, 3712, -2840, 5245, -2843, 5239, -3977, 4274, -3968, 4280, -4460, 5030, -4460, 5049, -5637, 3406, -5626, 3403, -4463, 4167, -4460, 4175, -3963, 3279, -3965, 3273, -2851, 3576, -2854, 3593, -1929, 3122, -1802, 3086, -752, 3395, -735, 3400, 266, 1206, 271, 1206, 37, 1135, 42, 1155, -124, 532, -119, 521, -34, 204, -51)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node" type="Node"]
 
@@ -51,7 +57,6 @@ position = Vector2(74.25, 67.25)
 scale = Vector2(0.25, 0.25)
 n_camera = NodePath("Camera2D")
 mastery = 3
-max_health = 25
 
 [node name="Camera2D" type="Camera2D" parent="Tilemap/Player"]
 position = Vector2(46, 35)
@@ -188,3 +193,6 @@ stream = ExtResource("12_kwjkj")
 volume_db = -6.0
 autoplay = true
 bus = &"Music"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ljgj8")
