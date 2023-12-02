@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cagw0vrw5eh4b" path="res://Resources/Sprites/UI/Title-01.png" id="1_rp318"]
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_x8qsc"]
-[ext_resource type="AudioStream" uid="uid://pg6fvl0ms4td" path="res://Resources/Music/menu_song.mp3" id="3_a65lj"]
 [ext_resource type="Shader" path="res://Resources/Shaders/shimmerandstars.gdshader" id="3_cf8jk"]
+[ext_resource type="AudioStream" uid="uid://dnciskv8hi7kl" path="res://Resources/Music/menu_song.wav" id="4_kx3nn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0uuq"]
 shader = ExtResource("3_cf8jk")
@@ -74,7 +74,7 @@ text = "Start"
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_a65lj")
+stream = ExtResource("4_kx3nn")
 autoplay = true
 
 [connection signal="button_down" from="ButtonContainer/TopdownButton" to="." method="_on_topdown_button_button_down"]
