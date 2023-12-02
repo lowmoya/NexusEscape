@@ -125,6 +125,7 @@ sprite_frames = SubResource("SpriteFrames_0naic")
 autoplay = "default"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_wsx1m")
 autoplay = true
 bus = &"Music"

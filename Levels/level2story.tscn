@@ -134,6 +134,7 @@ sprite_frames = SubResource("SpriteFrames_j0dqp")
 autoplay = "default"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("3_qjkml")
 autoplay = true
 bus = &"Music"

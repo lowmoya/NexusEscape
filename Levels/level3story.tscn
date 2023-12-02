@@ -132,6 +132,7 @@ sprite_frames = SubResource("SpriteFrames_dbceq")
 autoplay = "default"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("3_ivvcr")
 autoplay = true
 bus = &"Music"
