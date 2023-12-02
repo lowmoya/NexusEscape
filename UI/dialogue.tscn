@@ -25,11 +25,14 @@ n_label = NodePath("TextureRect/RichTextLabel")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nqf37")
+bus = &"Menu"
 
 [node name="Talking" type="AudioStreamPlayer" parent="."]
+bus = &"Dialogue"
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_x7oi3")
+bus = &"Menu"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

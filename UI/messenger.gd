@@ -123,7 +123,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("continue"):
 		n_click_audioplayer.pitch_scale = randf_range(1., 1.1)
 		n_click_audioplayer.play()
-		print(message_index, ' ', message_length)
 		if message_index == message_length:
 			n_host.done()
 			return

@@ -190,3 +190,4 @@ n_dialogue = NodePath("../PlayingUI/Dialogue")
 stream = ExtResource("13_eoc63")
 volume_db = -6.0
 autoplay = true
+bus = &"Music"

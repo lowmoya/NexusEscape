@@ -119,6 +119,7 @@ position = Vector2(-2, 2)
 navigation_polygon = SubResource("NavigationPolygon_ngakk")
 
 [node name="Level1 UI Components" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Fog" type="ColorRect" parent="Level1 UI Components"]
 material = SubResource("ShaderMaterial_cigky")
@@ -154,6 +155,7 @@ scene_path = "res://Levels/level2story.tscn"
 stream = ExtResource("11_tr44g")
 volume_db = -6.0
 autoplay = true
+bus = &"Music"
 
 [node name="StartingBox" type="StaticBody2D" parent="." node_paths=PackedStringArray("n_sprite", "n_collision", "n_fog", "n_musicplayer", "n_dialogue", "n_enemycontroller")]
 process_mode = 3

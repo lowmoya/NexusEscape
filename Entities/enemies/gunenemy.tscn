@@ -11,6 +11,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nx780"]
 shader = ExtResource("1_ryqc4")
 shader_parameter/frame = 0
+shader_parameter/firestacks = 0.0
 
 [sub_resource type="Gradient" id="Gradient_53k3h"]
 offsets = PackedFloat32Array(0, 0.119149, 0.26383, 0.53617)
@@ -92,9 +93,12 @@ stream = ExtResource("6_lq4kv")
 volume_db = -0.729
 autoplay = true
 attenuation = 3.73213
+bus = &"Enemy"
 
 [node name="Alert" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_aocyc")
+bus = &"Enemy"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 volume_db = 7.0
+bus = &"Enemy"

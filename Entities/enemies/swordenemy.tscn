@@ -111,22 +111,27 @@ target_desired_distance = 80.0
 
 [node name="Alert" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_jmypj")
+bus = &"Enemy"
 
 [node name="Movement" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_qt0ec")
 volume_db = -7.257
 autoplay = true
 attenuation = 2.92817
+bus = &"Enemy"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_d0e7d")
 volume_db = 1.434
+bus = &"Enemy"
 
 [node name="Dodge" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_8vymr")
 attenuation = 1.27456
+bus = &"Enemy"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 volume_db = 7.0
+bus = &"Enemy"
 
 [connection signal="body_entered" from="Sword/Area2D" to="." method="_on_sword_area_body_entered"]

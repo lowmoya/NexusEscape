@@ -27,6 +27,7 @@ n_splashscreen = NodePath("TextureRect")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_fj117")
 autoplay = true
+bus = &"Music"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_d53yu")
@@ -61,7 +62,7 @@ bbcode_enabled = true
 text = "[center][b]A. Barry[/b]: Programming
 [b]Garth Simpson[/b]: Art, Animation, Level Design
 [b]Janely Marrero[/b]: Level Design
-[b]Sydney Baldwin[/b]: Music, Sound Effects, Writing"
+[b]Sydney Baldwin[/b]: Music, Sound Effects, Story"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="."]
