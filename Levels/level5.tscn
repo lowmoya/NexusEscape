@@ -42,6 +42,7 @@ layer_3/tile_data = PackedInt32Array(-1638402, 65539, 10, -1572866, 65539, 10, -
 position = Vector2(520.5, 985.25)
 scale = Vector2(0.25, 0.25)
 n_camera = NodePath("Camera2D2")
+mastery = 3
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMap/Player"]
 show_behind_parent = true

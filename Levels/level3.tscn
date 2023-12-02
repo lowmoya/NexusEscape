@@ -38,6 +38,7 @@ layer_3/tile_data = PackedInt32Array(-524337, 196611, 10, -458801, 196611, 10, -
 position = Vector2(92, 347)
 scale = Vector2(0.25, 0.25)
 n_camera = NodePath("Camera2D")
+mastery = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMap/Player"]
 show_behind_parent = true
@@ -171,10 +172,12 @@ n_player = NodePath("../TileMap/Player")
 [node name="Dialogue" parent="PlayingUI" node_paths=PackedStringArray("n_host") instance=ExtResource("9_2p2mr")]
 n_host = NodePath("../DialogueController")
 
-[node name="DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_enemycontroller", "n_dialogue")]
+[node name="DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_enemycontroller", "n_dialogue", "n_player", "n_playerui")]
 script = ExtResource("10_iqbby")
 n_enemycontroller = NodePath("../../TileMap/EnemyController")
 n_dialogue = NodePath("../Dialogue")
+n_player = NodePath("../../TileMap/Player")
+n_playerui = NodePath("..")
 
 [node name="Transition" parent="." instance=ExtResource("9_cjnn5")]
 position = Vector2(9536, 2674)

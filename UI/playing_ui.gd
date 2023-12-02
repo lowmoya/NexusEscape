@@ -14,6 +14,10 @@ extends CanvasLayer
 @export var n_itembar: Sprite2D
 @export var n_player: CharacterBody2D
 
+@export var n_sword: Sprite2D
+@export var n_gun: Sprite2D
+@export var n_flame: Sprite2D
+
 var n_weapon_fills = [ ]
 var last_weapon = null
 
@@ -42,6 +46,18 @@ func _ready():
 	n_weapon_fills[Weapon.WeaponType.Flame] = [ n_itembar.get_node("Flame/SelectedFill"), \
 			n_itembar.get_node("Flame/UnselectedFill") ]
 	last_weapon = n_player.weapon
+	
+	match n_player.mastery:
+		3:
+			n_sword.visible = true
+			n_gun.visible = true
+			n_flame.visible = true
+		2:
+			n_sword.visible = true
+			n_gun.visible = true
+		1:
+			n_sword.visible = true
+			
 	
 	# Set bar max values
 	n_front_health_bar.max_value = n_player.max_health

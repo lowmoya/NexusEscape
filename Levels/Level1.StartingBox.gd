@@ -6,6 +6,8 @@ extends StaticBody2D
 @export var n_musicplayer: AudioStreamPlayer
 @export var n_dialogue: Control
 @export var n_enemycontroller: Node
+@export var n_player: CharacterBody2D
+@export var n_playerui: CanvasLayer
 
 var health = 5
 var n_shader
@@ -56,7 +58,10 @@ func _process(delta):
 				n_musicplayer.stop()
 				phase = 2
 				n_dialogue.say("[b]Sword[/b] [i]added to database.[/i]\n\nWhy did those things attack me?\n\nIt looks like fighting them has... made me [b]stronger[/b]. Is this some kind of training?\n\nHello? Is anyone listening?")
+				n_player.mastery = 1
+				n_playerui.n_sword.visible = true
 				process_mode = Node.PROCESS_MODE_DISABLED
+				
 			
 	
 	

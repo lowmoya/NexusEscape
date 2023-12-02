@@ -49,6 +49,7 @@ layer_3/tile_data = PackedInt32Array(-5242920, 65539, 11, -5177384, 65539, 11, -
 position = Vector2(74.25, 67.25)
 scale = Vector2(0.25, 0.25)
 n_camera = NodePath("Camera2D")
+mastery = 3
 max_health = 25
 
 [node name="Camera2D" type="Camera2D" parent="Tilemap/Player"]
