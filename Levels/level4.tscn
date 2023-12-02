@@ -78,6 +78,7 @@ texture_scale = 0.5
 metadata/_edit_lock_ = true
 
 [node name="EnemyController" type="Node2D" parent="Tilemap" node_paths=PackedStringArray("n_player")]
+y_sort_enabled = true
 scale = Vector2(0.25, 0.25)
 script = ExtResource("5_me17l")
 n_player = NodePath("../Player")

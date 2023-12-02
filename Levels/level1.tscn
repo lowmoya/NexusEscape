@@ -156,7 +156,6 @@ scene_path = "res://Levels/level2story.tscn"
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_tr44g")
 volume_db = -6.0
-autoplay = true
 bus = &"Music"
 
 [node name="StartingBox" type="StaticBody2D" parent="." node_paths=PackedStringArray("n_sprite", "n_crumbled", "n_collision", "n_fog", "n_musicplayer", "n_dialogue", "n_enemycontroller", "n_player", "n_playerui")]
