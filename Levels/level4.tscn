@@ -22,8 +22,10 @@ n_player = NodePath("../Tilemap/Player")
 [node name="Dialogue" parent="PlayingUI" node_paths=PackedStringArray("n_host") instance=ExtResource("2_8geo8")]
 n_host = NodePath("../Level4DialogueController")
 
-[node name="Level4DialogueController" type="Node2D" parent="PlayingUI"]
+[node name="Level4DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_enemycontroller", "n_door")]
 script = ExtResource("3_wfyoo")
+n_enemycontroller = NodePath("../../Tilemap/EnemyController")
+n_door = NodePath("../../Hallway Fitter/Door")
 
 [node name="Tilemap" type="TileMap" parent="."]
 y_sort_enabled = true
