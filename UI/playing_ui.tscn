@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cy5wch1inkpnw" path="res://Resources/Sprites/UI/itembar_gun.png" id="13_7hg1i"]
 [ext_resource type="Texture2D" uid="uid://dl3ll55v2kvmu" path="res://Resources/Sprites/UI/itembar_flame.png" id="14_v5kkm"]
 
-[node name="PlayingUI" type="CanvasLayer" node_paths=PackedStringArray("n_front_health_bar", "n_back_health_bar", "n_front_energy_bar", "n_back_energy_bar", "n_dash_fill", "n_itembar")]
+[node name="PlayingUI" type="CanvasLayer" node_paths=PackedStringArray("n_front_health_bar", "n_back_health_bar", "n_front_energy_bar", "n_back_energy_bar", "n_dash_fill", "n_itembar", "n_sword", "n_gun", "n_flame")]
 script = ExtResource("1_orb0g")
 n_front_health_bar = NodePath("FrontHealthBar")
 n_back_health_bar = NodePath("BackHealthBar")
@@ -23,6 +23,9 @@ n_front_energy_bar = NodePath("FrontEnergyBar")
 n_back_energy_bar = NodePath("BackEnergyBar")
 n_dash_fill = NodePath("Control/Itembar/DashBackground")
 n_itembar = NodePath("Control/Itembar")
+n_sword = NodePath("Control/Itembar/Sword")
+n_gun = NodePath("Control/Itembar/Gun")
+n_flame = NodePath("Control/Itembar/Flame")
 
 [node name="BackHealthBar" type="TextureProgressBar" parent="."]
 anchors_preset = -1
@@ -164,6 +167,7 @@ texture = ExtResource("11_6kb44")
 metadata/_edit_lock_ = true
 
 [node name="Sword" type="Sprite2D" parent="Control/Itembar"]
+visible = false
 position = Vector2(1, -0.5)
 texture = ExtResource("12_b7dx5")
 metadata/_edit_lock_ = true
@@ -180,6 +184,7 @@ texture = ExtResource("11_6kb44")
 metadata/_edit_lock_ = true
 
 [node name="Gun" type="Sprite2D" parent="Control/Itembar"]
+visible = false
 position = Vector2(13, -0.5)
 texture = ExtResource("13_7hg1i")
 metadata/_edit_lock_ = true
@@ -196,6 +201,7 @@ texture = ExtResource("11_6kb44")
 metadata/_edit_lock_ = true
 
 [node name="Flame" type="Sprite2D" parent="Control/Itembar"]
+visible = false
 position = Vector2(25, -0.5)
 texture = ExtResource("14_v5kkm")
 metadata/_edit_lock_ = true

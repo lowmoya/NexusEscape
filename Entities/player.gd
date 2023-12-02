@@ -54,7 +54,7 @@ var dash_frame = 0
 var dash_start = dash_delay - dash_start_delay
 var dash_end = dash_start - dash_length
 
-
+@export var mastery = 0
 
 # ################################################## #
 # Ready / Process Functions                          #
@@ -155,9 +155,9 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("select_four"):
 			switchHeld(3)
 		elif Input.is_action_just_pressed("select_right"):
-			switchHeld(0 if weapon == Weapon.WeaponType.Count - 1 else weapon + 1)
+			switchHeld(0 if weapon == mastery else weapon + 1)
 		elif Input.is_action_just_pressed("select_left"):
-			switchHeld(Weapon.WeaponType.Count - 1 if weapon == 0 else weapon - 1)
+			switchHeld(mastery if weapon == 0 else weapon - 1)
 		elif Input.is_action_just_pressed("pause"):
 			n_pausescreen.visible = true
 			n_pausescreen.frame = Time.get_ticks_msec() + 100
@@ -262,6 +262,11 @@ func updateHeld(delta):
 
 func switchHeld(index):
 	if index == weapon:
+		return
+	elif index > mastery:
+		n_audioplayer.stream = audiosamples[AudioLabel.Blocked]
+		n_audioplayer.pitch_scale = randf_range(.9, 1.1)
+		n_audioplayer.play()
 		return
 	elif weapon == Weapon.WeaponType.Flame:
 		n_flamethrower_audioplayer.stop()

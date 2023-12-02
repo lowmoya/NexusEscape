@@ -157,7 +157,7 @@ volume_db = -6.0
 autoplay = true
 bus = &"Music"
 
-[node name="StartingBox" type="StaticBody2D" parent="." node_paths=PackedStringArray("n_sprite", "n_collision", "n_fog", "n_musicplayer", "n_dialogue", "n_enemycontroller")]
+[node name="StartingBox" type="StaticBody2D" parent="." node_paths=PackedStringArray("n_sprite", "n_collision", "n_fog", "n_musicplayer", "n_dialogue", "n_enemycontroller", "n_player", "n_playerui")]
 process_mode = 3
 material = SubResource("ShaderMaterial_fcpwn")
 position = Vector2(-334, 31)
@@ -170,6 +170,8 @@ n_fog = NodePath("../Level1 UI Components/Fog")
 n_musicplayer = NodePath("../MusicPlayer")
 n_dialogue = NodePath("../Level1 UI Components/Dialogue")
 n_enemycontroller = NodePath("../Tiles/EnemyController")
+n_player = NodePath("../Tiles/Player")
+n_playerui = NodePath("../Level1 UI Components/PlayingUI")
 
 [node name="Sprite2D" type="Sprite2D" parent="StartingBox"]
 light_mask = 0
