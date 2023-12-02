@@ -83,9 +83,8 @@ n_player = NodePath("../TileMap/Player")
 [node name="Dialogue" parent="PlayingUI" node_paths=PackedStringArray("n_host") instance=ExtResource("7_nv8b2")]
 n_host = NodePath("DialogueController")
 
-[node name="DialogueController" type="Node2D" parent="PlayingUI/Dialogue" node_paths=PackedStringArray("n_dialogue")]
+[node name="DialogueController" type="Node2D" parent="PlayingUI/Dialogue"]
 script = ExtResource("8_2bwhr")
-n_dialogue = NodePath("..")
 
 [node name="BossUI" parent="." node_paths=PackedStringArray("n_boss") instance=ExtResource("7_7ungv")]
 visible = false
