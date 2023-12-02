@@ -35,7 +35,7 @@ func _physics_process(delta):
 func try(key):
 	if type == DoorType.METAL:
 		immune_frame = .3
-		n_dialogue.say("I can't go through the exit!\n[i]Searching database for solutions...[/i]\nThis door doesn't have any weaknesses...\n*Defeat all the enemies to open it.*")
+		n_dialogue.say("I can't get through!\n\n[i]Searching database for solutions...[/i]\n\n*Defeat all enemies to open this door.*")
 	elif key == type:
 		health -= 1
 		if health == 0:
@@ -44,4 +44,4 @@ func try(key):
 			damage_frame = .1
 	else:
 		immune_frame = .3
-		n_dialogue.say("I can't go through the exit!\n[i]Searching database for solutions...[/i]I see! There's only one method of attack that will work on these.")
+		n_dialogue.say("I can't get through!\n\n[i]Searching database for solutions...[/i]\n\nI see! There's only one method of attack that will work on these.")
