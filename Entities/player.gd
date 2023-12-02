@@ -160,6 +160,7 @@ func _physics_process(delta):
 			switchHeld(Weapon.WeaponType.Count - 1 if weapon == 0 else weapon - 1)
 		elif Input.is_action_just_pressed("pause"):
 			n_pausescreen.visible = true
+			n_pausescreen.frame = Time.get_ticks_msec() + 100
 			n_pausescreen.set_deferred("process_mode", Node.PROCESS_MODE_ALWAYS)
 			get_tree().paused = true
 	
@@ -231,6 +232,7 @@ func damage(amount):
 		n_audioplayer.play()
 		visible = false
 		set_collision_layer_value(1, false)
+		n_deathscreen.load_volumes()
 		n_deathscreen.visible = true
 		n_deathscreen.process_mode = Node.PROCESS_MODE_ALWAYS
 		get_tree().paused = true

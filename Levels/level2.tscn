@@ -154,3 +154,4 @@ scene_path = "res://Levels/level3story.tscn"
 stream = ExtResource("13_xrdv7")
 volume_db = -6.0
 autoplay = true
+bus = &"Music"

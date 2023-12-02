@@ -187,6 +187,7 @@ stream = ExtResource("5_lr062")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_uuwfe")
 autoplay = true
+bus = &"Music"
 
 [node name="Recovery box" type="Control" parent="."]
 layout_mode = 1

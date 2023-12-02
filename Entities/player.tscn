@@ -77,25 +77,31 @@ position = Vector2(30, 0)
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_nldq7")
+bus = &"Player"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 volume_db = 7.0
+bus = &"Player"
 
 [node name="Steps" type="AudioStreamPlayer2D" parent="."]
+bus = &"Player"
 
 [node name="General" type="AudioStreamPlayer2D" parent="."]
 volume_db = 2.213
+bus = &"Player"
 
 [node name="Flamethrower" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ovoie")
+bus = &"Player"
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_8uogf")
+bus = &"Player"
 
-[node name="Pause Screen" parent="." instance=ExtResource("11_rukxv")]
+[node name="Death Screen" parent="." instance=ExtResource("12_r4d4j")]
 process_mode = 4
 visible = false
 
-[node name="Death Screen" parent="." instance=ExtResource("12_r4d4j")]
+[node name="Pause Screen" parent="." instance=ExtResource("11_rukxv")]
 process_mode = 4
 visible = false

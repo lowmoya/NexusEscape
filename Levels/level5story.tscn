@@ -127,6 +127,7 @@ autoplay = "default"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_wsx1m")
 autoplay = true
+bus = &"Music"
 
 [node name="StoryScene" parent="." node_paths=PackedStringArray("n_host") instance=ExtResource("4_yjyhh")]
 process_mode = 4

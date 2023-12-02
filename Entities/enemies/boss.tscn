@@ -103,9 +103,11 @@ hframes = 3
 texture = SubResource("GradientTexture2D_0q1b1")
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"Enemy"
 
 [node name="GeneralAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = 1.5
 attenuation = 1.68179
+bus = &"Enemy"
 
 [connection signal="body_entered" from="Held/SwordPivot/HitArea" to="." method="_on_sword_hit_area_body_entered"]

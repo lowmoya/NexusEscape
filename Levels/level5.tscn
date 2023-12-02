@@ -129,6 +129,7 @@ zoom = Vector2(0.5, 0.5)
 stream = ExtResource("10_02ijq")
 volume_db = -6.0
 autoplay = true
+bus = &"Music"
 
 [node name="Transition" parent="." instance=ExtResource("13_6faec")]
 position = Vector2(2048, -14)

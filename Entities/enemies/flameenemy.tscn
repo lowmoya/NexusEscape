@@ -10,6 +10,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iejoq"]
 shader = ExtResource("1_mk3tv")
 shader_parameter/frame = 0
+shader_parameter/firestacks = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvhsh"]
 radius = 23.0
@@ -120,16 +121,20 @@ texture = SubResource("GradientTexture2D_g4baq")
 
 [node name="Alert" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_i6htb")
+bus = &"Enemy"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_supek")
 volume_db = -0.252
+bus = &"Enemy"
 
 [node name="Movement" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_4n3dy")
 volume_db = -1.434
 autoplay = true
 attenuation = 3.86374
+bus = &"Enemy"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 volume_db = 7.0
+bus = &"Enemy"

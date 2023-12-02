@@ -1,29 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://bamk6jcnwqo1e"]
+[gd_scene load_steps=15 format=3 uid="uid://bamk6jcnwqo1e"]
 
-[ext_resource type="Theme" uid="uid://5xwso0c7pqgc" path="res://UI/death_screen.tres" id="1_lwres"]
 [ext_resource type="Script" path="res://UI/death_screen.gd" id="1_xj17r"]
-[ext_resource type="Texture2D" uid="uid://cr1ohf2opro0j" path="res://Resources/Sprites/UI/retry.png" id="2_yeta1"]
-[ext_resource type="Texture2D" uid="uid://3lstford158c" path="res://Resources/Sprites/UI/exit.png" id="3_eueh4"]
 [ext_resource type="Texture2D" uid="uid://uns31p6o5upx" path="res://Resources/Sprites/UI/you_died_text.png" id="4_4oval"]
+[ext_resource type="Texture2D" uid="uid://bcek1nlv7wn4a" path="res://Resources/Sprites/UI/menu.png" id="4_g44ep"]
+[ext_resource type="Texture2D" uid="uid://b6tam5emaydo3" path="res://Resources/Sprites/UI/dialogue_close.png" id="5_awjn8"]
+[ext_resource type="Texture2D" uid="uid://bd2d8nh028237" path="res://Resources/Sprites/UI/dialogue_close_pressed.png" id="6_31tah"]
 [ext_resource type="AudioStream" uid="uid://wkjfebfj4f48" path="res://Resources/Sound Effects/player movement/game_over.wav" id="6_u1dc0"]
+[ext_resource type="Texture2D" uid="uid://ck6dft843km4i" path="res://Resources/Sprites/UI/dialogue_close_hover.png" id="7_7533o"]
+[ext_resource type="LabelSettings" uid="uid://cde8qt7t8ip78" path="res://UI/menu_labelsettings.tres" id="8_kb5nl"]
+[ext_resource type="AudioStream" uid="uid://byrbpjhx14mgi" path="res://Resources/Sound Effects/other sounds/click.wav" id="9_bcgwo"]
+[ext_resource type="AudioStream" uid="uid://c2alt5xpeglse" path="res://Resources/Sound Effects/other sounds/hover_over_selection.wav" id="10_an6j6"]
 
-[sub_resource type="FontVariation" id="FontVariation_hv5sj"]
-spacing_glyph = 1
-spacing_space = 1
-spacing_top = 3
-spacing_bottom = 3
+[sub_resource type="Theme" id="Theme_yc2xh"]
+default_font_size = 20
 
-[sub_resource type="Theme" id="Theme_w7v6r"]
-default_font = SubResource("FontVariation_hv5sj")
+[sub_resource type="Theme" id="Theme_c77yt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chxoe"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhk4n"]
 bg_color = Color(0.231373, 0.321569, 0.380392, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsd2"]
-bg_color = Color(0.231373, 0.321569, 0.380392, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_8h3a1"]
+font_size = 25
 
-[node name="Death Screen" type="CanvasLayer"]
+[node name="Death Screen" type="CanvasLayer" node_paths=PackedStringArray("n_options", "n_controls", "n_click_audioplayer", "n_hover_audioplayer", "master_slider", "music_slider", "dialogue_slider", "menu_slider", "player_slider", "enemy_slider")]
 script = ExtResource("1_xj17r")
+n_options = NodePath("Menus/Options")
+n_controls = NodePath("Menus/Controls")
+n_click_audioplayer = NodePath("Click")
+n_hover_audioplayer = NodePath("Hover")
+master_slider = NodePath("Menus/Options/VBoxContainer/MasterSlider")
+music_slider = NodePath("Menus/Options/VBoxContainer/MusicSlider")
+dialogue_slider = NodePath("Menus/Options/VBoxContainer/DialogueSlider")
+menu_slider = NodePath("Menus/Options/VBoxContainer/MenuSlider")
+player_slider = NodePath("Menus/Options/VBoxContainer/PlayerSlider")
+enemy_slider = NodePath("Menus/Options/VBoxContainer/EnemySlider")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -38,39 +48,6 @@ offset_bottom = 1103.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.117647, 0.0941176, 0.129412, 0.878431)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -51.0
-offset_right = 208.0
-offset_bottom = 51.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_w7v6r")
-
-[node name="Try again" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("1_lwres")
-theme_override_styles/normal = SubResource("StyleBoxFlat_chxoe")
-icon = ExtResource("2_yeta1")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Exit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_vcsd2")
-text = "
-"
-icon = ExtResource("3_eueh4")
-icon_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = -1
@@ -89,12 +66,257 @@ size_flags_vertical = 0
 texture = ExtResource("4_4oval")
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_u1dc0")
 volume_db = 8.0
 autoplay = true
+bus = &"Menu"
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.289497
+anchor_top = 0.393519
+anchor_right = 0.710503
+anchor_bottom = 0.770062
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_yc2xh")
+theme_override_constants/separation = 8
 
-[connection signal="pressed" from="VBoxContainer/Try again" to="." method="_on_try_again_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="Retry" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_c77yt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dhk4n")
+text = "Retry Scene
+"
+
+[node name="OptionsButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_c77yt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dhk4n")
+text = "Options"
+
+[node name="ControlsButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_c77yt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dhk4n")
+text = "Controls"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_c77yt")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dhk4n")
+text = "Quit"
+
+[node name="Menus" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Options" type="TextureRect" parent="Menus"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -465.0
+offset_right = 465.0
+offset_bottom = 600.0
+grow_horizontal = 2
+texture = ExtResource("4_g44ep")
+
+[node name="CloseButton" type="TextureButton" parent="Menus/Options"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.5
+offset_right = -4.5
+offset_bottom = 20.0
+grow_horizontal = 0
+texture_normal = ExtResource("5_awjn8")
+texture_pressed = ExtResource("6_31tah")
+texture_hover = ExtResource("7_7533o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.5
+offset_top = -253.5
+offset_right = 419.5
+offset_bottom = 253.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_8h3a1")
+horizontal_alignment = 1
+
+[node name="MasterLabel" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+label_settings = ExtResource("8_kb5nl")
+
+[node name="MasterSlider" type="HSlider" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="MusicLabel" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Music
+"
+label_settings = ExtResource("8_kb5nl")
+
+[node name="MusicSlider" type="HSlider" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="DialogueLabel" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Dialogue"
+label_settings = ExtResource("8_kb5nl")
+
+[node name="DialogueSlider" type="HSlider" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="MenuLabel" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Menu
+"
+label_settings = ExtResource("8_kb5nl")
+
+[node name="MenuSlider" type="HSlider" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="PlayerLabel" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Player"
+label_settings = ExtResource("8_kb5nl")
+
+[node name="PlayerSlider" type="HSlider" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="EnemyLabel" type="Label" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+text = "Enemy"
+label_settings = ExtResource("8_kb5nl")
+
+[node name="EnemySlider" type="HSlider" parent="Menus/Options/VBoxContainer"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="Controls" type="TextureRect" parent="Menus"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -465.0
+offset_right = 465.0
+offset_bottom = 600.0
+grow_horizontal = 2
+texture = ExtResource("4_g44ep")
+
+[node name="CloseButton" type="TextureButton" parent="Menus/Controls"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.5
+offset_right = -4.5
+offset_bottom = 20.0
+grow_horizontal = 0
+texture_normal = ExtResource("5_awjn8")
+texture_pressed = ExtResource("6_31tah")
+texture_hover = ExtResource("7_7533o")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menus/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -337.0
+offset_top = -207.0
+offset_right = 337.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[center][b]Game Play[/b][/center]
+[wasd] movement
+[left click] attack
+[1-4] select weapon
+[scroll up/scroll down] move right/left on the weapons bar
+[space] dash
+[escape] pause
+[center][b]Dialogue[/b][/center]
+[space/enter] show next message
+[escape] skip to end of scene"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bcgwo")
+bus = &"Menu"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_an6j6")
+bus = &"Menu"
+
+[connection signal="button_down" from="ButtonContainer/Retry" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/Retry" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonContainer/Retry" to="." method="_on_try_again_pressed"]
+[connection signal="button_down" from="ButtonContainer/OptionsButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/OptionsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="button_down" from="ButtonContainer/ControlsButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/ControlsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="button_down" from="ButtonContainer/QuitButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/QuitButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="button_down" from="Menus/Options/CloseButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Menus/Options/CloseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Menus/Options/CloseButton" to="." method="_on_options_close_button_pressed"]
+[connection signal="mouse_entered" from="Menus/Options/VBoxContainer/MasterSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Menus/Options/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="mouse_entered" from="Menus/Options/VBoxContainer/MusicSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Menus/Options/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="mouse_entered" from="Menus/Options/VBoxContainer/DialogueSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Menus/Options/VBoxContainer/DialogueSlider" to="." method="_on_dialogue_slider_value_changed"]
+[connection signal="mouse_entered" from="Menus/Options/VBoxContainer/MenuSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Menus/Options/VBoxContainer/MenuSlider" to="." method="_on_menu_slider_value_changed"]
+[connection signal="mouse_entered" from="Menus/Options/VBoxContainer/PlayerSlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Menus/Options/VBoxContainer/PlayerSlider" to="." method="_on_player_slider_value_changed"]
+[connection signal="mouse_entered" from="Menus/Options/VBoxContainer/EnemySlider" to="." method="_on_button_mouse_entered"]
+[connection signal="value_changed" from="Menus/Options/VBoxContainer/EnemySlider" to="." method="_on_enemy_slider_value_changed"]
+[connection signal="button_down" from="Menus/Controls/CloseButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Menus/Controls/CloseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Menus/Controls/CloseButton" to="." method="_on_controls_close_button_pressed"]

@@ -65,10 +65,12 @@ texture = ExtResource("5_pl7eo")
 [node name="Typing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_pku75")
 volume_db = -3.0
+bus = &"Dialogue"
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8kg6j")
 volume_db = -3.983
+bus = &"Menu"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
