@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bcpav2807vdex" path="res://Entities/player.tscn" id="1_dvbml"]
 [ext_resource type="PackedScene" uid="uid://bx3xi6u4mxhca" path="res://UI/dialogue.tscn" id="2_8geo8"]
 [ext_resource type="Texture2D" uid="uid://th74c3jjep2e" path="res://Resources/Sprites/Effects/light.png" id="2_ct7up"]
+[ext_resource type="Script" path="res://Levels/level4dialoguecontroller.gd" id="2_p37jm"]
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="3_6egly"]
-[ext_resource type="Script" path="res://Levels/Level4DialogueController.gd" id="3_wfyoo"]
 [ext_resource type="TileSet" uid="uid://damfbuciwmh81" path="res://Resources/Tilemaps/tilemap2.tres" id="4_qehan"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="5_me17l"]
 [ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/enemies/gunenemy.tscn" id="6_1s4vd"]
@@ -25,14 +25,13 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="PlayingUI" parent="." node_paths=PackedStringArray("n_player") instance=ExtResource("3_6egly")]
 n_player = NodePath("../Tilemap/Player")
 
-[node name="Dialogue" parent="PlayingUI" node_paths=PackedStringArray("n_host") instance=ExtResource("2_8geo8")]
-n_host = NodePath("../Level4DialogueController")
-
-[node name="Level4DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_dialogue", "n_enemycontroller", "n_door")]
-script = ExtResource("3_wfyoo")
-n_dialogue = NodePath("../Dialogue")
+[node name="Level4DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_enemycontroller", "n_door")]
+script = ExtResource("2_p37jm")
 n_enemycontroller = NodePath("../../Tilemap/EnemyController")
 n_door = NodePath("../../Hallway Fitter/Door")
+
+[node name="Dialogue" parent="PlayingUI" node_paths=PackedStringArray("n_host") instance=ExtResource("2_8geo8")]
+n_host = NodePath("../Level4DialogueController")
 
 [node name="Tilemap" type="TileMap" parent="."]
 y_sort_enabled = true
