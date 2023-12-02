@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=18 format=3 uid="uid://2vmvny1f2u1m"]
+=======
+[gd_scene load_steps=9 format=3 uid="uid://2vmvny1f2u1m"]
+>>>>>>> 18f7d3ac6030623c9cebeee6da98db4741f25b6b
 
 [ext_resource type="Texture2D" uid="uid://cagw0vrw5eh4b" path="res://Resources/Sprites/UI/Title-01.png" id="1_rp318"]
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_x8qsc"]
-[ext_resource type="AudioStream" uid="uid://pg6fvl0ms4td" path="res://Resources/Music/menu_song.mp3" id="3_a65lj"]
 [ext_resource type="Shader" path="res://Resources/Shaders/shimmerandstars.gdshader" id="3_cf8jk"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://bcek1nlv7wn4a" path="res://Resources/Sprites/UI/menu.png" id="5_8s341"]
 [ext_resource type="Texture2D" uid="uid://b6tam5emaydo3" path="res://Resources/Sprites/UI/dialogue_close.png" id="6_n0mqu"]
 [ext_resource type="Texture2D" uid="uid://bd2d8nh028237" path="res://Resources/Sprites/UI/dialogue_close_pressed.png" id="7_ij58c"]
@@ -12,6 +16,9 @@
 [ext_resource type="LabelSettings" uid="uid://cde8qt7t8ip78" path="res://UI/menu_labelsettings.tres" id="9_o6l3g"]
 [ext_resource type="AudioStream" uid="uid://c2alt5xpeglse" path="res://Resources/Sound Effects/other sounds/hover_over_selection.wav" id="9_wev80"]
 [ext_resource type="Texture2D" uid="uid://s5d3yto0qckw" path="res://Resources/Sprites/UI/tutorial.png" id="10_sq66i"]
+=======
+[ext_resource type="AudioStream" uid="uid://dnciskv8hi7kl" path="res://Resources/Music/menu_song.wav" id="4_kx3nn"]
+>>>>>>> 18f7d3ac6030623c9cebeee6da98db4741f25b6b
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0uuq"]
 shader = ExtResource("3_cf8jk")
@@ -26,10 +33,7 @@ default_font_size = 20
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shqwd"]
 bg_color = Color(0.231373, 0.321569, 0.380392, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_imtcy"]
-font_size = 25
-
-[node name="Main Menu" type="Control" node_paths=PackedStringArray("n_splashscreen", "n_click_audioplayer", "n_hover_audioplayer", "n_options", "n_controls")]
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("n_splashscreen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,10 +44,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x8qsc")
 n_splashscreen = NodePath("TextureRect")
-n_click_audioplayer = NodePath("Click")
-n_hover_audioplayer = NodePath("Hover")
-n_options = NodePath("Menus/Options")
-n_controls = NodePath("Menus/Controls")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_e0uuq")
@@ -78,7 +78,7 @@ grow_vertical = 2
 theme = SubResource("Theme_41gwq")
 theme_override_constants/separation = 8
 
-[node name="PlayButton" type="Button" parent="ButtonContainer"]
+[node name="TopdownButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_urean")
@@ -86,35 +86,13 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_shqwd")
 text = "Start"
 
-[node name="OptionsButton" type="Button" parent="ButtonContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = SubResource("Theme_urean")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_shqwd")
-text = "Options"
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
 
-[node name="ControlsButton" type="Button" parent="ButtonContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = SubResource("Theme_urean")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_shqwd")
-text = "Controls"
-
-[node name="QuitButton" type="Button" parent="ButtonContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = SubResource("Theme_urean")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_shqwd")
-text = "Quit"
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_a65lj")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kx3nn")
 autoplay = true
-bus = &"Music"
 
+<<<<<<< HEAD
 [node name="Menus" type="CanvasLayer" parent="."]
 
 [node name="Options" type="TextureRect" parent="Menus"]
@@ -308,3 +286,7 @@ bus = &"Menu"
 [connection signal="button_down" from="Menus/Controls/CloseButton" to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="Menus/Controls/CloseButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Menus/Controls/CloseButton" to="." method="_on_controls_close_button_pressed"]
+=======
+[connection signal="button_down" from="ButtonContainer/TopdownButton" to="." method="_on_topdown_button_button_down"]
+[connection signal="pressed" from="ButtonContainer/TopdownButton" to="." method="_topdown_button"]
+>>>>>>> 18f7d3ac6030623c9cebeee6da98db4741f25b6b

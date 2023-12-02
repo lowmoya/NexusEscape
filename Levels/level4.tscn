@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bx3xi6u4mxhca" path="res://UI/dialogue.tscn" id="2_8geo8"]
 [ext_resource type="Texture2D" uid="uid://th74c3jjep2e" path="res://Resources/Sprites/Effects/light.png" id="2_ct7up"]
 [ext_resource type="PackedScene" uid="uid://buw3yh7u0iwka" path="res://UI/playing_ui.tscn" id="3_6egly"]
-[ext_resource type="Script" path="res://Levels/Level4DialogueController.gd" id="3_wfyoo"]
+[ext_resource type="Script" path="res://Levels/Level4DialogueController.gd" id="3_ai1kw"]
 [ext_resource type="TileSet" uid="uid://damfbuciwmh81" path="res://Resources/Tilemaps/tilemap2.tres" id="4_qehan"]
 [ext_resource type="Script" path="res://enemycontroller.gd" id="5_me17l"]
 [ext_resource type="PackedScene" uid="uid://dtw8rx3wobgvw" path="res://Entities/enemies/gunenemy.tscn" id="6_1s4vd"]
@@ -28,9 +28,8 @@ n_player = NodePath("../Tilemap/Player")
 [node name="Dialogue" parent="PlayingUI" node_paths=PackedStringArray("n_host") instance=ExtResource("2_8geo8")]
 n_host = NodePath("../Level4DialogueController")
 
-[node name="Level4DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_dialogue", "n_enemycontroller", "n_door")]
-script = ExtResource("3_wfyoo")
-n_dialogue = NodePath("../Dialogue")
+[node name="Level4DialogueController" type="Node2D" parent="PlayingUI" node_paths=PackedStringArray("n_enemycontroller", "n_door")]
+script = ExtResource("3_ai1kw")
 n_enemycontroller = NodePath("../../Tilemap/EnemyController")
 n_door = NodePath("../../Hallway Fitter/Door")
 
